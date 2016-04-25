@@ -1,4 +1,10 @@
 .vscode/
+.vs/
 bin/
+Debug/
+Release/
 p
 t
+Podeq.VC.db
+Podeq.VC.VC.opendb
+Podeq.vcxproj.user

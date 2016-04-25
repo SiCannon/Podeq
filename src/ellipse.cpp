@@ -2,7 +2,7 @@
 #include <GL/freeglut.h>
 #include "ellipse.h"
 
-Ellipse::Ellipse(Timer *timer) : BaseActor(timer)
+Podeq::Ellipse::Ellipse(Timer *timer) : BaseActor(timer)
 {
 	xradius = 6.0f;
 	yradius = 5.0f;
@@ -10,7 +10,7 @@ Ellipse::Ellipse(Timer *timer) : BaseActor(timer)
 
 #define SLICES 48
 
-void Ellipse::draw_me()
+void Podeq::Ellipse::draw_me()
 {
 
 	glColor3ub(192, 0, 192);

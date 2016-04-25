@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\ellipse.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\monster.cpp" />
+    <ClCompile Include="src\omech.cpp" />
+    <ClCompile Include="src\orbit.cpp" />
+    <ClCompile Include="src\orbit_path.cpp" />
+    <ClCompile Include="src\planet.cpp" />
+    <ClCompile Include="src\ship.cpp" />
+    <ClCompile Include="gaf\base_actor.cpp" />
+    <ClCompile Include="gaf\gaf_math.cpp" />
+    <ClCompile Include="gaf\keyboard.cpp" />
+    <ClCompile Include="gaf\mouse.cpp" />
+    <ClCompile Include="gaf\screenutil.cpp" />
+    <ClCompile Include="gaf\shapes.cpp" />
+    <ClCompile Include="gaf\textutils.cpp" />
+    <ClCompile Include="gaf\timer.cpp" />
+    <ClCompile Include="gaf\transform.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="lib\GL\freeglut.h" />
+    <ClInclude Include="lib\GL\freeglut_ext.h" />
+    <ClInclude Include="lib\GL\freeglut_std.h" />
+    <ClInclude Include="lib\GL\glew.h" />
+    <ClInclude Include="lib\GL\glut.h" />
+    <ClInclude Include="lib\GL\glxew.h" />
+    <ClInclude Include="lib\GL\wglew.h" />
+    <ClInclude Include="include\defines.h" />
+    <ClInclude Include="include\ellipse.h" />
+    <ClInclude Include="include\monster.h" />
+    <ClInclude Include="include\omech.h" />
+    <ClInclude Include="include\orbit.h" />
+    <ClInclude Include="include\orbit_path.h" />
+    <ClInclude Include="include\planet.h" />
+    <ClInclude Include="include\ship.h" />
+    <ClInclude Include="include\start_params.h" />
+    <ClInclude Include="gaf\base_actor.h" />
+    <ClInclude Include="gaf\gaf_math.h" />
+    <ClInclude Include="gaf\keyboard.h" />
+    <ClInclude Include="gaf\mouse.h" />
+    <ClInclude Include="gaf\screenutil.h" />
+    <ClInclude Include="gaf\shapes.h" />
+    <ClInclude Include="gaf\textutils.h" />
+    <ClInclude Include="gaf\timer.h" />
+    <ClInclude Include="gaf\transform.h" />
+    <ClInclude Include="gaf\vector.h" />
+  </ItemGroup>
+</Project>

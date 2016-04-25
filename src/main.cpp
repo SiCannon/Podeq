@@ -1,4 +1,4 @@
-#include <GL/glew.h>
+//#include <GL/glew.h>
 #include <GL/freeglut.h>
 #include <stdio.h>
 #include <math.h>
@@ -22,7 +22,7 @@
 Timer *timer;
 Monster *monster;
 Planet *planet;
-Ellipse *ellipse;
+Podeq::Ellipse *ellipse;
 Ship *ship;
 OrbitPath *orbit_path;
 OrbitPath *orbit_path2;
@@ -182,7 +182,7 @@ int main(int argc, char **argv)
 	timer = new Timer();
 	monster = new Monster(timer);
 	planet = new Planet(timer, planet_mass);
-	ellipse = new Ellipse(timer);
+	ellipse = new Podeq::Ellipse(timer);
 	
 	ship = new Ship(timer, start_ship_vx, start_ship_vy);
 	ship->transform->translate_x = start_ship_x;
