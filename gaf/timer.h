@@ -1,5 +1,7 @@
 #pragma once
 
+#include <GL/freeglut.h>
+
 class Timer
 {
 public:

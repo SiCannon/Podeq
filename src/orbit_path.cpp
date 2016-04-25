@@ -8,7 +8,7 @@ OrbitPath::OrbitPath(Timer *timer) : BaseActor(timer)
 
 }
 
-#define SLICES 48
+#define SLICES 192
 
 void OrbitPath::draw_me()
 {

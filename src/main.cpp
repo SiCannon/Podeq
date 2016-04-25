@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include <math.h>
 
+#include "game_engine.h"
+#include "gaf_glut.h"
+
 #include "screenutil.h"
 #include "keyboard.h"
 #include "gaf_math.h"
@@ -19,13 +22,14 @@
 #include "start_params.h"
 #include "orbit.h"
 
+//GameEngine *gameEngine;
+
 Timer *timer;
 Monster *monster;
 Planet *planet;
 Podeq::Ellipse *ellipse;
 Ship *ship;
 OrbitPath *orbit_path;
-OrbitPath *orbit_path2;
 Orbit *orbit;
 
 void handleInput();
@@ -51,9 +55,9 @@ void display()
 	
 	planet->draw();
 	//ellipse->draw();
-	ship->draw();
 	orbit_path->draw();
-	//orbit_path2->draw();
+	ship->draw();
+	
 
 	//monster->draw();
 
@@ -84,7 +88,6 @@ void debug()
 {
 	textResetBottomLeft();
 	debug_orbit_path(orbit_path);
-	debug_orbit_path(orbit_path2);
 	textReset(1);
 	textOut("  shipx="); textOutFloat(ship->transform->translate_x);
 	textOut("  shipy="); textOutFloat(ship->transform->translate_y);
@@ -183,6 +186,8 @@ void calc_orbit()
 
 int main(int argc, char **argv)
 {
+	GameEngine *gameEngine = new GameEngine();
+
 	timer = new Timer();
 	monster = new Monster(timer);
 	planet = new Planet(timer, planet_mass);
@@ -197,33 +202,13 @@ int main(int argc, char **argv)
 	orbit_path = new OrbitPath(timer);
 	calc_orbit();
 	
-	orbit_path2 = new OrbitPath(timer);
-	orbit_path2->apoapsis = 5.0f;
-	orbit_path2->periapsis = 1.0f;
-	orbit_path2->angle = PI_BY_8;
 	
-	
-	
-	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE | GLUT_MULTISAMPLE);
-
-	glutInitWindowPosition(50, 50);
-	glutInitWindowSize(INTIAL_WNDOW_WIDTH, INITIAL_WINDOW_HEIGHT);
-	glutCreateWindow("Podeq");
-
-	glutDisplayFunc(display);
-	glutReshapeFunc(reshape);
-	//glutPassiveMotionFunc(saveMousePosition);
-	//glutMotionFunc(saveMousePosition);
-	//glutMouseFunc(processMouse);
-	glutKeyboardFunc(getKeyboardDown);
-	glutKeyboardUpFunc(getKeyboardUp);
-	//glutSetCursor(GLUT_CURSOR_NONE);
-
-	glutMainLoop();
+	init_glut(argc, argv, "Podeq", display);
 
 	delete(monster);
 	delete(timer);
+
+	delete(gameEngine);
 
 	return EXIT_SUCCESS;
 }

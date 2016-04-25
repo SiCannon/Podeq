@@ -19,6 +19,7 @@
     <ClCompile Include="gaf\timer.cpp" />
     <ClCompile Include="gaf\transform.cpp" />
     <ClCompile Include="gaf\game_engine.cpp" />
+    <ClCompile Include="gaf\gaf_glut.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GL\freeglut.h" />
@@ -48,5 +49,6 @@
     <ClInclude Include="gaf\transform.h" />
     <ClInclude Include="gaf\vector.h" />
     <ClInclude Include="gaf\game_engine.h" />
+    <ClInclude Include="gaf\gaf_glut.h" />
   </ItemGroup>
 </Project>
