@@ -36,6 +36,11 @@ void textResetBottomLeft()
 	glRasterPos2i(rasterLeft, rasterBottom);
 }
 
+void textReset(int lines)
+{
+	glRasterPos2i(rasterLeft, rasterBottom + lines);
+}
+
 void textYellow()
 {
 	glColor3ub(192, 192, 0);

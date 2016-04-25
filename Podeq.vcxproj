@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="gaf\base_actor.cpp" />
     <ClCompile Include="gaf\gaf_math.cpp" />
+    <ClCompile Include="gaf\game_engine.cpp" />
     <ClCompile Include="gaf\keyboard.cpp" />
     <ClCompile Include="gaf\mouse.cpp" />
     <ClCompile Include="gaf\screenutil.cpp" />
@@ -40,6 +41,7 @@
   <ItemGroup>
     <ClInclude Include="gaf\base_actor.h" />
     <ClInclude Include="gaf\gaf_math.h" />
+    <ClInclude Include="gaf\game_engine.h" />
     <ClInclude Include="gaf\keyboard.h" />
     <ClInclude Include="gaf\mouse.h" />
     <ClInclude Include="gaf\screenutil.h" />
@@ -121,16 +123,15 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>lib;include;gaf</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>lib/GLwin/include;include;gaf</AdditionalIncludeDirectories>
       <ShowIncludes>true</ShowIncludes>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>lib\GLwin\lib</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>copy /y "$(ProjectDir)lib\GLwin\dll\freeglut.dll" "$(OutDir)"
+copy /y "$(ProjectDir)lib\GL\glew32.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -138,16 +139,15 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>lib;include;gaf</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>lib/GLwin/include;include;gaf</AdditionalIncludeDirectories>
       <ShowIncludes>true</ShowIncludes>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>lib\GLwin\lib</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>copy /y "$(ProjectDir)lib\GLwin\dll\freeglut.dll" "$(OutDir)"
+copy /y "$(ProjectDir)lib\GL\glew32.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

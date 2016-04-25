@@ -82,8 +82,12 @@ void display()
 
 void debug()
 {
+	textResetBottomLeft();
 	debug_orbit_path(orbit_path);
 	debug_orbit_path(orbit_path2);
+	textReset(1);
+	textOut("  shipx="); textOutFloat(ship->transform->translate_x);
+	textOut("  shipy="); textOutFloat(ship->transform->translate_y);
 }
 
 void debug_orbit_path(OrbitPath *path)

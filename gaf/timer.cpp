@@ -1,10 +1,23 @@
 #include <GL/freeglut.h>
 #include "timer.h"
 
+Timer::Timer()
+{
+	started = false;
+}
+
 void Timer::tick()
 {
 	int newTicks = glutGet(GLUT_ELAPSED_TIME);
-	intervalTicks = newTicks - totalTicks;
+	if (started)
+	{
+		intervalTicks = newTicks - totalTicks;
+	}
+	else
+	{
+		started = true;
+		intervalTicks = 0;
+	}
 	totalTicks = newTicks;
 }
 
