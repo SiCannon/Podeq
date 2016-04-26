@@ -17,7 +17,7 @@ void Ship::draw_me()
     
     GLfloat radius = 0.1f;
     
-    glColor3ub(0, 192, 0);
+    glColor4ub(0, 192, 0, 255);
     
     glSolidCircle(radius, 12);
     

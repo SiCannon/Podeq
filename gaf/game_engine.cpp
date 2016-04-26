@@ -16,6 +16,11 @@ GameEngine::GameEngine()
 GameEngine::~GameEngine()
 {
 	delete(timer);
+
+	for (int i = 0; i < drawTasks.size(); i++)
+	{
+		delete(drawTasks[i]);
+	}
 }
 
 void GameEngine::loop()
@@ -24,6 +29,11 @@ void GameEngine::loop()
 	input();
 	update();
 	display();
+}
+
+void GameEngine::register_drawTask(DrawTask *task)
+{
+	drawTasks.push_back(task);
 }
 
 void GameEngine::input()

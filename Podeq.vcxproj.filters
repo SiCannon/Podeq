@@ -50,5 +50,6 @@
     <ClInclude Include="gaf\vector.h" />
     <ClInclude Include="gaf\game_engine.h" />
     <ClInclude Include="gaf\gaf_glut.h" />
+    <ClInclude Include="gaf\include\draw_task.h" />
   </ItemGroup>
 </Project>

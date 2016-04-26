@@ -44,6 +44,7 @@
     <ClInclude Include="gaf\gaf_glut.h" />
     <ClInclude Include="gaf\gaf_math.h" />
     <ClInclude Include="gaf\game_engine.h" />
+    <ClInclude Include="gaf\include\draw_task.h" />
     <ClInclude Include="gaf\keyboard.h" />
     <ClInclude Include="gaf\mouse.h" />
     <ClInclude Include="gaf\screenutil.h" />
