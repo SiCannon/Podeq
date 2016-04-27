@@ -2,7 +2,7 @@
 #include "base_actor.h"
 #include "monster.h"
 
-Monster::Monster(Timer *timer) : BaseActor(timer)
+Monster::Monster(Timer *timer) : BaseActor()
 {
 	transform->rotation = 30.0f;;
 }

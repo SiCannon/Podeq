@@ -3,7 +3,7 @@
 #include "planet.h"
 #include "defines.h"
 
-Planet::Planet(Timer *timer, GLfloat mass) : BaseActor(timer)
+Planet::Planet(Timer *timer, GLfloat mass) : BaseActor()
 {
 	this->mass = mass;
 }
@@ -17,11 +17,12 @@ Planet::~Planet()
 
 void Planet::draw_me()
 {
-	//transform->rotation -= 0.5f;
-	//transform->scale = fabs(sin((GLfloat)timer->totalTicks / 150.0f) / 10.0f) + 1.0f;
+	//GLfloat outerRadius = 0.3f;
+	//GLfloat crustThickness = 0.05f;
 
-	GLfloat outerRadius = 0.3f;
-	GLfloat crustThickness = 0.05f;
+	GLfloat outerRadius = 1.0f;
+	GLfloat crustThickness = 0.3f;
+
 	GLfloat innerRadius = outerRadius - crustThickness;
 	
 
@@ -34,9 +35,11 @@ void Planet::draw_me()
 		GLfloat theta = ((GLfloat)t / (GLfloat)SLICES) * 6.284;
 		GLfloat x = innerRadius * sin(theta);
 		GLfloat y = innerRadius * cos(theta);
+		glColor3ub(64, 0, 64);
 		glVertex2f(x, y);
 		x = outerRadius * sin(theta);
 		y = outerRadius * cos(theta);
+		glColor3ub(192, 0, 192);
 		glVertex2f(x, y);
 	}
 

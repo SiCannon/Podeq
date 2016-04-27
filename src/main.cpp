@@ -5,7 +5,7 @@
 
 #include "game_engine.h"
 #include "gaf_glut.h"
-
+#include <include/exit_on_escape.h>
 #include "screenutil.h"
 #include "keyboard.h"
 #include "gaf_math.h"
@@ -32,7 +32,6 @@ Ship *ship;
 OrbitPath *orbit_path;
 Orbit *orbit;
 
-void handleInput();
 void calc();
 GLfloat r_to_d(GLfloat r);
 
@@ -43,9 +42,8 @@ void debug_orbit_path(OrbitPath *path);
 void display()
 {
 	timer->tick();
-	
-	handleInput();
-	calc();
+
+	//calc();
 	
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -103,36 +101,7 @@ void debug_orbit_path(OrbitPath *path)
 	textOutFloat(path->periapsis);
 }
 
-
-GLfloat distanceSquared(Transform *t1, Transform *t2)
-{
-	return SQR(t1->translate_x - t2->translate_x) + SQR(t1->translate_y - t2->translate_y); 
-}
-
-GLfloat angleTo(Transform *me, Transform *target)
-{
-	GLfloat dx = (target->translate_x - me->translate_x);
-	GLfloat dy = (target->translate_y - me->translate_y);
-	if (dx == 0)
-	{
-		return dy > 0 ? PI_BY_2 : 3 * PI_BY_2;
-	}
-	else
-	{
-		GLfloat res = atan(dy / dx);
-		if (dx < 0)
-		{
-			res += PI;
-		}
-		else if (dy < 0)
-		{
-			res += TWO_PI;
-		}
-		return res;
-	}
-}
-
-void calc()
+/*void calc()
 {
 	GLfloat rs = distanceSquared(planet->transform, ship->transform);
 	GLfloat a = GravConstant * planet->mass / rs;
@@ -140,33 +109,7 @@ void calc()
 	GLfloat ax = a * cos(t);
 	GLfloat ay = a * sin(t);
 	ship->accel(ax, ay);
-}
-
-void handleInput()
-{
-	if (keyState[27])
-	{
-		glutLeaveMainLoop();
-	}
-	
-	GLfloat inc = 0.02f;
-	if (keyState['a'])
-	{
-		ellipse->xradius += inc;
-	}
-	if (keyState['d'])
-	{
-		ellipse->xradius -= inc;
-	}
-	if (keyState['w'])
-	{
-		ellipse->yradius -= inc;
-	}
-	if (keyState['s'])
-	{
-		ellipse->yradius += inc;
-	}
-}
+}*/
 
 void calc_orbit()
 {
@@ -187,22 +130,24 @@ void calc_orbit()
 int main(int argc, char **argv)
 {
 	gameEngine = new GameEngine();
+	gameEngine->register_inputTask(new ExitOnEscape());
 
 	timer = new Timer();
 	monster = new Monster(timer);
 	planet = new Planet(timer, planet_mass);
 	ellipse = new Podeq::Ellipse(timer);
 	
-	ship = new Ship(timer, start_ship_vx, start_ship_vy);
+	ship = new Ship(start_ship_vx, start_ship_vy, planet);
 	ship->transform->translate_x = start_ship_x;
 	ship->transform->translate_y = start_ship_y;
 	
 	gameEngine->register_drawTask(planet);
 	gameEngine->register_drawTask(ship);
+	gameEngine->register_updateTask(ship);
 
 	orbit = new Orbit();
 	
-	orbit_path = new OrbitPath(timer);
+	orbit_path = new OrbitPath();
 	calc_orbit();
 	
 	

@@ -11,16 +11,26 @@ void main_game_loop()
 GameEngine::GameEngine()
 {
 	timer = new Timer();
+	keyboard = new Keyboard();
 }
 
 GameEngine::~GameEngine()
 {
-	delete(timer);
-
-	for (int i = 0; i < drawTasks.size(); i++)
+	for (unsigned int i = 0; i < inputTasks.size(); i++)
+	{
+		delete(inputTasks[i]);
+	}
+	for (unsigned int i = 0; i < updateTasks.size(); i++)
+	{
+		delete(updateTasks[i]);
+	}
+	for (unsigned int i = 0; i < drawTasks.size(); i++)
 	{
 		delete(drawTasks[i]);
 	}
+
+	delete(keyboard);
+	delete(timer);
 }
 
 void GameEngine::loop()
@@ -31,6 +41,16 @@ void GameEngine::loop()
 	display();
 }
 
+void GameEngine::register_inputTask(InputTask *task)
+{
+	inputTasks.push_back(task);
+}
+
+void GameEngine::register_updateTask(UpdateTask * task)
+{
+	updateTasks.push_back(task);
+}
+
 void GameEngine::register_drawTask(DrawTask *task)
 {
 	drawTasks.push_back(task);
@@ -38,12 +58,18 @@ void GameEngine::register_drawTask(DrawTask *task)
 
 void GameEngine::input()
 {
-
+	for (unsigned int i = 0; i < inputTasks.size(); i++)
+	{
+		inputTasks[i]->input(keyboard);
+	}
 }
 
 void GameEngine::update()
 {
-
+	for (unsigned int i = 0; i < updateTasks.size(); i++)
+	{
+		updateTasks[i]->update(timer);
+	}
 }
 
 void GameEngine::display()
@@ -54,7 +80,7 @@ void GameEngine::display()
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	for (int i = 0; i < drawTasks.size(); i++)
+	for (unsigned int i = 0; i < drawTasks.size(); i++)
 	{
 		drawTasks[i]->draw();
 	}
@@ -62,3 +88,4 @@ void GameEngine::display()
 	glutSwapBuffers();
 	glutPostRedisplay();
 }
+

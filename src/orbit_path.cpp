@@ -3,7 +3,7 @@
 #include "gaf_math.h"
 #include "orbit_path.h"
 
-OrbitPath::OrbitPath(Timer *timer) : BaseActor(timer)
+OrbitPath::OrbitPath() : BaseActor()
 {
 
 }

@@ -1,9 +1,14 @@
 #include <GL/freeglut.h>
 #include "ship.h"
 #include "shapes.h"
+#include "timer.h"
+#include "planet.h"
+#include "gaf_math.h"
+#include "defines.h"
 
-Ship::Ship(Timer *timer, GLfloat ivx, GLfloat ivy) : BaseActor(timer)
+Ship::Ship(GLfloat ivx, GLfloat ivy, Planet *planet) : BaseActor()
 {
+	this->planet = planet;
     vx = ivx;
     vy = ivy;
     hidx = -1;
@@ -12,8 +17,7 @@ Ship::Ship(Timer *timer, GLfloat ivx, GLfloat ivy) : BaseActor(timer)
 
 void Ship::draw_me()
 {
-    update();
-    save_history();
+    
     
     GLfloat radius = 0.1f;
     
@@ -37,21 +41,26 @@ void Ship::draw_me()
     
 }
 
-void Ship::update()
+void Ship::update(Timer *timer)
 {
+	save_history(timer);
+
+	GLfloat rs = distanceSquared(planet->transform, transform);
+	GLfloat a = GravConstant * planet->mass / rs;
+	GLfloat t = angleTo(transform, planet->transform);
+	GLfloat ax = a * cos(t);
+	GLfloat ay = a * sin(t);
+
+	vx += ax * timer->intervalSeconds();
+	vy += ay * timer->intervalSeconds();
+
     GLfloat dx = vx * timer->intervalSeconds();
     GLfloat dy = vy * timer->intervalSeconds();
     transform->translate_x += dx;
     transform->translate_y += dy;
 }
 
-void Ship::accel(GLfloat ax, GLfloat ay)
-{
-    vx += ax * timer->intervalSeconds();
-    vy += ay * timer->intervalSeconds();
-}
-
-void Ship::save_history()
+void Ship::save_history(Timer *timer)
 {
     if ((timer->totalTicks - lastHist) < 100)
     {

@@ -8,11 +8,11 @@ class BaseActor : public DrawTask
 {
 public:
 	Transform *transform;
-	BaseActor(Timer *timer);
+	BaseActor();
 	~BaseActor();
 	void draw();
-	virtual void update() { }
+	//virtual void update() { }
 protected:
-	Timer *timer;
+	//Timer *timer;
 	virtual void draw_me() =0;
 };

@@ -20,6 +20,7 @@
     <ClCompile Include="gaf\transform.cpp" />
     <ClCompile Include="gaf\game_engine.cpp" />
     <ClCompile Include="gaf\gaf_glut.cpp" />
+    <ClCompile Include="gaf\src\exit_on_escape.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GL\freeglut.h" />
@@ -51,5 +52,8 @@
     <ClInclude Include="gaf\game_engine.h" />
     <ClInclude Include="gaf\gaf_glut.h" />
     <ClInclude Include="gaf\include\draw_task.h" />
+    <ClInclude Include="gaf\include\input_task.h" />
+    <ClInclude Include="gaf\include\update_task.h" />
+    <ClInclude Include="gaf\include\exit_on_escape.h" />
   </ItemGroup>
 </Project>

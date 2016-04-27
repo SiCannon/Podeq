@@ -2,7 +2,7 @@
 #include <GL/freeglut.h>
 #include "ellipse.h"
 
-Podeq::Ellipse::Ellipse(Timer *timer) : BaseActor(timer)
+Podeq::Ellipse::Ellipse(Timer *timer) : BaseActor()
 {
 	xradius = 6.0f;
 	yradius = 5.0f;

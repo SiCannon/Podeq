@@ -5,7 +5,7 @@
 class OrbitPath : public BaseActor
 {
 public:
-	OrbitPath(Timer *timer);
+	OrbitPath();
 	GLfloat apoapsis;
 	GLfloat periapsis;
 	GLfloat angle;

@@ -3,9 +3,9 @@
 #include "base_actor.h"
 #include "timer.h"
 
-BaseActor::BaseActor(Timer *timer)
+BaseActor::BaseActor()
 {
-	this->timer = timer;
+	//this->timer = timer;
 	
 	transform = new Transform();
 	transform->scale = 1.0f;

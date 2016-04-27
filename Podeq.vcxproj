@@ -23,6 +23,7 @@
     <ClCompile Include="gaf\gaf_glut.cpp" />
     <ClCompile Include="gaf\gaf_math.cpp" />
     <ClCompile Include="gaf\game_engine.cpp" />
+    <ClCompile Include="gaf\src\exit_on_escape.cpp" />
     <ClCompile Include="gaf\keyboard.cpp" />
     <ClCompile Include="gaf\mouse.cpp" />
     <ClCompile Include="gaf\screenutil.cpp" />
@@ -45,6 +46,9 @@
     <ClInclude Include="gaf\gaf_math.h" />
     <ClInclude Include="gaf\game_engine.h" />
     <ClInclude Include="gaf\include\draw_task.h" />
+    <ClInclude Include="gaf\include\exit_on_escape.h" />
+    <ClInclude Include="gaf\include\input_task.h" />
+    <ClInclude Include="gaf\include\update_task.h" />
     <ClInclude Include="gaf\keyboard.h" />
     <ClInclude Include="gaf\mouse.h" />
     <ClInclude Include="gaf\screenutil.h" />

@@ -1,5 +1,6 @@
 #include <math.h>
 #include <GL/freeglut.h> 
+#include "transform.h"
 
 #define PI 3.141592654f
 #define TWO_PI 6.283185307f
@@ -11,3 +12,5 @@
 
 GLfloat angleBetween(GLfloat ux, GLfloat uy, GLfloat vx, GLfloat vy);
 GLfloat r_to_d(GLfloat r);
+GLfloat distanceSquared(Transform *t1, Transform *t2);
+GLfloat angleTo(Transform *me, Transform *target);

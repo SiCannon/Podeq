@@ -1,5 +1,6 @@
-struct Vector2f
+#include <GL/freeglut.h>
+
+class Vector2f
 {
-    GLfloat x,
-    GLfloat y;
-}
+	GLfloat x, y;
+};
