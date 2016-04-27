@@ -54,7 +54,10 @@ void GameEngine::display()
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	// game-specific stuff goes here
+	for (int i = 0; i < drawTasks.size(); i++)
+	{
+		drawTasks[i]->draw();
+	}
 
 	glutSwapBuffers();
 	glutPostRedisplay();

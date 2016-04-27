@@ -19,8 +19,8 @@ void init_glut(int argc, char **argv, const char *title, void(*display)(void))
 	glutInitWindowSize(INTIAL_WNDOW_WIDTH, INITIAL_WINDOW_HEIGHT);
 	glutCreateWindow(title);
 
-	glutDisplayFunc(display);
-	//glutDisplayFunc(main_game_loop);
+	//glutDisplayFunc(display);
+	glutDisplayFunc(main_game_loop);
 	glutReshapeFunc(reshape);
 	//glutPassiveMotionFunc(saveMousePosition);
 	//glutMotionFunc(saveMousePosition);

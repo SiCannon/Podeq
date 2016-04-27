@@ -53,10 +53,10 @@ void display()
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	
-	planet->draw();
+	//planet->draw();
 	//ellipse->draw();
 	orbit_path->draw();
-	ship->draw();
+	//ship->draw();
 	
 
 	//monster->draw();
@@ -186,7 +186,7 @@ void calc_orbit()
 
 int main(int argc, char **argv)
 {
-	GameEngine *gameEngine = new GameEngine();
+	gameEngine = new GameEngine();
 
 	timer = new Timer();
 	monster = new Monster(timer);
@@ -197,6 +197,9 @@ int main(int argc, char **argv)
 	ship->transform->translate_x = start_ship_x;
 	ship->transform->translate_y = start_ship_y;
 	
+	gameEngine->register_drawTask(planet);
+	gameEngine->register_drawTask(ship);
+
 	orbit = new Orbit();
 	
 	orbit_path = new OrbitPath(timer);
