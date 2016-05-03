@@ -38,6 +38,7 @@
     <ClCompile Include="src\orbit.cpp" />
     <ClCompile Include="src\orbit_path.cpp" />
     <ClCompile Include="src\planet.cpp" />
+    <ClCompile Include="src\podeq_game.cpp" />
     <ClCompile Include="src\ship.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +65,7 @@
     <ClInclude Include="include\orbit.h" />
     <ClInclude Include="include\orbit_path.h" />
     <ClInclude Include="include\planet.h" />
+    <ClInclude Include="include\podeq_game.h" />
     <ClInclude Include="include\ship.h" />
     <ClInclude Include="include\start_params.h" />
     <ClInclude Include="lib\GL\freeglut.h" />

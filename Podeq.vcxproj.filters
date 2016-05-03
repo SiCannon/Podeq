@@ -21,6 +21,7 @@
     <ClCompile Include="gaf\src\shapes.cpp" />
     <ClCompile Include="gaf\src\game_engine.cpp" />
     <ClCompile Include="gaf\src\transform.cpp" />
+    <ClCompile Include="src\podeq_game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GL\freeglut.h" />
@@ -55,5 +56,6 @@
     <ClInclude Include="gaf\include\shapes.h" />
     <ClInclude Include="gaf\include\game_engine.h" />
     <ClInclude Include="gaf\include\transform.h" />
+    <ClInclude Include="include\podeq_game.h" />
   </ItemGroup>
 </Project>
