@@ -1,14 +1,17 @@
 #pragma once
 
-#include "base_actor.h"
+#include <include/base_actor.h>
+#include "orbit.h"
 
 class OrbitPath : public BaseActor
 {
 public:
-	OrbitPath();
-	GLfloat apoapsis;
+	OrbitPath(Orbit *orbit);
+	/*GLfloat apoapsis;
 	GLfloat periapsis;
-	GLfloat angle;
+	GLfloat angle;*/
 protected:
 	void draw_me();
+private:
+	Orbit *orbit;
 };

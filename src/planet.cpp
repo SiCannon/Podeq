@@ -3,7 +3,7 @@
 #include "planet.h"
 #include "defines.h"
 
-Planet::Planet(Timer *timer, GLfloat mass) : BaseActor()
+Planet::Planet(GLfloat mass) : BaseActor()
 {
 	this->mass = mass;
 }

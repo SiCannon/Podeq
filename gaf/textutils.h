@@ -7,7 +7,9 @@ void printInt(bool setPosition, GLint x, GLint y, int i, GLubyte red, GLubyte gr
 void printFloat(bool setPosition, GLint x, GLint y, float f, GLubyte red, GLubyte green, GLubyte blue);
 
 void textResetBottomLeft();
+void textTopLeft();
 void textReset(int lines);
+void textPos(int line);
 void textYellow();
 void textOut(char const *s);
 void textOutInt(int i);

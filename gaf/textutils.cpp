@@ -36,9 +36,19 @@ void textResetBottomLeft()
 	glRasterPos2i(rasterLeft, rasterBottom);
 }
 
+void textTopLeft()
+{
+	glRasterPos2i(rasterLeft, rasterTop);
+}
+
 void textReset(int lines)
 {
 	glRasterPos2i(rasterLeft, rasterBottom + lines);
+}
+
+void textPos(int line)
+{
+	glRasterPos2i(rasterLeft, rasterTop - line);
 }
 
 void textYellow()

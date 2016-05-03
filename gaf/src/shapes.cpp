@@ -1,6 +1,6 @@
 #include <math.h>
 #include <GL/freeglut.h>
-#include "shapes.h"
+#include <include/shapes.h>
 
 void glSolidCircle(GLfloat radius, int slices)
 {
@@ -22,4 +22,20 @@ void glSolidEllipse(GLfloat xradius, GLfloat yradius, int slices)
     }
     
 	glEnd();
+}
+
+void glOpenEllipse(GLfloat xradius, GLfloat yradius, int slices)
+{
+	glBegin(GL_LINE_LOOP);
+
+	for (int t = 0; t <= slices; t++)
+	{
+		GLfloat theta = ((GLfloat)t / (GLfloat)slices) * 6.284;
+		GLfloat x = xradius * cos(theta);
+		GLfloat y = yradius * sin(theta);
+		glVertex2f(x, y);
+	}
+
+	glEnd();
+
 }

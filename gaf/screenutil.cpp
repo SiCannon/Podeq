@@ -7,6 +7,7 @@
 
 GLfloat rasterLeft = 0;
 GLfloat rasterBottom = 0;
+GLfloat rasterTop = 0;
 int windowWidth;
 int windowHeight;
 
@@ -24,6 +25,7 @@ void reshape(int w, int h)
 	glOrtho(-orthoSize * aspect_ratio, orthoSize * aspect_ratio, -orthoSize, orthoSize, -1, 1);
 
 	rasterBottom = -orthoSize;
+	rasterTop = orthoSize;
 	rasterLeft = -orthoSize * aspect_ratio;
 }
 

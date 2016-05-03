@@ -1,6 +1,6 @@
 #include <GL/freeglut.h>
 #include "mouse.h"
-#include "transform.h"
+#include <include/transform.h>
 
 #define GLUT_WHEEL_UP 3
 #define GLUT_WHEEL_DOWN 4

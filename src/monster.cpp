@@ -1,5 +1,5 @@
 #include <GL/freeglut.h>
-#include "base_actor.h"
+#include <include/base_actor.h>
 #include "monster.h"
 
 Monster::Monster(Timer *timer) : BaseActor()

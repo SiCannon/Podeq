@@ -1,14 +1,14 @@
 #include <GL/freeglut.h>
 #include "screenutil.h"
 #include "keyboard.h"
-#include "game_engine.h"
+#include <include/game_engine.h>
 
 #define INITIAL_WINDOW_LEFT 50
 #define INITIAL_WINDOW_TOP 50
 #define INTIAL_WNDOW_WIDTH 800
 #define INITIAL_WINDOW_HEIGHT 600
 
-void init_glut(int argc, char **argv, const char *title, void(*display)(void))
+void init_glut(int argc, char **argv, const char *title)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DEPTH | GLUT_DOUBLE | GLUT_MULTISAMPLE);

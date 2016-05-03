@@ -1,6 +1,6 @@
 #include <GL/freeglut.h>
 #include "ship.h"
-#include "shapes.h"
+#include <include/shapes.h>
 #include "timer.h"
 #include "planet.h"
 #include "gaf_math.h"
@@ -21,23 +21,26 @@ void Ship::draw_me()
     
     GLfloat radius = 0.1f;
     
-    glColor4ub(0, 192, 0, 255);
+    glColor4ub(0, 192, 0, 100);
     
     glSolidCircle(radius, 12);
     
-    glPushMatrix();
+    //glPushMatrix();
     for (int i = 0; i <= maxh; i++)
     {
-        glLoadIdentity();
+		//glPushMatrix();
+		//glLoadIdentity();
+		reset();
         int dh = (i <= hidx) ? (hidx - i) : (hidx + hist_size - i);
         GLfloat dhf = 1.0f - ((float)dh / (float)hist_size);
         GLubyte c = (int) (dhf * 192.0f); 
-        glColor3ub(0, c, 0);
-        glLoadIdentity();
+        glColor4ub(0, c, 0, 0);
+        //glLoadIdentity();
         glTranslatef(hx[i], hy[i], 0);
         glSolidCircle(0.05f, 3);
-    }
-    glPopMatrix();
+		//glPopMatrix();
+	}
+    //glPopMatrix();
     
 }
 

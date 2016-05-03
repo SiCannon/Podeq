@@ -1,11 +1,11 @@
 #pragma once
 
-#include "base_actor.h"
+#include <include/base_actor.h>
 
 class Planet : public BaseActor
 {
 public:
-	Planet(Timer *timer, GLfloat mass);
+	Planet(GLfloat mass);
 	GLfloat mass;
 	GLfloat GM();
 protected:

@@ -6,6 +6,7 @@
 
 extern GLfloat rasterLeft;
 extern GLfloat rasterBottom;
+extern GLfloat rasterTop;
 
 void reshape(int w, int h);
 void screenToWorld(int x, int y, GLfloat scale, GLfloat trans_x, GLfloat trans_y, GLfloat *wx, GLfloat *wy);

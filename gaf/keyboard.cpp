@@ -1,7 +1,7 @@
 #include <GL/freeglut.h>
-#include "game_engine.h"
+#include <include/game_engine.h>
 #include "keyboard.h"
-#include "transform.h"
+#include <include/transform.h>
 #include "defines.h"
 
 void getKeyboardDown(unsigned char key, int x, int y)

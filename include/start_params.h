@@ -47,8 +47,8 @@ GLfloat start_ship_vx = 4.5f;
 GLfloat start_ship_vy = 0;//*/
 
 //*
-GLfloat planet_x = 0.0f;
-GLfloat planet_y = 0.0f;
+GLfloat planet_x = 8.0f;
+GLfloat planet_y = 3.0f;
 GLfloat planet_mass = 2.0f;
 GLfloat start_ship_x = 2.0f;
 GLfloat start_ship_y = 5.0f;

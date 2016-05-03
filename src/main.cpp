@@ -3,16 +3,17 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "game_engine.h"
+#include <include/game_engine.h>
 #include "gaf_glut.h"
 #include <include/exit_on_escape.h>
 #include "screenutil.h"
 #include "keyboard.h"
 #include "gaf_math.h"
 #include "textutils.h"
+#include "include/draw_task.h"
 
 #include "defines.h"
-#include "base_actor.h"
+#include <include/base_actor.h>
 #include "monster.h"
 #include "planet.h"
 #include "orbit_path.h"
@@ -32,14 +33,14 @@ Ship *ship;
 OrbitPath *orbit_path;
 Orbit *orbit;
 
-void calc();
-GLfloat r_to_d(GLfloat r);
+//void calc();
+//GLfloat r_to_d(GLfloat r);
 
-GLfloat r_angle;
-void debug();
-void debug_orbit_path(OrbitPath *path);
+//GLfloat r_angle;
+//void debug();
+//void debug_orbit_path(OrbitPath *path);
 
-void display()
+/*void display()
 {
 	timer->tick();
 
@@ -75,23 +76,23 @@ void display()
 	textOut("  Ra=");
 	textOutFloat(orbit->Ra);
 	textOut("  Rp=");
-	textOutFloat(orbit->Rp);*/
+	textOutFloat(orbit->Rp);* /
 	debug();
 
 	glutSwapBuffers();
 	glutPostRedisplay();
-}
+}*/
 
-void debug()
+/*void debug()
 {
 	textResetBottomLeft();
 	debug_orbit_path(orbit_path);
 	textReset(1);
 	textOut("  shipx="); textOutFloat(ship->transform->translate_x);
 	textOut("  shipy="); textOutFloat(ship->transform->translate_y);
-}
+}*/
 
-void debug_orbit_path(OrbitPath *path)
+/*void debug_orbit_path(OrbitPath *path)
 {
 	textOut("  arg=");
 	textOutFloat(path->angle);
@@ -99,33 +100,49 @@ void debug_orbit_path(OrbitPath *path)
 	textOutFloat(path->apoapsis);
 	textOut("  Rp=");
 	textOutFloat(path->periapsis);
-}
-
-/*void calc()
-{
-	GLfloat rs = distanceSquared(planet->transform, ship->transform);
-	GLfloat a = GravConstant * planet->mass / rs;
-	GLfloat t = angleTo(ship->transform, planet->transform);
-	GLfloat ax = a * cos(t);
-	GLfloat ay = a * sin(t);
-	ship->accel(ax, ay);
 }*/
 
-void calc_orbit()
+class Test : public BaseActor, public InputTask, public UpdateTask
 {
-	r_angle = angleBetween(1.0f, 0.0f, start_ship_x, start_ship_y);
-	
-	orbit->calc(planet_x, planet_y, start_ship_x, start_ship_y, start_ship_vx, start_ship_vy, planet->GM());
-	orbit_path->apoapsis = orbit->Ra;
-	orbit_path->periapsis = orbit->Rp;
-	
-	if (orbit->nu < 0)
+public:
+	void draw_me()
 	{
-		orbit->nu += TWO_PI;
-	}
-	
-	orbit_path->angle = r_angle - (orbit->nu - PI);
-}
+		/*
+		glBegin(GL_TRIANGLES);
+
+		glColor3ub(192, 192, 192);
+		glVertex2i(0, 0);
+		glVertex2i(1, 0);
+		glVertex2i(0, 1);
+
+		glEnd();
+		*/
+		glPushMatrix();
+		glLoadIdentity();
+		//textTopLeft();
+		//textResetBottomLeft();
+		//printText(false, rasterLeft, rasterBottom, "hello", 0, 192, 192);
+		textPos(1);
+		textYellow();
+		//textOutFloat(orbit->);
+		glPopMatrix();
+	};
+	void input(Keyboard *keyboard)
+	{
+		if (keyboard->keyState['w'])
+		{
+			gameEngine->world_transform->scale += 0.01f;
+		}
+		if (keyboard->keyState['s'])
+		{
+			gameEngine->world_transform->scale -= 0.01f;
+		}
+	};
+	void update(Timer *timer)
+	{
+
+	};
+};
 
 int main(int argc, char **argv)
 {
@@ -134,24 +151,38 @@ int main(int argc, char **argv)
 
 	timer = new Timer();
 	monster = new Monster(timer);
-	planet = new Planet(timer, planet_mass);
+	planet = new Planet(planet_mass);
+	planet->transform->translate_x = planet_x;
+	planet->transform->translate_y = planet_y;
 	ellipse = new Podeq::Ellipse(timer);
 	
 	ship = new Ship(start_ship_vx, start_ship_vy, planet);
 	ship->transform->translate_x = start_ship_x;
 	ship->transform->translate_y = start_ship_y;
 	
+	orbit = new Orbit();
+	orbit->calc(planet_x, planet_y, start_ship_x, start_ship_y, start_ship_vx, start_ship_vy, planet->GM());
+
+	orbit_path = new OrbitPath(orbit);
+	orbit_path->transform->translate_x = planet_x;
+	orbit_path->transform->translate_y = planet_y;
+	
 	gameEngine->register_drawTask(planet);
 	gameEngine->register_drawTask(ship);
+	gameEngine->register_drawTask(orbit_path);
+
 	gameEngine->register_updateTask(ship);
 
-	orbit = new Orbit();
+	Test *test = new Test();
+	test->transform->translate_x = 2.0f;
+	test->transform->translate_y = 2.0f;
+	gameEngine->register_drawTask(test);
+	gameEngine->register_inputTask(test);
+
+	init_glut(argc, argv, "Podeq");
+
 	
-	orbit_path = new OrbitPath();
-	calc_orbit();
 	
-	
-	init_glut(argc, argv, "Podeq", display);
 
 	delete(monster);
 	delete(timer);

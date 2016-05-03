@@ -9,18 +9,18 @@
     <ClCompile Include="src\orbit_path.cpp" />
     <ClCompile Include="src\planet.cpp" />
     <ClCompile Include="src\ship.cpp" />
-    <ClCompile Include="gaf\base_actor.cpp" />
     <ClCompile Include="gaf\gaf_math.cpp" />
     <ClCompile Include="gaf\keyboard.cpp" />
     <ClCompile Include="gaf\mouse.cpp" />
     <ClCompile Include="gaf\screenutil.cpp" />
-    <ClCompile Include="gaf\shapes.cpp" />
     <ClCompile Include="gaf\textutils.cpp" />
     <ClCompile Include="gaf\timer.cpp" />
-    <ClCompile Include="gaf\transform.cpp" />
-    <ClCompile Include="gaf\game_engine.cpp" />
     <ClCompile Include="gaf\gaf_glut.cpp" />
     <ClCompile Include="gaf\src\exit_on_escape.cpp" />
+    <ClCompile Include="gaf\src\base_actor.cpp" />
+    <ClCompile Include="gaf\src\shapes.cpp" />
+    <ClCompile Include="gaf\src\game_engine.cpp" />
+    <ClCompile Include="gaf\src\transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GL\freeglut.h" />
@@ -39,21 +39,21 @@
     <ClInclude Include="include\planet.h" />
     <ClInclude Include="include\ship.h" />
     <ClInclude Include="include\start_params.h" />
-    <ClInclude Include="gaf\base_actor.h" />
     <ClInclude Include="gaf\gaf_math.h" />
     <ClInclude Include="gaf\keyboard.h" />
     <ClInclude Include="gaf\mouse.h" />
     <ClInclude Include="gaf\screenutil.h" />
-    <ClInclude Include="gaf\shapes.h" />
     <ClInclude Include="gaf\textutils.h" />
     <ClInclude Include="gaf\timer.h" />
-    <ClInclude Include="gaf\transform.h" />
     <ClInclude Include="gaf\vector.h" />
-    <ClInclude Include="gaf\game_engine.h" />
     <ClInclude Include="gaf\gaf_glut.h" />
     <ClInclude Include="gaf\include\draw_task.h" />
     <ClInclude Include="gaf\include\input_task.h" />
     <ClInclude Include="gaf\include\update_task.h" />
     <ClInclude Include="gaf\include\exit_on_escape.h" />
+    <ClInclude Include="gaf\include\base_actor.h" />
+    <ClInclude Include="gaf\include\shapes.h" />
+    <ClInclude Include="gaf\include\game_engine.h" />
+    <ClInclude Include="gaf\include\transform.h" />
   </ItemGroup>
 </Project>

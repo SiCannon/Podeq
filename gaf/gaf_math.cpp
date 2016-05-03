@@ -1,7 +1,7 @@
 #include <math.h>
 #include <GL/freeglut.h>
 #include "gaf_math.h" 
-#include "transform.h"
+#include <include/transform.h>
 
 GLfloat angleBetween(GLfloat ux, GLfloat uy, GLfloat vx, GLfloat vy)
 {

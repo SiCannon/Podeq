@@ -1,6 +1,6 @@
 #include <math.h>
 #include <GL/freeglut.h> 
-#include "transform.h"
+#include <include/transform.h>
 
 #define PI 3.141592654f
 #define TWO_PI 6.283185307f

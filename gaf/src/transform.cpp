@@ -1,5 +1,5 @@
 #include <GL/freeglut.h>
-#include "transform.h"
+#include <include/transform.h>
 
 void Transform::applyTRS()
 {
