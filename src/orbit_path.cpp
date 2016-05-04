@@ -27,7 +27,7 @@ void OrbitPath::draw_me()
 	glRotatef(r_to_d(orbit->angle), 0, 0, 1.0f);
 	glTranslatef(f, 0, 0);
 	
-	glColor3ub(192, 192, 0);
+	glColor3ub(64, 32, 0);
 
 	glOpenEllipse(xradius, yradius, SLICES);
 	

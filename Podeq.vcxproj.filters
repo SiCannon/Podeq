@@ -10,11 +10,9 @@
     <ClCompile Include="src\planet.cpp" />
     <ClCompile Include="src\ship.cpp" />
     <ClCompile Include="gaf\gaf_math.cpp" />
-    <ClCompile Include="gaf\keyboard.cpp" />
     <ClCompile Include="gaf\mouse.cpp" />
     <ClCompile Include="gaf\screenutil.cpp" />
     <ClCompile Include="gaf\textutils.cpp" />
-    <ClCompile Include="gaf\timer.cpp" />
     <ClCompile Include="gaf\gaf_glut.cpp" />
     <ClCompile Include="gaf\src\exit_on_escape.cpp" />
     <ClCompile Include="gaf\src\base_actor.cpp" />
@@ -22,6 +20,9 @@
     <ClCompile Include="gaf\src\game_engine.cpp" />
     <ClCompile Include="gaf\src\transform.cpp" />
     <ClCompile Include="src\podeq_game.cpp" />
+    <ClCompile Include="gaf\src\timer.cpp" />
+    <ClCompile Include="gaf\src\keyboard.cpp" />
+    <ClCompile Include="src\start_params.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GL\freeglut.h" />
@@ -41,11 +42,9 @@
     <ClInclude Include="include\ship.h" />
     <ClInclude Include="include\start_params.h" />
     <ClInclude Include="gaf\gaf_math.h" />
-    <ClInclude Include="gaf\keyboard.h" />
     <ClInclude Include="gaf\mouse.h" />
     <ClInclude Include="gaf\screenutil.h" />
     <ClInclude Include="gaf\textutils.h" />
-    <ClInclude Include="gaf\timer.h" />
     <ClInclude Include="gaf\vector.h" />
     <ClInclude Include="gaf\gaf_glut.h" />
     <ClInclude Include="gaf\include\draw_task.h" />
@@ -57,5 +56,7 @@
     <ClInclude Include="gaf\include\game_engine.h" />
     <ClInclude Include="gaf\include\transform.h" />
     <ClInclude Include="include\podeq_game.h" />
+    <ClInclude Include="gaf\include\timer.h" />
+    <ClInclude Include="gaf\include\keyboard.h" />
   </ItemGroup>
 </Project>

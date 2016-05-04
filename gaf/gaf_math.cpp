@@ -18,6 +18,11 @@ GLfloat r_to_d(GLfloat r)
 	return 360.0f * (r / TWO_PI);
 }
 
+GLfloat d_to_r(GLfloat r)
+{
+	return TWO_PI * (r / 360.0f);
+}
+
 GLfloat distanceSquared(Transform *t1, Transform *t2)
 {
 	return SQR(t1->translate_x - t2->translate_x) + SQR(t1->translate_y - t2->translate_y);

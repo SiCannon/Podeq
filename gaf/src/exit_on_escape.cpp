@@ -1,5 +1,6 @@
-#include "include/exit_on_escape.h"
-#include "keyboard.h"
+#include <GL/freeglut.h>
+#include <include/exit_on_escape.h>
+#include <include/keyboard.h>
 
 void ExitOnEscape::input(Keyboard *keyboard)
 {

@@ -1,6 +1,6 @@
 #include <GL/freeglut.h>
 #include "screenutil.h"
-#include "keyboard.h"
+#include <include/keyboard.h>
 #include <include/game_engine.h>
 
 #define INITIAL_WINDOW_LEFT 50
@@ -27,6 +27,8 @@ void init_glut(int argc, char **argv, const char *title)
 	//glutMouseFunc(processMouse);
 	glutKeyboardFunc(getKeyboardDown);
 	glutKeyboardUpFunc(getKeyboardUp);
+	glutSpecialFunc(getKeyboardSpecialDown);
+	glutSpecialUpFunc(getKeyboardSpecialUp);
 	//glutSetCursor(GLUT_CURSOR_NONE);
 
 	glutMainLoop();

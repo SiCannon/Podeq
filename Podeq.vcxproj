@@ -24,12 +24,12 @@
     <ClCompile Include="gaf\gaf_math.cpp" />
     <ClCompile Include="gaf\src\game_engine.cpp" />
     <ClCompile Include="gaf\src\exit_on_escape.cpp" />
-    <ClCompile Include="gaf\keyboard.cpp" />
+    <ClCompile Include="gaf\src\keyboard.cpp" />
     <ClCompile Include="gaf\mouse.cpp" />
     <ClCompile Include="gaf\screenutil.cpp" />
     <ClCompile Include="gaf\src\shapes.cpp" />
     <ClCompile Include="gaf\textutils.cpp" />
-    <ClCompile Include="gaf\timer.cpp" />
+    <ClCompile Include="gaf\src\timer.cpp" />
     <ClCompile Include="gaf\src\transform.cpp" />
     <ClCompile Include="src\ellipse.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -40,6 +40,7 @@
     <ClCompile Include="src\planet.cpp" />
     <ClCompile Include="src\podeq_game.cpp" />
     <ClCompile Include="src\ship.cpp" />
+    <ClCompile Include="src\start_params.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gaf\include\base_actor.h" />
@@ -50,12 +51,12 @@
     <ClInclude Include="gaf\include\exit_on_escape.h" />
     <ClInclude Include="gaf\include\input_task.h" />
     <ClInclude Include="gaf\include\update_task.h" />
-    <ClInclude Include="gaf\keyboard.h" />
+    <ClInclude Include="gaf\include\keyboard.h" />
     <ClInclude Include="gaf\mouse.h" />
     <ClInclude Include="gaf\screenutil.h" />
     <ClInclude Include="gaf\include\shapes.h" />
     <ClInclude Include="gaf\textutils.h" />
-    <ClInclude Include="gaf\timer.h" />
+    <ClInclude Include="gaf\include\timer.h" />
     <ClInclude Include="gaf\include\transform.h" />
     <ClInclude Include="gaf\vector.h" />
     <ClInclude Include="include\defines.h" />

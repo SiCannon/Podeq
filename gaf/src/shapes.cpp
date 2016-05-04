@@ -37,5 +37,15 @@ void glOpenEllipse(GLfloat xradius, GLfloat yradius, int slices)
 	}
 
 	glEnd();
+}
 
+void glIsoTriangle(GLfloat width, GLfloat height, GLfloat offsetFromBase)
+{
+	glBegin(GL_TRIANGLES);
+
+	glVertex2f(-width / 2.0f, -offsetFromBase);
+	glVertex2f(width / 2.0f, -offsetFromBase);
+	glVertex2f(0, height - offsetFromBase);
+
+	glEnd();
 }

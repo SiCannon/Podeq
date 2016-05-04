@@ -1,11 +1,11 @@
 #pragma once
 
 #include <vector>
-#include "timer.h"
+#include <include/timer.h>
 #include <include/draw_task.h>
 #include "include/update_task.h"
 #include "include/input_task.h"
-#include "keyboard.h"
+#include <include/keyboard.h>
 #include <include/transform.h>
 
 class GameEngine

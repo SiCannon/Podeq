@@ -12,5 +12,6 @@
 
 GLfloat angleBetween(GLfloat ux, GLfloat uy, GLfloat vx, GLfloat vy);
 GLfloat r_to_d(GLfloat r);
+GLfloat d_to_r(GLfloat r);
 GLfloat distanceSquared(Transform *t1, Transform *t2);
 GLfloat angleTo(Transform *me, Transform *target);

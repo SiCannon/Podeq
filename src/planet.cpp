@@ -13,7 +13,7 @@ Planet::~Planet()
 {
 }*/
 
-#define SLICES 48
+#define SLICES 960
 
 void Planet::draw_me()
 {

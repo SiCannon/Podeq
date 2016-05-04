@@ -1,7 +1,7 @@
 #pragma once
 
 #include "input_task.h"
-#include "keyboard.h"
+#include <include/keyboard.h>
 
 class ExitOnEscape : public InputTask
 {

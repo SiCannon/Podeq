@@ -19,7 +19,7 @@ PodeqGame::PodeqGame()
 	ship->transform->translate_x = start_ship_x;
 	ship->transform->translate_y = start_ship_y;
 
-	orbit = new Orbit();
+	orbit = new Orbit(planet, ship);
 	orbit->calc(planet_x, planet_y, start_ship_x, start_ship_y, start_ship_vx, start_ship_vy, planet->GM());
 
 	orbit_path = new OrbitPath(orbit);
@@ -27,9 +27,11 @@ PodeqGame::PodeqGame()
 	orbit_path->transform->translate_y = planet_y;
 
 	gameEngine->register_drawTask(planet);
-	gameEngine->register_drawTask(ship);
 	gameEngine->register_drawTask(orbit_path);
+	gameEngine->register_drawTask(ship);
 
+	gameEngine->register_updateTask(orbit);
 	gameEngine->register_updateTask(ship);
 
+	gameEngine->register_inputTask(ship);
 }

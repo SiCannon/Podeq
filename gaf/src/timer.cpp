@@ -1,5 +1,5 @@
 #include <GL/freeglut.h>
-#include "timer.h"
+#include <include/timer.h>
 
 Timer::Timer()
 {
