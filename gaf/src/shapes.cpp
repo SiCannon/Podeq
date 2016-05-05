@@ -49,3 +49,26 @@ void glIsoTriangle(GLfloat width, GLfloat height, GLfloat offsetFromBase)
 
 	glEnd();
 }
+
+void glTorus(GLfloat innerRadius, GLfloat outerRadius, const GLubyte *innerColor, const GLubyte *outerColor, int slices)
+{
+	glBegin(GL_TRIANGLE_STRIP);
+
+	GLfloat theta, x, y;
+	GLfloat s = (GLfloat)slices;
+
+	for (int t = 0; t <= slices; t++)
+	{
+		theta = ((GLfloat)t / s) * 6.284f;
+		x = innerRadius * sin(theta);
+		y = innerRadius * cos(theta);
+		glColor3ubv(innerColor);
+		glVertex2f(x, y);
+		x = outerRadius * sin(theta);
+		y = outerRadius * cos(theta);
+		glColor3ubv(outerColor);
+		glVertex2f(x, y);
+	}
+
+	glEnd();
+}

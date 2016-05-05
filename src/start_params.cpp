@@ -67,7 +67,7 @@ GLfloat start_ship_y = 5.0f;
 GLfloat start_ship_vx = 0.6f;
 GLfloat start_ship_vy = 0.1f;//*/
 
-//* close to planet
+/* close to planet 1
 GLfloat planet_x = 0.0f;
 GLfloat planet_y = 0.0f;
 GLfloat planet_mass = 0.1f;
@@ -75,4 +75,21 @@ GLfloat start_ship_x = 0.0f;
 GLfloat start_ship_y = -1.1f;
 GLfloat start_ship_vx = 0.3f;
 GLfloat start_ship_vy = 0;
-GLfloat start_scale = 50.0f;//*/
+GLfloat start_scale = 50.0f;
+GLfloat ship_thrust = 0.1f;
+GLfloat scale_mult = 1.02f;
+GLfloat ship_size = 0.01f;//*/
+
+//* close to planet 2: even smaller and closer
+GLfloat planet_x = 0.0f;
+GLfloat planet_y = 0.0f;
+GLfloat planet_mass = 0.0026f;
+GLfloat start_ship_x = 0.0f;
+GLfloat start_ship_y = -1.05f;
+GLfloat start_ship_vx = 0.05f;
+GLfloat start_ship_vy = 0;
+GLfloat start_scale = 100.0f;
+GLfloat ship_thrust = 0.01f;
+GLfloat scale_mult = 1.02f;
+GLfloat ship_size = 0.005f;
+//*/

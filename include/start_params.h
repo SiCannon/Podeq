@@ -8,3 +8,6 @@ extern GLfloat start_ship_y;
 extern GLfloat start_ship_vx;
 extern GLfloat start_ship_vy;
 extern GLfloat start_scale;
+extern GLfloat ship_thrust;
+extern GLfloat scale_mult;
+extern GLfloat ship_size;

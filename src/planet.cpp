@@ -2,6 +2,7 @@
 #include <GL/freeglut.h>
 #include "planet.h"
 #include "defines.h"
+#include <include/shapes.h>
 
 Planet::Planet(GLfloat mass) : BaseActor()
 {
@@ -13,7 +14,7 @@ Planet::~Planet()
 {
 }*/
 
-#define SLICES 960
+#define SLICES 200
 
 void Planet::draw_me()
 {
@@ -21,45 +22,23 @@ void Planet::draw_me()
 	//GLfloat crustThickness = 0.05f;
 
 	GLfloat outerRadius = 1.0f;
-	GLfloat crustThickness = 0.3f;
+	GLfloat crustThickness = 0.99f;
 
 	GLfloat innerRadius = outerRadius - crustThickness;
 	
+	GLfloat atmosphereThickness = 0.05f;
+	GLfloat outerSpaceRadius = outerRadius + atmosphereThickness;
 
-	glColor3ub(192, 0, 192);
+	const GLubyte innerColor[3] = { 0, 64, 64 };
+	const GLubyte outerColor[3] = { 0, 192, 192};
+	const GLubyte atmoStartColor[3] = { 64, 0, 96 };
+	const GLubyte atmoEndColor[3] = { 0, 0, 0 };
 
-	glBegin(GL_TRIANGLE_STRIP);
+	glTorus(innerRadius, outerRadius, innerColor, outerColor, SLICES);
+	glTorus(outerRadius, outerSpaceRadius, atmoStartColor, atmoEndColor, SLICES);
 
-	for (int t = 0; t <= SLICES; t++)
-	{
-		GLfloat theta = ((GLfloat)t / (GLfloat)SLICES) * 6.284;
-		GLfloat x = innerRadius * sin(theta);
-		GLfloat y = innerRadius * cos(theta);
-		glColor3ub(64, 0, 64);
-		glVertex2f(x, y);
-		x = outerRadius * sin(theta);
-		y = outerRadius * cos(theta);
-		glColor3ub(192, 0, 192);
-		glVertex2f(x, y);
-	}
-
-	glEnd();
-    
-    glColor3ub(64, 0, 64);
-    
-	glBegin(GL_TRIANGLE_FAN);
-    
-    glVertex2f(0, 0);
-    
-    for (int t = 0; t <= SLICES; t++)
-    {
-        GLfloat theta = ((GLfloat)t / (GLfloat)SLICES) * 6.284;
-		GLfloat x = innerRadius * sin(theta);
-		GLfloat y = innerRadius * cos(theta);
-        glVertex2f(x, y);
-    }
-    
-	glEnd();
+	glColor3ubv(innerColor);
+	glSolidCircle(innerRadius, SLICES);
 }
 
 GLfloat Planet::GM()

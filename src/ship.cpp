@@ -5,6 +5,7 @@
 #include "planet.h"
 #include "gaf_math.h"
 #include "defines.h"
+#include "start_params.h"
 
 Ship::Ship(GLfloat ivx, GLfloat ivy, Planet *planet) : BaseActor()
 {
@@ -22,7 +23,7 @@ void Ship::draw_me()
     
 	//GLfloat radius = 0.1f;
     //glSolidCircle(radius, 12);
-	GLfloat w = 0.01f;
+	GLfloat w = ship_size;
 	glIsoTriangle(w * 0.75f, w, w / 3.0f);
     
     /*for (int i = 0; i <= maxh; i++)
@@ -49,7 +50,7 @@ void Ship::update(Timer *timer)
 
 	if (isThrust)
 	{
-		GLfloat force = 0.01f;
+		GLfloat force = ship_thrust;
 		ax -= force * sin(d_to_r(transform->rotation));
 		ay += force * cos(d_to_r(transform->rotation));
 	}

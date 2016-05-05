@@ -35,11 +35,11 @@ public:
 		GLfloat scale_inc = 0.1f;
 		if (keyboard->special[GLUT_KEY_PAGE_UP])
 		{
-			gameEngine->world_transform->scale += scale_inc;
+			gameEngine->world_transform->scale *= scale_mult;
 		}
 		if (keyboard->special[GLUT_KEY_PAGE_DOWN])
 		{
-			gameEngine->world_transform->scale -= scale_inc;
+			gameEngine->world_transform->scale /= scale_mult;
 		}
 	};
 	void update(Timer *timer)
