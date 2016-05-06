@@ -35,8 +35,8 @@ void OrbitPath::draw_me()
 	
 	//glVertex2f(f, 0);
 	//glVertex2f(-f, 0);
-	glTranslatef(-f, 0, 0);
-	glSolidCircle(0.1f, 4);
+	//glTranslatef(-f, 0, 0);
+	//glSolidCircle(0.1f, 4);
 	//glVertex2f(0, 0);
 	
 	//glEnd();
