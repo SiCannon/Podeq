@@ -7,7 +7,7 @@
 #include "screenutil.h"
 #include <include/keyboard.h>
 #include "gaf_math.h"
-#include "textutils.h"
+#include <include/textutils.h>
 #include "include/draw_task.h"
 #include "start_params.h"
 
