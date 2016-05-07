@@ -128,7 +128,7 @@ void drawOne(glf sector_size, glf sector_height, glf slice, glf x_offset, glf fq
 void NoiseTest::draw()
 {
 	glLoadIdentity();
-	glScalef(0.5f, 0.5f, 1.0f);
+	glScalef(0.4f, 0.4f, 1.0f);
 	glTranslatef(-20, -10, 0);
 	
 	glBegin(GL_LINES);
@@ -142,14 +142,16 @@ void NoiseTest::draw()
 	glf
 		sector_size = 50.0f,
 		sector_height = 20.0f,
-		fq_1 = 16.0f,
+		fq_0 = 16.0f,
+		fq_1 = 8.0f,
 		fq_2 = 4.0f,
-		fq_3 = 1.0f,
-		fq_4 = 0.05f,
-		am_1 = 1.0f,
-		am_2 = 0.0f,
-		am_3 = 0.0f,
-		am_4 = 0.1f;
+		fq_3 = 2.0f,
+		fq_4 = 1.0f,
+		am_0 = 1.0f,
+		am_1 = 0.5f,
+		am_2 = 0.25f,
+		am_3 = 0.125f,
+		am_4 = 0.0625f;
 	
 	glf slice = 1.0f / slices;
 
@@ -160,10 +162,11 @@ void NoiseTest::draw()
 	{
 		glf xx = x + x_offset;
 		glf y =
-			part(xx, fq_1, am_1, 1) +
-			part(xx, fq_2, am_2, 8) +
-			part(xx, fq_3, am_3, 16) +
-			part(xx, fq_4, am_4, 24)
+			part(xx, fq_0, am_0, 1) +
+			part(xx, fq_1, am_1, 4) +
+			part(xx, fq_2, am_2, 10) +
+			part(xx, fq_3, am_3, 20) +
+			part(xx, fq_4, am_4, 28)
 			;
 		glVertex2f(x, y * sector_height);
 	}
