@@ -47,6 +47,7 @@
     <ClInclude Include="gaf\include\base_actor.h" />
     <ClInclude Include="gaf\gaf_glut.h" />
     <ClInclude Include="gaf\gaf_math.h" />
+    <ClInclude Include="gaf\include\gaf.h" />
     <ClInclude Include="gaf\include\game_engine.h" />
     <ClInclude Include="gaf\include\draw_task.h" />
     <ClInclude Include="gaf\include\exit_on_escape.h" />

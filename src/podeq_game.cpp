@@ -26,7 +26,7 @@ PodeqGame::PodeqGame()
 	orbit_path->transform->translate_x = planet_x;
 	orbit_path->transform->translate_y = planet_y;
 
-	//*
+	/*
 	gameEngine->register_drawTask(planet);
 	gameEngine->register_drawTask(orbit_path);
 	gameEngine->register_drawTask(ship);

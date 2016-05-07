@@ -60,5 +60,6 @@
     <ClInclude Include="gaf\include\keyboard.h" />
     <ClInclude Include="include\noise_test.h" />
     <ClInclude Include="gaf\include\textutils.h" />
+    <ClInclude Include="gaf\include\gaf.h" />
   </ItemGroup>
 </Project>
