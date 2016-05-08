@@ -7,6 +7,12 @@ void Polygon2f::set_size(short vertex_count)
 	vertices = (Vector2f*)malloc(vertex_count * sizeof(Vector2f));
 }
 
+void Polygon2f::set_vertex(short index, GLfloat x, GLfloat y)
+{
+	Vector2f v = { x, y };
+	set_vertex(index, v);
+}
+
 void Polygon2f::set_vertex(short index, Vector2f v)
 {
 	vertices[index] = v;

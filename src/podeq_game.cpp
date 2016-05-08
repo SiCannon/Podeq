@@ -1,5 +1,5 @@
-#include "..\include\podeq_game.h"
-#include "..\include\start_params.h"
+#include "../include/podeq_game.h"
+#include "../include/start_params.h"
 #include "planet.h"
 #include "ship.h"
 #include "orbit_path.h"

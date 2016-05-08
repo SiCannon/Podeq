@@ -16,6 +16,9 @@
 
 #include "podeq_game.h"
 
+#include <include/Polygon2f.h>
+#include <include/Polygon2f_draw.h>
+
 PodeqGame *podeq;
 
 class Test : public BaseActor, public InputTask, public UpdateTask
@@ -32,11 +35,28 @@ public:
 	};
 };
 
+class Hex
+{
+public:
+	Polygon2f *poly;
+	Polygon2f_Draw *polydraw;
+	Hex()
+	{
+		poly = new Polygon2f();
+		poly->set_size(3);
+		poly->set_vertex(0, -1.0f, 0);
+		poly->set_vertex(1, 1.0f, 0);
+		poly->set_vertex(2, 0, 2.0f);
+		polydraw = new Polygon2f_Draw(poly);
+		gameEngine->register_drawTask(polydraw);
+	}
+};
+
 int main(int argc, char **argv)
 {
 	gameEngine = new GameEngine();
 	podeq = new PodeqGame();
-
+	//new Hex();
 	gameEngine->world_transform->scale = start_scale;
 
 	Test *test = new Test();

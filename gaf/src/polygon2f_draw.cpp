@@ -9,7 +9,9 @@ Polygon2f_Draw::Polygon2f_Draw(Polygon2f *polygon)
 
 void Polygon2f_Draw::draw()
 {
+	glLoadIdentity();
 	glBegin(GL_TRIANGLES);
+	glColor3ub(255, 255, 255);
 
 	for (short i = 0; i < polygon->vertex_count; i++)
 	{
