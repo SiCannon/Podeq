@@ -27,6 +27,8 @@
     <ClCompile Include="gaf\src\keyboard.cpp" />
     <ClCompile Include="gaf\mouse.cpp" />
     <ClCompile Include="gaf\screenutil.cpp" />
+    <ClCompile Include="gaf\src\polygon2f.cpp" />
+    <ClCompile Include="gaf\src\polygon2f_draw.cpp" />
     <ClCompile Include="gaf\src\shapes.cpp" />
     <ClCompile Include="gaf\src\textutils.cpp" />
     <ClCompile Include="gaf\src\timer.cpp" />
@@ -52,6 +54,8 @@
     <ClInclude Include="gaf\include\draw_task.h" />
     <ClInclude Include="gaf\include\exit_on_escape.h" />
     <ClInclude Include="gaf\include\input_task.h" />
+    <ClInclude Include="gaf\include\Polygon2f.h" />
+    <ClInclude Include="gaf\include\polygon2f_draw.h" />
     <ClInclude Include="gaf\include\update_task.h" />
     <ClInclude Include="gaf\include\keyboard.h" />
     <ClInclude Include="gaf\mouse.h" />
@@ -60,7 +64,7 @@
     <ClInclude Include="gaf\include\textutils.h" />
     <ClInclude Include="gaf\include\timer.h" />
     <ClInclude Include="gaf\include\transform.h" />
-    <ClInclude Include="gaf\vector.h" />
+    <ClInclude Include="gaf\include\vector2f.h" />
     <ClInclude Include="include\defines.h" />
     <ClInclude Include="include\ellipse.h" />
     <ClInclude Include="include\monster.h" />

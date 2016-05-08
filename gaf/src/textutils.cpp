@@ -33,22 +33,22 @@ void printFloat(bool setPosition, GLint x, GLint y, float f, GLubyte red, GLubyt
 
 void textResetBottomLeft()
 {
-	glRasterPos2i(rasterLeft, rasterBottom);
+	glRasterPos2f(rasterLeft, rasterBottom);
 }
 
 void textTopLeft()
 {
-	glRasterPos2i(rasterLeft, rasterTop);
+	glRasterPos2f(rasterLeft, rasterTop);
 }
 
 void textReset(int lines)
 {
-	glRasterPos2i(rasterLeft, rasterBottom + lines);
+	glRasterPos2f(rasterLeft, rasterBottom + lines);
 }
 
 void textPos(int line)
 {
-	glRasterPos2i(rasterLeft, rasterTop - line);
+	glRasterPos2f(rasterLeft, rasterTop - line);
 }
 
 void textYellow()
@@ -60,7 +60,7 @@ void textOut(char const *s)
 {
 	for (size_t i = 0; s[i] != '\0'; i++)
 	{
-		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, s[i]);
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12, s[i]);
 	}
 }
 

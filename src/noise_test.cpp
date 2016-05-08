@@ -67,9 +67,9 @@ glf noise_2_1(int n)
 }
 */
 
-glf noise(unsigned long x, unsigned int k)
+glf noise(glf x, unsigned int k)
 {
-	return noise_1(x, k);
+	return noise_1((unsigned long)x, k);
 }
 
 glf lerp(glf a, glf b, glf x)

@@ -21,7 +21,7 @@ void reshape(int w, int h)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	double aspect_ratio = (double)w / (double)h;
+	GLfloat aspect_ratio = (GLfloat)w / (GLfloat)h;
 	glOrtho(-orthoSize * aspect_ratio, orthoSize * aspect_ratio, -orthoSize, orthoSize, -1, 1);
 
 	rasterBottom = -orthoSize;

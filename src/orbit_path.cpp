@@ -19,7 +19,7 @@ void OrbitPath::draw_me()
 
 	GLfloat a = (orbit->Ra + orbit->Rp) / 2.0f;
 	GLfloat f = a - orbit->Rp;
-	GLfloat b = sqrt(pow(a, 2) - pow(f, 2));
+	GLfloat b = sqrtf(powf(a, 2) - powf(f, 2));
 	
 	GLfloat xradius = a;
 	GLfloat yradius = b;

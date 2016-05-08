@@ -11,7 +11,7 @@ Orbit::Orbit(Planet *planet, Ship *ship)
 
 void Orbit::calc(GLfloat rx, GLfloat ry, GLfloat vx, GLfloat vy, GLfloat GM)
 {
-	GLfloat r = sqrt(SQR(rx) + SQR(ry));
+	GLfloat r = sqrtf(SQR(rx) + SQR(ry));
 	GLfloat vsq = SQR(vx) + SQR(vy);
 	GLfloat phi = PI_BY_2 - angleBetween(rx, ry, vx, vy);
 	

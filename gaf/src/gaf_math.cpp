@@ -5,7 +5,7 @@
 
 GLfloat angleBetween(GLfloat ux, GLfloat uy, GLfloat vx, GLfloat vy)
 {
-    GLfloat angle = atan2(vy, vx) - atan2(uy, ux);
+    GLfloat angle = atan2f(vy, vx) - atan2f(uy, ux);
     if (angle < 0)
     {
         angle += TWO_PI;
@@ -38,7 +38,7 @@ GLfloat angleTo(Transform *me, Transform *target)
 	}
 	else
 	{
-		GLfloat res = atan(dy / dx);
+		GLfloat res = atanf(dy / dx);
 		if (dx < 0)
 		{
 			res += PI;

@@ -54,13 +54,13 @@ void Planet::draw_me()
 	for (int t = 0; t <= slices; t++)
 	{
 		theta = ((GLfloat)t / s) * 6.284f;
-		x = innerRadius * sin(theta);
-		y = innerRadius * cos(theta);
+		x = innerRadius * sinf(theta);
+		y = innerRadius * cosf(theta);
 		glColor3ubv(innerColor);
 		glVertex2f(x, y);
 		GLfloat r = outerRadius + (variablility * (GLfloat)rand() / RAND_MAX);
-		x = r * sin(theta);
-		y = r * cos(theta);
+		x = r * sinf(theta);
+		y = r * cosf(theta);
 		glColor3ubv(outerColor);
 		glVertex2f(x, y);
 	}

@@ -29,6 +29,10 @@ private:
     
 	bool isThrust;
 	GLfloat planetSurfacePosition;
+	GLfloat planetCoreDistance;
+	GLfloat planetSurfaceDistance();
+	GLfloat speed;
+	GLfloat heading;
 
     void update(Timer *timer);
 	void input(Keyboard *keyboard);

@@ -1,6 +1,7 @@
 #include <math.h>
 #include <GL/freeglut.h>
 #include <include/shapes.h>
+#include <include/gaf_math.h>
 
 void glSolidCircle(GLfloat radius, int slices)
 {
@@ -15,9 +16,9 @@ void glSolidEllipse(GLfloat xradius, GLfloat yradius, int slices)
     
     for (int t = 0; t <= slices; t++)
     {
-        GLfloat theta = ((GLfloat)t / (GLfloat)slices) * 6.284;
-		GLfloat x = xradius * sin(theta);
-		GLfloat y = yradius * cos(theta);
+        GLfloat theta = ((GLfloat)t / (GLfloat)slices) * TWO_PI;
+		GLfloat x = xradius * sinf(theta);
+		GLfloat y = yradius * cosf(theta);
         glVertex2f(x, y);
     }
     
@@ -30,9 +31,9 @@ void glOpenEllipse(GLfloat xradius, GLfloat yradius, int slices)
 
 	for (int t = 0; t <= slices; t++)
 	{
-		GLfloat theta = ((GLfloat)t / (GLfloat)slices) * 6.284;
-		GLfloat x = xradius * cos(theta);
-		GLfloat y = yradius * sin(theta);
+		GLfloat theta = ((GLfloat)t / (GLfloat)slices) * TWO_PI;
+		GLfloat x = xradius * cosf(theta);
+		GLfloat y = yradius * sinf(theta);
 		glVertex2f(x, y);
 	}
 
@@ -60,12 +61,12 @@ void glTorus(GLfloat innerRadius, GLfloat outerRadius, const GLubyte *innerColor
 	for (int t = 0; t <= slices; t++)
 	{
 		theta = ((GLfloat)t / s) * 6.284f;
-		x = innerRadius * sin(theta);
-		y = innerRadius * cos(theta);
+		x = innerRadius * sinf(theta);
+		y = innerRadius * cosf(theta);
 		glColor3ubv(innerColor);
 		glVertex2f(x, y);
-		x = outerRadius * sin(theta);
-		y = outerRadius * cos(theta);
+		x = outerRadius * sinf(theta);
+		y = outerRadius * cosf(theta);
 		glColor3ubv(outerColor);
 		glVertex2f(x, y);
 	}

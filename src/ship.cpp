@@ -41,9 +41,21 @@ void Ship::draw_me()
 	glPushMatrix();
 	glLoadIdentity();
 	glColor3ub(192, 192, 192);
-	textReset(2);
+	textReset(1);
+	textOut("psp:");
 	textOutFloat(r_to_d(planetSurfacePosition));
+	textOut(" d:");
+	textOutFloat(planetSurfaceDistance());
+	textOut(" s:");
+	textOutFloat(speed);
+	textOut(" h:");
+	textOutFloat(heading);
 	glPopMatrix();
+}
+
+GLfloat Ship::planetSurfaceDistance()
+{
+	return planetCoreDistance - planet->radius;
 }
 
 void Ship::update(Timer *timer)
@@ -53,14 +65,14 @@ void Ship::update(Timer *timer)
 	GLfloat rs = distanceSquared(planet->transform, transform);
 	GLfloat a = GravConstant * planet->mass / rs;
 	GLfloat t = angleTo(transform, planet->transform);
-	GLfloat ax = a * cos(t);
-	GLfloat ay = a * sin(t);
+	GLfloat ax = a * cosf(t);
+	GLfloat ay = a * sinf(t);
 
 	if (isThrust)
 	{
 		GLfloat force = ship_thrust;
-		ax -= force * sin(d_to_r(transform->rotation));
-		ay += force * cos(d_to_r(transform->rotation));
+		ax -= force * sinf(d_to_r(transform->rotation));
+		ay += force * cosf(d_to_r(transform->rotation));
 	}
 
 	vx += ax * timer->intervalSeconds();
@@ -77,6 +89,9 @@ void Ship::update(Timer *timer)
 void Ship::calc_readings()
 {
 	planetSurfacePosition = angleTo(planet->transform, transform);
+	planetCoreDistance = sqrtf(distanceSquared(planet->transform, transform));
+	speed = sqrtf(SQR(vx) + SQR(vy));
+	heading = transform->rotation;
 }
 
 void Ship::input(Keyboard * keyboard)

@@ -24,6 +24,8 @@
     <ClCompile Include="src\noise_test.cpp" />
     <ClCompile Include="gaf\src\textutils.cpp" />
     <ClCompile Include="gaf\src\gaf_math.cpp" />
+    <ClCompile Include="gaf\src\polygon2f.cpp" />
+    <ClCompile Include="gaf\src\polygon2f_draw.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GL\freeglut.h" />
@@ -44,7 +46,6 @@
     <ClInclude Include="include\start_params.h" />
     <ClInclude Include="gaf\mouse.h" />
     <ClInclude Include="gaf\screenutil.h" />
-    <ClInclude Include="gaf\vector.h" />
     <ClInclude Include="gaf\gaf_glut.h" />
     <ClInclude Include="gaf\include\draw_task.h" />
     <ClInclude Include="gaf\include\input_task.h" />
@@ -61,5 +62,8 @@
     <ClInclude Include="gaf\include\textutils.h" />
     <ClInclude Include="gaf\include\gaf.h" />
     <ClInclude Include="gaf\include\gaf_math.h" />
+    <ClInclude Include="gaf\include\Polygon2f.h" />
+    <ClInclude Include="gaf\include\vector2f.h" />
+    <ClInclude Include="gaf\include\polygon2f_draw.h" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 #include <math.h>
 #include <GL/freeglut.h>
 #include "ellipse.h"
+#include <include/gaf_math.h>
 
 Podeq::Ellipse::Ellipse(Timer *timer) : BaseActor()
 {
@@ -19,9 +20,9 @@ void Podeq::Ellipse::draw_me()
 
 	for (int t = 0; t <= SLICES; t++)
 	{
-		GLfloat theta = ((GLfloat)t / (GLfloat)SLICES) * 6.284;
-		GLfloat x = xradius * cos(theta);
-		GLfloat y = yradius * sin(theta);
+		GLfloat theta = ((GLfloat)t / (GLfloat)SLICES) * TWO_PI;
+		GLfloat x = xradius * cosf(theta);
+		GLfloat y = yradius * sinf(theta);
 		glVertex2f(x, y);
 	}
 
@@ -31,9 +32,9 @@ void Podeq::Ellipse::draw_me()
 	
 	glBegin(GL_POINTS);
 	
-	GLfloat a = fmax(xradius, yradius);
-	GLfloat b = fmin(xradius, yradius);
-	GLfloat f = sqrt(pow(a, 2.0) - pow(b, 2.0));
+	GLfloat a = fmaxf(xradius, yradius);
+	GLfloat b = fminf(xradius, yradius);
+	GLfloat f = sqrtf(powf(a, 2.0) - powf(b, 2.0));
 	
 	glVertex2f(f, 0);
 	glVertex2f(-f, 0);
