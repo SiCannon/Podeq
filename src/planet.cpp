@@ -4,10 +4,12 @@
 #include "planet.h"
 #include "defines.h"
 #include <include/shapes.h>
+#include "start_params.h"
 
 Planet::Planet(GLfloat mass) : BaseActor()
 {
 	this->mass = mass;
+	this->radius = planet_radius;
 }
 
 /*
@@ -24,8 +26,8 @@ void Planet::draw_me()
 
 	srand(Seed);
 
-	GLfloat outerRadius = 1.0f;
-	GLfloat crustThickness = 0.99f;
+	GLfloat outerRadius = radius;
+	GLfloat crustThickness = 0.99f * radius;
 
 	GLfloat innerRadius = outerRadius - crustThickness;
 	

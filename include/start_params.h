@@ -11,3 +11,4 @@ extern GLfloat start_scale;
 extern GLfloat ship_thrust;
 extern GLfloat scale_mult;
 extern GLfloat ship_size;
+extern GLfloat planet_radius;

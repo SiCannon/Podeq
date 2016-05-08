@@ -8,6 +8,7 @@ public:
 	Planet(GLfloat mass);
 	GLfloat mass;
 	GLfloat GM();
+	GLfloat radius;
 protected:
 	void draw_me();
 };

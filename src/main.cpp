@@ -27,7 +27,7 @@ public:
 		glLoadIdentity();
 		textPos(1);
 		textYellow();
-		textOutFloat(123.456);
+		textOutFloat(123.456f);
 		glPopMatrix();
 	};
 	void input(Keyboard *keyboard)
