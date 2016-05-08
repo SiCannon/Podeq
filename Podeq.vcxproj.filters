@@ -9,7 +9,6 @@
     <ClCompile Include="src\orbit_path.cpp" />
     <ClCompile Include="src\planet.cpp" />
     <ClCompile Include="src\ship.cpp" />
-    <ClCompile Include="gaf\gaf_math.cpp" />
     <ClCompile Include="gaf\mouse.cpp" />
     <ClCompile Include="gaf\screenutil.cpp" />
     <ClCompile Include="gaf\gaf_glut.cpp" />
@@ -24,6 +23,7 @@
     <ClCompile Include="src\start_params.cpp" />
     <ClCompile Include="src\noise_test.cpp" />
     <ClCompile Include="gaf\src\textutils.cpp" />
+    <ClCompile Include="gaf\src\gaf_math.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GL\freeglut.h" />
@@ -42,7 +42,6 @@
     <ClInclude Include="include\planet.h" />
     <ClInclude Include="include\ship.h" />
     <ClInclude Include="include\start_params.h" />
-    <ClInclude Include="gaf\gaf_math.h" />
     <ClInclude Include="gaf\mouse.h" />
     <ClInclude Include="gaf\screenutil.h" />
     <ClInclude Include="gaf\vector.h" />
@@ -61,5 +60,6 @@
     <ClInclude Include="include\noise_test.h" />
     <ClInclude Include="gaf\include\textutils.h" />
     <ClInclude Include="gaf\include\gaf.h" />
+    <ClInclude Include="gaf\include\gaf_math.h" />
   </ItemGroup>
 </Project>

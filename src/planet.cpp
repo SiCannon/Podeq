@@ -17,7 +17,7 @@ Planet::~Planet()
 {
 }*/
 
-#define SLICES 1000
+#define SLICES 360
 
 void Planet::draw_me()
 {

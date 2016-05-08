@@ -1,6 +1,6 @@
 #include <math.h>
 #include <GL/freeglut.h>
-#include "gaf_math.h"
+#include <include/gaf_math.h>
 #include "orbit_path.h"
 #include "include/shapes.h"
 

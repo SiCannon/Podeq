@@ -1,5 +1,5 @@
 #include <math.h>
-#include "gaf_math.h"
+#include <include/gaf_math.h>
 #include "orbit.h"
 #include "omech.h"
 

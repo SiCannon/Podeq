@@ -3,9 +3,10 @@
 #include <include/shapes.h>
 #include <include/timer.h>
 #include "planet.h"
-#include "gaf_math.h"
+#include <include/gaf_math.h>
 #include "defines.h"
 #include "start_params.h"
+#include <include/textutils.h>
 
 Ship::Ship(GLfloat ivx, GLfloat ivy, Planet *planet) : BaseActor()
 {
@@ -36,6 +37,13 @@ void Ship::draw_me()
         glTranslatef(hx[i], hy[i], 0);
         glSolidCircle(0.05f, 3);
 	}*/
+
+	glPushMatrix();
+	glLoadIdentity();
+	glColor3ub(192, 192, 192);
+	textReset(2);
+	textOutFloat(r_to_d(planetSurfacePosition));
+	glPopMatrix();
 }
 
 void Ship::update(Timer *timer)
@@ -62,6 +70,13 @@ void Ship::update(Timer *timer)
     GLfloat dy = vy * timer->intervalSeconds();
     transform->translate_x += dx;
     transform->translate_y += dy;
+
+	calc_readings();
+}
+
+void Ship::calc_readings()
+{
+	planetSurfacePosition = angleTo(planet->transform, transform);
 }
 
 void Ship::input(Keyboard * keyboard)

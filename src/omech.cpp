@@ -1,6 +1,6 @@
 #include <math.h>
 #include <GL/freeglut.h>
-#include "gaf_math.h"
+#include <include/gaf_math.h>
 
 GLfloat calc_e(GLfloat r, GLfloat vsq, GLfloat GM, GLfloat phi)
 {

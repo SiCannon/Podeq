@@ -6,7 +6,7 @@
 #include "gaf_glut.h"
 #include "screenutil.h"
 #include <include/keyboard.h>
-#include "gaf_math.h"
+#include <include/gaf_math.h>
 #include <include/textutils.h>
 #include "include/draw_task.h"
 #include "start_params.h"
@@ -23,12 +23,14 @@ class Test : public BaseActor, public InputTask, public UpdateTask
 public:
 	void draw_me()
 	{
+		/*
 		glPushMatrix();
 		glLoadIdentity();
 		textPos(1);
 		textYellow();
 		textOutFloat(123.456f);
 		glPopMatrix();
+		*/
 	};
 	void input(Keyboard *keyboard)
 	{

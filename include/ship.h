@@ -28,8 +28,10 @@ private:
     int maxh;
     
 	bool isThrust;
+	GLfloat planetSurfacePosition;
 
     void update(Timer *timer);
 	void input(Keyboard *keyboard);
     void save_history(Timer *timer);
+	void calc_readings();
 };
