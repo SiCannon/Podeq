@@ -6,10 +6,12 @@
 #include "orbit.h"
 #include <include/game_engine.h>
 #include <include/exit_on_escape.h>
+#include <include/page_to_zoom.h>
 
 PodeqGame::PodeqGame()
 {
 	gameEngine->register_inputTask(new ExitOnEscape());
+	gameEngine->register_inputTask(new PageToZoom(scale_mult));
 
 	planet = new Planet(planet_mass);
 	planet->transform->translate_x = planet_x;

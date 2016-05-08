@@ -26,6 +26,7 @@
     <ClCompile Include="gaf\src\gaf_math.cpp" />
     <ClCompile Include="gaf\src\polygon2f.cpp" />
     <ClCompile Include="gaf\src\polygon2f_draw.cpp" />
+    <ClCompile Include="gaf\src\page_to_zoom.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GL\freeglut.h" />
@@ -65,5 +66,6 @@
     <ClInclude Include="gaf\include\Polygon2f.h" />
     <ClInclude Include="gaf\include\vector2f.h" />
     <ClInclude Include="gaf\include\polygon2f_draw.h" />
+    <ClInclude Include="gaf\include\page_to_zoom.h" />
   </ItemGroup>
 </Project>

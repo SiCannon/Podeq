@@ -23,31 +23,12 @@ class Test : public BaseActor, public InputTask, public UpdateTask
 public:
 	void draw_me()
 	{
-		/*
-		glPushMatrix();
-		glLoadIdentity();
-		textPos(1);
-		textYellow();
-		textOutFloat(123.456f);
-		glPopMatrix();
-		*/
 	};
 	void input(Keyboard *keyboard)
 	{
-		GLfloat scale_inc = 0.1f;
-		if (keyboard->special[GLUT_KEY_PAGE_UP])
-		{
-			gameEngine->world_transform->scale *= scale_mult;
-		}
-		if (keyboard->special[GLUT_KEY_PAGE_DOWN])
-		{
-			gameEngine->world_transform->scale /= scale_mult;
-		}
 	};
 	void update(Timer *timer)
 	{
-		gameEngine->world_transform->translate_x = -podeq->ship->transform->translate_x;
-		gameEngine->world_transform->translate_y = -podeq->ship->transform->translate_y;
 	};
 };
 

@@ -7,6 +7,7 @@
 #include "defines.h"
 #include "start_params.h"
 #include <include/textutils.h>
+#include <include/game_engine.h>
 
 Ship::Ship(GLfloat ivx, GLfloat ivy, Planet *planet) : BaseActor()
 {
@@ -82,6 +83,9 @@ void Ship::update(Timer *timer)
     GLfloat dy = vy * timer->intervalSeconds();
     transform->translate_x += dx;
     transform->translate_y += dy;
+
+	gameEngine->world_transform->translate_x = -transform->translate_x;
+	gameEngine->world_transform->translate_y = -transform->translate_y;
 
 	calc_readings();
 }

@@ -27,6 +27,7 @@
     <ClCompile Include="gaf\src\keyboard.cpp" />
     <ClCompile Include="gaf\mouse.cpp" />
     <ClCompile Include="gaf\screenutil.cpp" />
+    <ClCompile Include="gaf\src\page_to_zoom.cpp" />
     <ClCompile Include="gaf\src\polygon2f.cpp" />
     <ClCompile Include="gaf\src\polygon2f_draw.cpp" />
     <ClCompile Include="gaf\src\shapes.cpp" />
@@ -54,6 +55,7 @@
     <ClInclude Include="gaf\include\draw_task.h" />
     <ClInclude Include="gaf\include\exit_on_escape.h" />
     <ClInclude Include="gaf\include\input_task.h" />
+    <ClInclude Include="gaf\include\page_to_zoom.h" />
     <ClInclude Include="gaf\include\Polygon2f.h" />
     <ClInclude Include="gaf\include\polygon2f_draw.h" />
     <ClInclude Include="gaf\include\update_task.h" />
