@@ -3,7 +3,7 @@
 #include <math.h>
 
 #include <include/game_engine.h>
-#include "gaf_glut.h"
+#include <include/gaf_glut.h>
 #include "screenutil.h"
 #include <include/keyboard.h>
 #include <include/gaf_math.h>
@@ -33,23 +33,6 @@ public:
 	void update(Timer *timer)
 	{
 	};
-};
-
-class Hex
-{
-public:
-	Polygon2f *poly;
-	Polygon2f_Draw *polydraw;
-	Hex()
-	{
-		poly = new Polygon2f();
-		poly->set_size(3);
-		poly->set_vertex(0, -1.0f, 0);
-		poly->set_vertex(1, 1.0f, 0);
-		poly->set_vertex(2, 0, 2.0f);
-		polydraw = new Polygon2f_Draw(poly);
-		gameEngine->register_drawTask(polydraw);
-	}
 };
 
 int main(int argc, char **argv)

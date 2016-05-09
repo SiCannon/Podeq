@@ -1,13 +1,14 @@
 #pragma once
 
-#include "draw_task.h"
-#include "Polygon2f.h"
+#include "polygon2f.h"
+#include "base_actor.h"
 
-class Polygon2f_Draw : public DrawTask
+class Polygon2f_Draw : public BaseActor
 {
 public:
 	Polygon2f_Draw(Polygon2f *polygon);
-	void draw();
+protected:
+	void draw_me();
 private:
 	Polygon2f *polygon;
 };

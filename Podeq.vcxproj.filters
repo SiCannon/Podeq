@@ -11,7 +11,6 @@
     <ClCompile Include="src\ship.cpp" />
     <ClCompile Include="gaf\mouse.cpp" />
     <ClCompile Include="gaf\screenutil.cpp" />
-    <ClCompile Include="gaf\gaf_glut.cpp" />
     <ClCompile Include="gaf\src\exit_on_escape.cpp" />
     <ClCompile Include="gaf\src\base_actor.cpp" />
     <ClCompile Include="gaf\src\shapes.cpp" />
@@ -27,6 +26,10 @@
     <ClCompile Include="gaf\src\polygon2f.cpp" />
     <ClCompile Include="gaf\src\polygon2f_draw.cpp" />
     <ClCompile Include="gaf\src\page_to_zoom.cpp" />
+    <ClCompile Include="src\test_objects.cpp" />
+    <ClCompile Include="gaf\src\gaf_glut.cpp" />
+    <ClCompile Include="gaf\src\gaf.cpp" />
+    <ClCompile Include="gaf\src\gaf_util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GL\freeglut.h" />
@@ -47,7 +50,6 @@
     <ClInclude Include="include\start_params.h" />
     <ClInclude Include="gaf\mouse.h" />
     <ClInclude Include="gaf\screenutil.h" />
-    <ClInclude Include="gaf\gaf_glut.h" />
     <ClInclude Include="gaf\include\draw_task.h" />
     <ClInclude Include="gaf\include\input_task.h" />
     <ClInclude Include="gaf\include\update_task.h" />
@@ -63,9 +65,12 @@
     <ClInclude Include="gaf\include\textutils.h" />
     <ClInclude Include="gaf\include\gaf.h" />
     <ClInclude Include="gaf\include\gaf_math.h" />
-    <ClInclude Include="gaf\include\Polygon2f.h" />
+    <ClInclude Include="gaf\include\polygon2f.h" />
     <ClInclude Include="gaf\include\vector2f.h" />
     <ClInclude Include="gaf\include\polygon2f_draw.h" />
     <ClInclude Include="gaf\include\page_to_zoom.h" />
+    <ClInclude Include="include\test_objects.h" />
+    <ClInclude Include="gaf\include\gaf_glut.h" />
+    <ClInclude Include="gaf\include\gaf_util.h" />
   </ItemGroup>
 </Project>

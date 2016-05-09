@@ -8,6 +8,9 @@ public:
 	short vertex_count;
 	Vector2f *vertices;
 	short *indices;
+	GLubyte *color;
+
+	Polygon2f();
 	void set_size(short vertex_count);
 	void set_vertex(short index, GLfloat x, GLfloat y);
 	void set_vertex(short index, Vector2f v);

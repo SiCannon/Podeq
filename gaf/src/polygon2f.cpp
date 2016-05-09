@@ -1,6 +1,13 @@
 #include "../include/vector2f.h"
 #include "../include/polygon2f.h"
 
+Polygon2f::Polygon2f()
+{
+	vertices = NULL;
+	indices = NULL;
+	color = NULL;
+}
+
 void Polygon2f::set_size(short vertex_count)
 {
 	this->vertex_count = vertex_count;

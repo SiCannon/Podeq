@@ -7,6 +7,7 @@
 #include <include/game_engine.h>
 #include <include/exit_on_escape.h>
 #include <include/page_to_zoom.h>
+#include "test_objects.h"
 
 PodeqGame::PodeqGame()
 {
@@ -28,18 +29,26 @@ PodeqGame::PodeqGame()
 	orbit_path->transform->translate_x = planet_x;
 	orbit_path->transform->translate_y = planet_y;
 
-	//*
+	/*
 	gameEngine->register_drawTask(planet);
 	gameEngine->register_drawTask(orbit_path);
 	gameEngine->register_drawTask(ship);
-	//*/
-
+	
 	gameEngine->register_updateTask(orbit);
 	gameEngine->register_updateTask(ship);
 
 	gameEngine->register_inputTask(ship);
+	//*/
 
-	noise_test = new NoiseTest();
+	/*noise_test = new NoiseTest();
 	gameEngine->register_drawTask(noise_test);
-	gameEngine->register_inputTask(noise_test);
+	gameEngine->register_inputTask(noise_test);*/
+
+	hex = new Hex();
+	tri = new Tri();
+	cd = new CollisionDetector(hex, tri);
+
+	gameEngine->register_drawTask(hex->polydraw);
+	gameEngine->register_drawTask(tri->polydraw);
+	gameEngine->register_updateTask(cd);
 }

@@ -127,6 +127,8 @@ void drawOne(glf sector_size, glf sector_height, glf slice, glf x_offset, glf fq
 
 void NoiseTest::draw()
 {
+	glPushMatrix();
+
 	glLoadIdentity();
 	glScalef(0.4f, 0.4f, 1.0f);
 	glTranslatef(-20, -10, 0);
@@ -186,12 +188,14 @@ void NoiseTest::draw()
 	textOutFloat(slices);
 	textReset(2);
 	textOutInt(islices);*/
+
+	glPopMatrix();
 }
 
 void NoiseTest::input(Keyboard * keyboard)
 {
 	glf sliceinc = 0.1f;
-	glf offsinc = 0.5f;
+	glf offsinc = 0.01f;
 
 	if (keyboard->keyState['p'])
 	{
