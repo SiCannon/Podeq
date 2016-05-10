@@ -32,6 +32,7 @@
     <ClCompile Include="gaf\src\page_to_zoom.cpp" />
     <ClCompile Include="gaf\src\polygon2f.cpp" />
     <ClCompile Include="gaf\src\polygon2f_draw.cpp" />
+    <ClCompile Include="gaf\src\sat_collider.cpp" />
     <ClCompile Include="gaf\src\shapes.cpp" />
     <ClCompile Include="gaf\src\textutils.cpp" />
     <ClCompile Include="gaf\src\timer.cpp" />
@@ -63,6 +64,7 @@
     <ClInclude Include="gaf\include\page_to_zoom.h" />
     <ClInclude Include="gaf\include\polygon2f.h" />
     <ClInclude Include="gaf\include\polygon2f_draw.h" />
+    <ClInclude Include="gaf\include\sat_collider.h" />
     <ClInclude Include="gaf\include\update_task.h" />
     <ClInclude Include="gaf\include\keyboard.h" />
     <ClInclude Include="gaf\mouse.h" />
