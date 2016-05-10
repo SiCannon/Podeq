@@ -1,6 +1,7 @@
 #include <GL/freeglut.h>
 #include "../include/polygon2f_draw.h"
 #include "../include/polygon2f.h"
+#include "../include/vector2f.h"
 
 Polygon2f_Draw::Polygon2f_Draw(Polygon2f *polygon)
 {
@@ -9,16 +10,18 @@ Polygon2f_Draw::Polygon2f_Draw(Polygon2f *polygon)
 
 void Polygon2f_Draw::draw_me()
 {
-	glBegin(GL_TRIANGLES);
+	glBegin(polygon->vertex_mode);
 
 	if (polygon->color != NULL)
 	{
 		glColor3ubv(polygon->color);
 	}
 
-	for (short i = 0; i < polygon->vertex_count; i++)
+	for (short i = 0; i < polygon->index_count; i++)
 	{
-		glVertex2f(polygon->vertices[i].x, polygon->vertices[i].y);
+		short idx = polygon->indices[i];
+		Vector2f v = polygon->vertices[idx];
+		glVertex2f(v.x, v.y);
 	}
 
 	glEnd();

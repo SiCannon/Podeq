@@ -51,4 +51,6 @@ PodeqGame::PodeqGame()
 	gameEngine->register_drawTask(hex->polydraw);
 	gameEngine->register_drawTask(tri->polydraw);
 	gameEngine->register_updateTask(cd);
+	gameEngine->register_drawTask(cd);
+	gameEngine->register_inputTask(cd);
 }

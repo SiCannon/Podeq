@@ -36,6 +36,7 @@
     <ClCompile Include="gaf\src\textutils.cpp" />
     <ClCompile Include="gaf\src\timer.cpp" />
     <ClCompile Include="gaf\src\transform.cpp" />
+    <ClCompile Include="gaf\src\vector2f.cpp" />
     <ClCompile Include="src\noise_test.cpp" />
     <ClCompile Include="src\ellipse.cpp" />
     <ClCompile Include="src\main.cpp" />
