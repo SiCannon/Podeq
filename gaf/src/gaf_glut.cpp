@@ -1,5 +1,5 @@
 #include <GL/freeglut.h>
-#include "screenutil.h"
+#include <include/screenutil.h>
 #include <include/keyboard.h>
 #include <include/game_engine.h>
 

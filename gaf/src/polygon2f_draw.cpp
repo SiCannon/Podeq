@@ -8,6 +8,14 @@ Polygon2f_Draw::Polygon2f_Draw(Polygon2f *polygon)
 	this->polygon = polygon;
 }
 
+void Polygon2f_Draw::draw()
+{
+	glPushMatrix();
+	glTranslatef(polygon->position.x, polygon->position.y, 0);
+	draw_me();
+	glPopMatrix();
+}
+
 void Polygon2f_Draw::draw_me()
 {
 	glBegin(polygon->vertex_mode);

@@ -6,9 +6,16 @@
 struct Vector2f
 {
 	glf x, y;
+	Vector2f operator + (const Vector2f& v)
+	{
+		return { x + v.x, y + v.y };
+	};
+	Vector2f operator - (const Vector2f& v)
+	{
+		return { x - v.x, y - v.y };
+	};
 };
 
-Vector2f minus(Vector2f v1, Vector2f v2);
 Vector2f swap_elements(Vector2f v);
 Vector2f normal(Vector2f v);
 Vector2f normal(Vector2f v1, Vector2f v2);

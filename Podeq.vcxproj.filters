@@ -28,10 +28,10 @@
     <ClCompile Include="gaf\src\textutils.cpp" />
     <ClCompile Include="gaf\src\timer.cpp" />
     <ClCompile Include="gaf\src\transform.cpp" />
-    <ClCompile Include="gaf\mouse.cpp" />
-    <ClCompile Include="gaf\screenutil.cpp" />
     <ClCompile Include="gaf\src\vector2f.cpp" />
     <ClCompile Include="gaf\src\sat_collider.cpp" />
+    <ClCompile Include="gaf\src\mouse.cpp" />
+    <ClCompile Include="gaf\src\screenutil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GL\freeglut.h" />
@@ -72,8 +72,8 @@
     <ClInclude Include="gaf\include\transform.h" />
     <ClInclude Include="gaf\include\update_task.h" />
     <ClInclude Include="gaf\include\vector2f.h" />
-    <ClInclude Include="gaf\mouse.h" />
-    <ClInclude Include="gaf\screenutil.h" />
     <ClInclude Include="gaf\include\sat_collider.h" />
+    <ClInclude Include="gaf\include\mouse.h" />
+    <ClInclude Include="gaf\include\screenutil.h" />
   </ItemGroup>
 </Project>

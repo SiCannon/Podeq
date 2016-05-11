@@ -27,15 +27,15 @@ bool SatCollider::test(Polygon2f *poly1, Polygon2f *poly2)
 			i2 = 0;
 		}
 
-		Vector2f a = poly1->vertices[i1];
-		Vector2f b = poly1->vertices[i2];
+		Vector2f a = poly1->transformed[i1];
+		Vector2f b = poly1->transformed[i2];
 		Vector2f n = normal(a, b);
 
 		bool all_negative = true;
 
 		for (short j = 0; j < poly2->vertex_count; j++)
 		{
-			glf dot = dot_product(minus(a, poly2->vertices[j]), n);
+			glf dot = dot_product(a - poly2->transformed[j], n);
 			if (dot >= 0)
 			{
 				all_negative = false;

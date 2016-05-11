@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <GL/freeglut.h>
-#include "screenutil.h"
+#include <include/screenutil.h>
 
 void printText(bool setPosition, GLint x, GLint y, char const *s, GLubyte red, GLubyte green, GLubyte blue)
 {

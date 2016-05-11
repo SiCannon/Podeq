@@ -27,8 +27,8 @@
     <ClCompile Include="gaf\src\game_engine.cpp" />
     <ClCompile Include="gaf\src\exit_on_escape.cpp" />
     <ClCompile Include="gaf\src\keyboard.cpp" />
-    <ClCompile Include="gaf\mouse.cpp" />
-    <ClCompile Include="gaf\screenutil.cpp" />
+    <ClCompile Include="gaf\src\mouse.cpp" />
+    <ClCompile Include="gaf\src\screenutil.cpp" />
     <ClCompile Include="gaf\src\page_to_zoom.cpp" />
     <ClCompile Include="gaf\src\polygon2f.cpp" />
     <ClCompile Include="gaf\src\polygon2f_draw.cpp" />
@@ -67,8 +67,8 @@
     <ClInclude Include="gaf\include\sat_collider.h" />
     <ClInclude Include="gaf\include\update_task.h" />
     <ClInclude Include="gaf\include\keyboard.h" />
-    <ClInclude Include="gaf\mouse.h" />
-    <ClInclude Include="gaf\screenutil.h" />
+    <ClInclude Include="gaf\include\mouse.h" />
+    <ClInclude Include="gaf\include\screenutil.h" />
     <ClInclude Include="gaf\include\shapes.h" />
     <ClInclude Include="gaf\include\textutils.h" />
     <ClInclude Include="gaf\include\timer.h" />

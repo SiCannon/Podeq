@@ -4,7 +4,7 @@
 
 #include <include/game_engine.h>
 #include <include/gaf_glut.h>
-#include "screenutil.h"
+#include <include/screenutil.h>
 #include <include/keyboard.h>
 #include <include/gaf_math.h>
 #include <include/textutils.h>

@@ -72,29 +72,33 @@ void CollisionDetector::input(Keyboard *keyboard)
 
 	glf xinc = 0;
 	glf yinc = 0;
-	
+	Vector2f v = { 0, 0 };
+
 	if (keyboard->keyState['a'])
 	{
-		xinc = -incamount;
+		v.x = -incamount;
 	}
 	if (keyboard->keyState['d'])
 	{
-		xinc = +incamount;
+		v.x = +incamount;
 	}
 	if (keyboard->keyState['w'])
 	{
-		yinc = +incamount;
+		v.y = +incamount;
 	}
 	if (keyboard->keyState['s'])
 	{
-		yinc = -incamount;
+		v.y = -incamount;
 	}
+	
 
-	for (int i = 0; i < tri->poly->vertex_count; i++)
+	tri->poly->add_position(v);
+
+	/*for (int i = 0; i < tri->poly->vertex_count; i++)
 	{
 		tri->poly->vertices[i].x += xinc;
 		tri->poly->vertices[i].y += yinc;
-	}
+	}*/
 }
 
 void CollisionDetector::update(Timer * timer)

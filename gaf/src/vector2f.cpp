@@ -3,14 +3,6 @@
 #include "../include/gaf.h"
 #include "../include/vector2f.h"
 
-Vector2f minus(Vector2f v1, Vector2f v2)
-{
-	Vector2f result;
-	result.x = v1.x - v2.x;
-	result.y = v1.y - v2.y;
-	return result;
-}
-
 Vector2f swap_elements(Vector2f v)
 {
 	Vector2f result;
@@ -21,7 +13,7 @@ Vector2f swap_elements(Vector2f v)
 
 Vector2f normal(Vector2f v1, Vector2f v2)
 {
-	return normal(minus(v2, v1));
+	return normal(v2 - v1);
 }
 
 Vector2f normal(Vector2f v)
