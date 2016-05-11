@@ -3,6 +3,7 @@
 #include <include/gaf_util.h>
 #include <include/vector2f.h>
 #include <include/textutils.h>
+#include <include/sat_collider.h>
 
 Hex::Hex()
 {
@@ -67,7 +68,7 @@ void CollisionDetector::draw()
 
 void CollisionDetector::input(Keyboard *keyboard)
 {
-	glf incamount = 0.1f;
+	glf incamount = 0.02f;
 
 	glf xinc = 0;
 	glf yinc = 0;
@@ -98,6 +99,7 @@ void CollisionDetector::input(Keyboard *keyboard)
 
 void CollisionDetector::update(Timer * timer)
 {
+	/*
 	bool collision = true;
 
 	for (short i = 0; i < hex->poly->vertex_count; i++)
@@ -131,8 +133,11 @@ void CollisionDetector::update(Timer * timer)
 			break;
 		}
 	}
-
 	is_collision = collision;
+	*/
+
+	SatCollider *collider = new SatCollider();
+	is_collision = collider->collide(hex->poly, tri->poly);
 
 	if (is_collision)
 	{

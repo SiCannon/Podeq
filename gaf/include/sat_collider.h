@@ -6,4 +6,6 @@ class SatCollider
 {
 public:
 	bool collide(Polygon2f *poly1, Polygon2f *p2);
+private:
+	bool test(Polygon2f *poly1, Polygon2f *p2);
 };

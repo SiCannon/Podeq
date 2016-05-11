@@ -4,6 +4,18 @@
 
 bool SatCollider::collide(Polygon2f *poly1, Polygon2f *poly2)
 {
+	if (!test(poly1, poly2))
+	{
+		return false;
+	}
+	else
+	{
+		return test(poly2, poly1);
+	}	
+}
+
+bool SatCollider::test(Polygon2f *poly1, Polygon2f *poly2)
+{
 	bool collision = true;
 
 	for (short i = 0; i < poly1->vertex_count; i++)
@@ -37,4 +49,6 @@ bool SatCollider::collide(Polygon2f *poly1, Polygon2f *poly2)
 			break;
 		}
 	}
+
+	return collision;
 }
