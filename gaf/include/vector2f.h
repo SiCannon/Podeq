@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GL/freeglut.h>
+#include "gaf_math.h"
 #include "gaf.h"
 
 struct Vector2f
@@ -14,6 +15,18 @@ struct Vector2f
 	{
 		return { x - v.x, y - v.y };
 	};
+	Vector2f operator * (glf k)
+	{
+		return{ x * k, y * k };
+	};
+	glf length_squared()
+	{
+		return SQR(x) + SQR(y);
+	};
+	glf length()
+	{
+		return sqrtf(length());
+	}
 };
 
 Vector2f swap_elements(Vector2f v);

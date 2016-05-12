@@ -29,7 +29,7 @@ PodeqGame::PodeqGame()
 	orbit_path->transform->translate_x = planet_x;
 	orbit_path->transform->translate_y = planet_y;
 
-	/*
+	//*
 	gameEngine->register_drawTask(planet);
 	gameEngine->register_drawTask(orbit_path);
 	gameEngine->register_drawTask(ship);
@@ -44,6 +44,7 @@ PodeqGame::PodeqGame()
 	gameEngine->register_drawTask(noise_test);
 	gameEngine->register_inputTask(noise_test);*/
 
+	/*
 	hex = new Hex();
 	tri = new Tri();
 	cd = new CollisionDetector(hex, tri);
@@ -53,4 +54,5 @@ PodeqGame::PodeqGame()
 	gameEngine->register_updateTask(cd);
 	gameEngine->register_drawTask(cd);
 	gameEngine->register_inputTask(cd);
+	//*/
 }

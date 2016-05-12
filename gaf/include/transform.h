@@ -1,14 +1,14 @@
 #pragma once
 
-#include <GL/freeglut.h>
+#include "gaf.h"
+#include "vector2f.h"
 
 class Transform
 {
 public:
-	GLfloat scale;
-	GLfloat translate_x;
-	GLfloat translate_y;
-	GLfloat rotation;
+	glf scale;
+	glf rot;
+	Vector2f trans;
 	void applyTRS();
 	void applyST();
 };

@@ -46,7 +46,7 @@ void Planet::draw_me()
 	int slices = SLICES;
 	glBegin(GL_TRIANGLE_STRIP);
 
-	GLfloat variablility = 0.005f;
+	GLfloat variablility = 0.02f;
 
 	GLfloat theta, x, y;
 	GLfloat s = (GLfloat)slices;

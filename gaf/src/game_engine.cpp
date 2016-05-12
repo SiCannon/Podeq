@@ -12,7 +12,7 @@ GameEngine::GameEngine()
 {
 	timer = new Timer();
 	keyboard = new Keyboard();
-	world_transform = new Transform();
+	world_transform = new Transform_Old();
 	world_transform->scale = 1.0f;
 }
 

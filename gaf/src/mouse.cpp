@@ -1,11 +1,11 @@
 #include <GL/freeglut.h>
 #include <include/mouse.h>
-#include <include/transform.h>
+#include <include/transform_old.h>
 
 #define GLUT_WHEEL_UP 3
 #define GLUT_WHEEL_DOWN 4
 
-Mouse::Mouse(Transform *world_transform)
+Mouse::Mouse(Transform_Old *world_transform)
 {
 	this->world_transform = world_transform;
 

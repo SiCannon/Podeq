@@ -1,13 +1,13 @@
 #pragma once
 
-#include <include/transform.h>
+#include <include/transform_old.h>
 #include <include/timer.h>
 #include "include/draw_task.h"
 
 class BaseActor : public DrawTask
 {
 public:
-	Transform *transform;
+	Transform_Old *transform;
 	BaseActor();
 	~BaseActor();
 	void draw();

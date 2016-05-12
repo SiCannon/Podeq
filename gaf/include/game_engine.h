@@ -6,7 +6,7 @@
 #include "include/update_task.h"
 #include "include/input_task.h"
 #include <include/keyboard.h>
-#include <include/transform.h>
+#include <include/transform_old.h>
 
 class GameEngine
 {
@@ -18,7 +18,7 @@ public:
 	void register_updateTask(UpdateTask *task);
 	void register_drawTask(DrawTask *task);
 	Keyboard *keyboard;
-	Transform *world_transform;
+	Transform_Old *world_transform;
 private:
 	Timer *timer;
 	std::vector<InputTask*> inputTasks;

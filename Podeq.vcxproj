@@ -20,6 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="gaf\src\base_actor.cpp" />
+    <ClCompile Include="gaf\src\entity.cpp" />
+    <ClCompile Include="gaf\src\entity_draw.cpp" />
     <ClCompile Include="gaf\src\gaf.cpp" />
     <ClCompile Include="gaf\src\gaf_glut.cpp" />
     <ClCompile Include="gaf\src\gaf_math.cpp" />
@@ -37,6 +39,7 @@
     <ClCompile Include="gaf\src\textutils.cpp" />
     <ClCompile Include="gaf\src\timer.cpp" />
     <ClCompile Include="gaf\src\transform.cpp" />
+    <ClCompile Include="gaf\src\transform_old.cpp" />
     <ClCompile Include="gaf\src\vector2f.cpp" />
     <ClCompile Include="src\noise_test.cpp" />
     <ClCompile Include="src\ellipse.cpp" />
@@ -48,11 +51,14 @@
     <ClCompile Include="src\planet.cpp" />
     <ClCompile Include="src\podeq_game.cpp" />
     <ClCompile Include="src\ship.cpp" />
+    <ClCompile Include="src\ship2.cpp" />
     <ClCompile Include="src\start_params.cpp" />
     <ClCompile Include="src\test_objects.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gaf\include\base_actor.h" />
+    <ClInclude Include="gaf\include\entity.h" />
+    <ClInclude Include="gaf\include\entity_draw.h" />
     <ClInclude Include="gaf\include\gaf_glut.h" />
     <ClInclude Include="gaf\include\gaf_math.h" />
     <ClInclude Include="gaf\include\gaf.h" />
@@ -65,6 +71,7 @@
     <ClInclude Include="gaf\include\polygon2f.h" />
     <ClInclude Include="gaf\include\polygon2f_draw.h" />
     <ClInclude Include="gaf\include\sat_collider.h" />
+    <ClInclude Include="gaf\include\transform.h" />
     <ClInclude Include="gaf\include\update_task.h" />
     <ClInclude Include="gaf\include\keyboard.h" />
     <ClInclude Include="gaf\include\mouse.h" />
@@ -72,7 +79,7 @@
     <ClInclude Include="gaf\include\shapes.h" />
     <ClInclude Include="gaf\include\textutils.h" />
     <ClInclude Include="gaf\include\timer.h" />
-    <ClInclude Include="gaf\include\transform.h" />
+    <ClInclude Include="gaf\include\transform_old.h" />
     <ClInclude Include="gaf\include\vector2f.h" />
     <ClInclude Include="include\defines.h" />
     <ClInclude Include="include\ellipse.h" />
@@ -84,6 +91,7 @@
     <ClInclude Include="include\planet.h" />
     <ClInclude Include="include\podeq_game.h" />
     <ClInclude Include="include\ship.h" />
+    <ClInclude Include="include\ship2.h" />
     <ClInclude Include="include\start_params.h" />
     <ClInclude Include="include\test_objects.h" />
     <ClInclude Include="lib\GL\freeglut.h" />

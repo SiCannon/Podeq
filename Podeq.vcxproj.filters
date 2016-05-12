@@ -27,11 +27,15 @@
     <ClCompile Include="gaf\src\shapes.cpp" />
     <ClCompile Include="gaf\src\textutils.cpp" />
     <ClCompile Include="gaf\src\timer.cpp" />
-    <ClCompile Include="gaf\src\transform.cpp" />
     <ClCompile Include="gaf\src\vector2f.cpp" />
     <ClCompile Include="gaf\src\sat_collider.cpp" />
     <ClCompile Include="gaf\src\mouse.cpp" />
     <ClCompile Include="gaf\src\screenutil.cpp" />
+    <ClCompile Include="gaf\src\transform_old.cpp" />
+    <ClCompile Include="gaf\src\transform.cpp" />
+    <ClCompile Include="gaf\src\entity_draw.cpp" />
+    <ClCompile Include="src\ship2.cpp" />
+    <ClCompile Include="gaf\src\entity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GL\freeglut.h" />
@@ -69,11 +73,15 @@
     <ClInclude Include="gaf\include\shapes.h" />
     <ClInclude Include="gaf\include\textutils.h" />
     <ClInclude Include="gaf\include\timer.h" />
-    <ClInclude Include="gaf\include\transform.h" />
     <ClInclude Include="gaf\include\update_task.h" />
     <ClInclude Include="gaf\include\vector2f.h" />
     <ClInclude Include="gaf\include\sat_collider.h" />
     <ClInclude Include="gaf\include\mouse.h" />
     <ClInclude Include="gaf\include\screenutil.h" />
+    <ClInclude Include="gaf\include\transform_old.h" />
+    <ClInclude Include="gaf\include\transform.h" />
+    <ClInclude Include="gaf\include\entity.h" />
+    <ClInclude Include="gaf\include\entity_draw.h" />
+    <ClInclude Include="include\ship2.h" />
   </ItemGroup>
 </Project>

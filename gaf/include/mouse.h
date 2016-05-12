@@ -1,5 +1,5 @@
 #pragma once
-#include <include/transform.h>
+#include <include/transform_old.h>
 
 class Mouse;
 
@@ -8,7 +8,7 @@ typedef void (*MouseEvent)(Mouse *mouse);
 class Mouse
 {
 public:
-	Mouse(Transform *world_transform);
+	Mouse(Transform_Old *world_transform);
 	int x;
 	int y;
 	void set(int x, int y);
@@ -17,5 +17,5 @@ public:
 	MouseEvent onMouseWheelUp;
 	MouseEvent onMouseWheelDown;
 private:
-	Transform *world_transform;
+	Transform_Old *world_transform;
 };

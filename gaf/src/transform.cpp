@@ -1,15 +1,15 @@
 #include <GL/freeglut.h>
-#include <include/transform.h>
+#include "../include/transform.h"
 
 void Transform::applyTRS()
 {
-	glTranslatef(translate_x, translate_y, 0);
-	glRotatef(rotation, 0, 0, 1.0f);
+	glTranslatef(trans.x, trans.y, 0);
+	glRotatef(rot, 0, 0, 1.0f);
 	glScalef(scale, scale, scale);
 }
 
 void Transform::applyST()
 {
 	glScalef(scale, scale, scale);
-	glTranslatef(translate_x, translate_y, 0);
+	glTranslatef(trans.x, trans.y, 0);
 }
