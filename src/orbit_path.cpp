@@ -1,6 +1,7 @@
 #include <math.h>
 #include <GL/freeglut.h>
 #include <include/gaf_math.h>
+#include <include/textutils.h>
 #include "orbit_path.h"
 #include "include/shapes.h"
 
@@ -31,6 +32,18 @@ void OrbitPath::draw_me()
 
 	glOpenEllipse(xradius, yradius, SLICES);
 	
+	glPushMatrix();
+	glLoadIdentity();
+	glColor3ub(192, 192, 192);
+	textReset(1);
+	textOut("e:");
+	textOutFloat(orbit->e);
+	textOut(", Rp:");
+	textOutFloat(orbit->Rp);
+	textOut(", Ra:");
+	textOutFloat(orbit->Ra);
+	glPopMatrix();
+
 	//glBegin(GL_POINTS);
 	
 	//glVertex2f(f, 0);

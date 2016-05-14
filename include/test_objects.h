@@ -33,3 +33,9 @@ public:
 	virtual void input(Keyboard *keyboard) override;
 	bool is_collision;
 };
+
+class Hyperbola : public DrawTask
+{
+public:
+	void draw();
+}

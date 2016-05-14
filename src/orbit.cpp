@@ -16,7 +16,7 @@ void Orbit::calc(GLfloat rx, GLfloat ry, GLfloat vx, GLfloat vy, GLfloat GM)
 	GLfloat vsq = SQR(vx) + SQR(vy);
 	GLfloat phi = PI_BY_2 - angleBetween(rx, ry, vx, vy);
 	
-	GLfloat e = calc_e(r, vsq, GM, phi);
+	e = calc_e(r, vsq, GM, phi);
 	GLfloat a = calc_a(r, vsq, GM);
 	Rp = calc_Rp(a, e);
 	Ra = calc_Ra(a, e);

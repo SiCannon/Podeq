@@ -152,3 +152,11 @@ void CollisionDetector::update(Timer * timer)
 		tri->poly->color[0] = 255;
 	}
 }
+
+void Hyperbola::draw()
+{
+	glPushMatrix();
+	glLoadIdentity();
+
+	glPopMatrix();
+}

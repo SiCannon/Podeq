@@ -33,7 +33,7 @@ void init_glut(int argc, char **argv, const char *title)
 	glutKeyboardUpFunc(getKeyboardUp);
 	glutSpecialFunc(getKeyboardSpecialDown);
 	glutSpecialUpFunc(getKeyboardSpecialUp);
-	//glutSetCursor(GLUT_CURSOR_NONE);
+	glutSetCursor(GLUT_CURSOR_NONE);
 
 	glutMainLoop();
 }
