@@ -7,7 +7,11 @@
 #include <include/game_engine.h>
 #include <include/exit_on_escape.h>
 #include <include/page_to_zoom.h>
+#include <include/polygon2f_draw.h>
+#include <include/entity_draw.h>
 #include "test_objects.h"
+#include "ship2.h"
+
 
 PodeqGame::PodeqGame()
 {
@@ -32,12 +36,12 @@ PodeqGame::PodeqGame()
 	//*
 	gameEngine->register_drawTask(planet);
 	gameEngine->register_drawTask(orbit_path);
-	gameEngine->register_drawTask(ship);
+	//gameEngine->register_drawTask(ship);
 	
 	gameEngine->register_updateTask(orbit);
-	gameEngine->register_updateTask(ship);
+	//gameEngine->register_updateTask(ship);
 
-	gameEngine->register_inputTask(ship);
+	//gameEngine->register_inputTask(ship);
 	//*/
 
 	/*noise_test = new NoiseTest();
@@ -55,4 +59,11 @@ PodeqGame::PodeqGame()
 	gameEngine->register_drawTask(cd);
 	gameEngine->register_inputTask(cd);
 	//*/
+
+	ship2 = new Ship2(this, { start_ship_x, start_ship_y }, { start_ship_vx, start_ship_vy });
+	gameEngine->register_drawTask(new Entity_Draw(ship2));
+	gameEngine->register_updateTask(ship2);
+	gameEngine->register_inputTask(ship2);
+
+
 }

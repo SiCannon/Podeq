@@ -7,6 +7,8 @@
 #include "noise_test.h"
 #include "test_objects.h"
 
+class Ship2;
+
 class PodeqGame
 {
 public:
@@ -16,6 +18,7 @@ public:
 	OrbitPath *orbit_path;
 	Orbit *orbit;
 	NoiseTest *noise_test;
+	Ship2 *ship2;
 
 	Hex *hex;
 	Tri *tri;
