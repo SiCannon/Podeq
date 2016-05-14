@@ -15,9 +15,13 @@ void init_glut(int argc, char **argv, const char *title)
 	//glEnable(GL_BLEND);
 	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	//glEnable(GL_DEPTH_TEST);
-	glutInitWindowPosition(INITIAL_WINDOW_LEFT, INITIAL_WINDOW_TOP);
-	glutInitWindowSize(INTIAL_WNDOW_WIDTH, INITIAL_WINDOW_HEIGHT);
+	
+	//glutInitWindowPosition(INITIAL_WINDOW_LEFT, INITIAL_WINDOW_TOP);
+	//glutInitWindowSize(INTIAL_WNDOW_WIDTH, INITIAL_WINDOW_HEIGHT);
+	
 	glutCreateWindow(title);
+
+	glutFullScreen();
 
 	//glutDisplayFunc(display);
 	glutDisplayFunc(main_game_loop);

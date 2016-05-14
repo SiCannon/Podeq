@@ -42,12 +42,12 @@ int main(int argc, char **argv)
 	//new Hex();
 	gameEngine->world_transform->scale = start_scale;
 
-	Test *test = new Test();
+	/*Test *test = new Test();
 	test->transform->translate_x = 2.0f;
 	test->transform->translate_y = 2.0f;
 	gameEngine->register_drawTask(test);
 	gameEngine->register_inputTask(test);
-	gameEngine->register_updateTask(test);
+	gameEngine->register_updateTask(test);//*/
 
 	init_glut(argc, argv, "Podeq");
 

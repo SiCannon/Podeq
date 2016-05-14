@@ -32,7 +32,7 @@ void Ship2::create_ship()
 	polygon->set_index(1, 1);
 	polygon->set_index(2, 2);
 
-	polygon->color = colorv(0, 32, 192);
+	polygon->color = colorv(0, 128, 192);
 }
 
 void Ship2::update(Timer * timer)

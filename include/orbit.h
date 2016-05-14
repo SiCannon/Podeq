@@ -4,12 +4,13 @@
 #include <include/update_task.h>
 #include <include/timer.h>
 #include "planet.h"
-#include "ship.h"
+
+class Ship2;
 
 class Orbit : public UpdateTask
 {
 public:
-    Orbit(Planet *planet, Ship *ship);
+    Orbit(Planet *planet, Ship2 *ship);
     GLfloat Rp;
     GLfloat Ra;
     GLfloat nu;
@@ -20,5 +21,5 @@ public:
 	void update(Timer *timer);
 private:
 	Planet *planet;
-	Ship *ship;
+	Ship2 *ship;
 };

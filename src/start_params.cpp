@@ -91,6 +91,6 @@ GLfloat start_ship_vy = 0;
 GLfloat start_scale = 60.0f;
 GLfloat ship_thrust = 0.01f;
 GLfloat scale_mult = 1.02f;
-GLfloat ship_size = 0.005f;
+GLfloat ship_size = 0.002f;
 GLfloat planet_radius = 0.9f;
 //*/

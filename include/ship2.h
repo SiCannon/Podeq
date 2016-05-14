@@ -12,12 +12,13 @@ class PodeqGame;
 class Ship2 : public Entity, public UpdateTask, public InputTask
 {
 public:
+	Vector2f v;
 	Ship2(PodeqGame *game, Vector2f pos, Vector2f vel);
 	void update(Timer *timer);
 	void input(Keyboard *keyboard);
 private:
 	PodeqGame *game;
-	Vector2f v;
+	
 	bool isThrust;
 	void create_ship();
 };

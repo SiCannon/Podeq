@@ -2,8 +2,9 @@
 #include <include/gaf_math.h>
 #include "orbit.h"
 #include "omech.h"
+#include "ship2.h"
 
-Orbit::Orbit(Planet *planet, Ship *ship)
+Orbit::Orbit(Planet *planet, Ship2 *ship)
 {
 	this->planet = planet;
 	this->ship = ship;
@@ -42,10 +43,10 @@ void Orbit::calc()
 	calc(
 		planet->transform->translate_x,
 		planet->transform->translate_y,
-		ship->transform->translate_x,
-		ship->transform->translate_y,
-		ship->vx,
-		ship->vy,
+		ship->transform->trans.x,
+		ship->transform->trans.y,
+		ship->v.x,
+		ship->v.y,
 		planet->GM()
 	);
 }

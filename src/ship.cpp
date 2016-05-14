@@ -22,7 +22,7 @@ Ship::Ship(GLfloat ivx, GLfloat ivy, Planet *planet) : BaseActor()
 void Ship::draw_me()
 {
     glColor4ub(0, 192, 0, 100);
-    
+
 	//GLfloat radius = 0.1f;
     //glSolidCircle(radius, 12);
 	GLfloat w = ship_size;

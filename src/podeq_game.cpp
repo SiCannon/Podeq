@@ -22,11 +22,17 @@ PodeqGame::PodeqGame()
 	planet->transform->translate_x = planet_x;
 	planet->transform->translate_y = planet_y;
 
-	ship = new Ship(start_ship_vx, start_ship_vy, planet);
+	/*ship = new Ship(start_ship_vx, start_ship_vy, planet);
 	ship->transform->translate_x = start_ship_x;
-	ship->transform->translate_y = start_ship_y;
+	ship->transform->translate_y = start_ship_y;*/
 
-	orbit = new Orbit(planet, ship);
+	ship2 = new Ship2(this, { start_ship_x, start_ship_y }, { start_ship_vx, start_ship_vy });
+	//ship2->transform->rot = 45.0f;
+	
+	gameEngine->register_updateTask(ship2);
+	gameEngine->register_inputTask(ship2);
+
+	orbit = new Orbit(planet, ship2);
 	orbit->calc(planet_x, planet_y, start_ship_x, start_ship_y, start_ship_vx, start_ship_vy, planet->GM());
 
 	orbit_path = new OrbitPath(orbit);
@@ -37,7 +43,8 @@ PodeqGame::PodeqGame()
 	gameEngine->register_drawTask(planet);
 	gameEngine->register_drawTask(orbit_path);
 	//gameEngine->register_drawTask(ship);
-	
+	gameEngine->register_drawTask(new Entity_Draw(ship2));
+	 
 	gameEngine->register_updateTask(orbit);
 	//gameEngine->register_updateTask(ship);
 
@@ -60,10 +67,6 @@ PodeqGame::PodeqGame()
 	gameEngine->register_inputTask(cd);
 	//*/
 
-	ship2 = new Ship2(this, { start_ship_x, start_ship_y }, { start_ship_vx, start_ship_vy });
-	gameEngine->register_drawTask(new Entity_Draw(ship2));
-	gameEngine->register_updateTask(ship2);
-	gameEngine->register_inputTask(ship2);
 
 
 }
