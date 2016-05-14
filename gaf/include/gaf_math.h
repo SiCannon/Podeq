@@ -1,8 +1,10 @@
+#pragma once
+
 #include <math.h>
 #include <GL/freeglut.h> 
+#include <include/gaf.h>
 #include <include/transform_old.h>
 #include <include/vector2f.h>
-#include <include/gaf.h>
 
 #define PI 3.141592654f
 #define TWO_PI 6.283185307f

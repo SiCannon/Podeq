@@ -26,7 +26,7 @@ struct Vector2f
 	glf length()
 	{
 		return sqrtf(length());
-	}
+	};
 };
 
 Vector2f swap_elements(Vector2f v);

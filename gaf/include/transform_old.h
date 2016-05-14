@@ -1,7 +1,8 @@
 #pragma once
 
 #include <GL/freeglut.h>
-#include "vector2f.h"
+
+struct Vector2f;
 
 class Transform_Old
 {
