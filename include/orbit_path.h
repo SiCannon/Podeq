@@ -14,4 +14,7 @@ protected:
 	void draw_me();
 private:
 	Orbit *orbit;
+	void draw_ellipse();
+	void draw_hyperbola();
+	void draw_stats();
 };

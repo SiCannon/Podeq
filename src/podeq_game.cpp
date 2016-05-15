@@ -68,9 +68,9 @@ PodeqGame::PodeqGame()
 	//*/
 
 
-	Hyperbola *hyper = new Hyperbola(orbit);
+	/*Hyperbola *hyper = new Hyperbola(orbit);
 	gameEngine->register_drawTask(hyper);
 	gameEngine->register_inputTask(hyper);
-	gameEngine->register_updateTask(hyper);
+	gameEngine->register_updateTask(hyper);*/
 
 }

@@ -29,6 +29,8 @@ void Orbit::calc(GLfloat rx, GLfloat ry, GLfloat vx, GLfloat vy, GLfloat GM)
 
 	GLfloat r_angle = angleBetween(1.0f, 0.0f, rx, ry);
 	angle = r_angle - (nu - PI);
+
+	angle = normalize_angle(angle);
 }
 
 void Orbit::calc(GLfloat planet_x, GLfloat planet_y, GLfloat ship_x, GLfloat ship_y, GLfloat vx, GLfloat vy, GLfloat GM)

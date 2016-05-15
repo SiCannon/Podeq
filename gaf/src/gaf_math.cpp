@@ -79,3 +79,16 @@ GLfloat angleTo(Transform_Old *me, Transform_Old *target)
 		return res;
 	}
 }
+
+glf normalize_angle(glf a)
+{
+	while (a < 0)
+	{
+		a += TWO_PI;
+	}
+	while (a >= TWO_PI)
+	{
+		a -= TWO_PI;
+	}
+	return a;
+}

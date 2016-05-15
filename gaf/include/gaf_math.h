@@ -22,3 +22,4 @@ glf distanceSquared(Vector2f& v1, Vector2f& v2);
 GLfloat distanceSquared(Transform_Old *t1, Transform_Old *t2);
 glf angleTo(Vector2f& me, Vector2f& target);
 GLfloat angleTo(Transform_Old *me, Transform_Old *target);
+glf normalize_angle(glf a);

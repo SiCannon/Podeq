@@ -81,8 +81,8 @@ GLfloat scale_mult = 1.02f;
 GLfloat ship_size = 0.01f;//*/
 
 //* close to planet 2: even smaller and closer
-GLfloat planet_x = 0.0f;
-GLfloat planet_y = 0.0f;
+GLfloat planet_x = 4.0f;
+GLfloat planet_y = 4.0f;
 GLfloat planet_mass = 0.0026f;
 GLfloat start_ship_x = 0.0f;
 GLfloat start_ship_y = -1.05f;

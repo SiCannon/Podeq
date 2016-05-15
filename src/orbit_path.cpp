@@ -14,29 +14,64 @@ OrbitPath::OrbitPath(Orbit *orbit) : BaseActor()
 
 void OrbitPath::draw_me()
 {
-	//apoapsis = orbit->Ra;
-	//periapsis = orbit->Rp;
 	if (orbit->is_hyperbolic())
 	{
-		return;
+		draw_hyperbola();
+	}
+	else
+	{
+		draw_ellipse();
 	}
 
+	draw_stats();
+}
 
+void OrbitPath::draw_ellipse()
+{
+	glf a = (orbit->Ra + orbit->Rp) / 2.0f;
+	glf f = a - orbit->Rp;
+	glf b = sqrtf(powf(a, 2) - powf(f, 2));
 
-	GLfloat a = (orbit->Ra + orbit->Rp) / 2.0f;
-	GLfloat f = a - orbit->Rp;
-	GLfloat b = sqrtf(powf(a, 2) - powf(f, 2));
-	
-	GLfloat xradius = a;
-	GLfloat yradius = b;
+	glf xradius = a;
+	glf yradius = b;
 
 	glRotatef(r_to_d(orbit->angle), 0, 0, 1.0f);
 	glTranslatef(f, 0, 0);
-	
+
 	glColor3ub(64, 32, 0);
 
 	glOpenEllipse(xradius, yradius, SLICES);
-	
+}
+
+void OrbitPath::draw_hyperbola()
+{
+	glf e = orbit->e;
+	glf a = orbit->Rp / (e - 1);
+
+	glRotatef(r_to_d(orbit->angle + PI), 0, 0, 1.0f);
+	glBegin(GL_LINE_STRIP);
+
+	glColor3ub(48, 48, 0);
+
+	glf theta = acosf(-1 / e);
+
+	glf start_theta = -theta + 0.01f;
+	glf end_theta = theta - 0.01f;
+
+	for (glf t = start_theta; t < end_theta; t += 0.01f)
+	{
+		glf r = a * (SQR(e) - 1) / (1 + e * cosf(t));
+		glf x = r * cosf(t);
+		glf y = r * sinf(t);
+		glVertex2f(x, y);
+	}
+
+	glEnd();
+
+}
+
+void OrbitPath::draw_stats()
+{
 	glPushMatrix();
 	glLoadIdentity();
 	glColor3ub(192, 192, 192);
@@ -48,27 +83,9 @@ void OrbitPath::draw_me()
 	textOut(", Ra:");
 	textOutFloat(orbit->Ra);
 	textOut(", nu:");
-	textOutFloat(orbit->nu);
+	textOutFloat(r_to_d(orbit->nu));
 	textOut(", angle:");
-	glf angle_d = r_to_d(orbit->angle);
-	while (angle_d >= 360.0f)
-	{
-		angle_d -= 360.0f;
-	}
-	while (angle_d < 0.0f)
-	{
-		angle_d += 360.0f;
-	}
-	textOutFloat(angle_d);
+	textOutFloat(r_to_d(orbit->angle));
 	glPopMatrix();
-
-	//glBegin(GL_POINTS);
-	
-	//glVertex2f(f, 0);
-	//glVertex2f(-f, 0);
-	//glTranslatef(-f, 0, 0);
-	//glSolidCircle(0.1f, 4);
-	//glVertex2f(0, 0);
-	
-	//glEnd();
 }
+
