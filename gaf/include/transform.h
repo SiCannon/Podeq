@@ -10,5 +10,6 @@ public:
 	glf rot;
 	Vector2f trans;
 	void applyTRS();
+	void applyTR();
 	void applyST();
 };

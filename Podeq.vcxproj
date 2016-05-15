@@ -41,6 +41,7 @@
     <ClCompile Include="gaf\src\transform.cpp" />
     <ClCompile Include="gaf\src\transform_old.cpp" />
     <ClCompile Include="gaf\src\vector2f.cpp" />
+    <ClCompile Include="src\ship_draw.cpp" />
     <ClCompile Include="src\noise_test.cpp" />
     <ClCompile Include="src\ellipse.cpp" />
     <ClCompile Include="src\main.cpp" />
@@ -92,6 +93,7 @@
     <ClInclude Include="include\podeq_game.h" />
     <ClInclude Include="include\ship.h" />
     <ClInclude Include="include\ship2.h" />
+    <ClInclude Include="include\ship_draw.h" />
     <ClInclude Include="include\start_params.h" />
     <ClInclude Include="include\test_objects.h" />
     <ClInclude Include="lib\GL\freeglut.h" />

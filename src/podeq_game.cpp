@@ -11,6 +11,7 @@
 #include <include/entity_draw.h>
 #include "test_objects.h"
 #include "ship2.h"
+#include "ship_draw.h"
 
 
 PodeqGame::PodeqGame()
@@ -43,7 +44,7 @@ PodeqGame::PodeqGame()
 	gameEngine->register_drawTask(planet);
 	gameEngine->register_drawTask(orbit_path);
 	//gameEngine->register_drawTask(ship);
-	gameEngine->register_drawTask(new Entity_Draw(ship2));
+	gameEngine->register_drawTask(new Ship_Draw(ship2));
 	 
 	gameEngine->register_updateTask(orbit);
 	//gameEngine->register_updateTask(ship);

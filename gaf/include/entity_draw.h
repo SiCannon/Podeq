@@ -8,7 +8,7 @@ class Entity_Draw : public DrawTask
 {
 public:
 	Entity_Draw(Entity *entity);
-	void draw();
-private:
+	virtual void draw();
+protected:
 	Entity *entity;
 };
