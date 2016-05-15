@@ -1,5 +1,6 @@
 #include <GL/freeglut.h>
 #include "../include/test_objects.h"
+#include "../include/orbit.h"
 #include <include/gaf_util.h>
 #include <include/vector2f.h>
 #include <include/textutils.h>
@@ -153,10 +154,81 @@ void CollisionDetector::update(Timer * timer)
 	}
 }
 
+Hyperbola::Hyperbola(Orbit *orbit)
+{
+	this->orbit = orbit;
+	e = 1.1f;
+}
+
+void Hyperbola::update(Timer *timer)
+{
+	if ((orbit->e - 1) <= 0)
+	{
+		return;
+	}
+
+	e = orbit->e;
+	a = orbit->Rp / (e - 1);
+}
+
+void Hyperbola::input(Keyboard *keyboard)
+{
+	glf e_inc = 0.01f;
+	if (keyboard->keyState['.'])
+	{
+		e += e_inc;
+	}
+	if (keyboard->keyState[','])
+	{
+		e -= e_inc;
+	}
+}
+
 void Hyperbola::draw()
 {
+	if (!orbit->is_hyperbolic())
+	{
+		return;
+	}
+
+	//glf e = 1.50f;
+	//glf a = 1.0f;
+
 	glPushMatrix();
-	glLoadIdentity();
+	//glLoadIdentity();
+	glRotatef(r_to_d(orbit->angle + PI), 0, 0, 1);
+	glBegin(GL_LINE_STRIP);
+
+	glColor3ub(192, 32, 192);
+
+	glf theta = acosf(-1 / e);
+
+	glf start_theta = -theta + 0.01f;
+	glf end_theta = theta - 0.01f;
+
+	for (glf t = start_theta; t < end_theta; t += 0.01f)
+	{
+		glf r = a * (SQR(e) - 1) / (1 + e * cosf(t));
+		glf x = r * cosf(t);
+		glf y = r * sinf(t);
+		glVertex2f(x, y);
+	}
+
+	glEnd();
 
 	glPopMatrix();
+
+
+	glPushMatrix();
+	glLoadIdentity();
+	glColor3ub(192, 192, 32);
+	textReset(2);
+	textOut("e:");
+	textOutFloat(e);
+	textOut(", a:");
+	textOutFloat(a);
+	textOut(", angle:");
+	textOutFloat(r_to_d(orbit->angle));
+	glPopMatrix();
+
 }

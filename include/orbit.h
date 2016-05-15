@@ -20,6 +20,7 @@ public:
     void calc(GLfloat planet_x, GLfloat planet_y, GLfloat ship_x, GLfloat ship_y, GLfloat vx, GLfloat vy, GLfloat GM);
 	void calc();
 	void update(Timer *timer);
+	bool is_hyperbolic();
 private:
 	Planet *planet;
 	Ship2 *ship;

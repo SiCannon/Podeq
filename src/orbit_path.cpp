@@ -16,6 +16,11 @@ void OrbitPath::draw_me()
 {
 	//apoapsis = orbit->Ra;
 	//periapsis = orbit->Rp;
+	if (orbit->is_hyperbolic())
+	{
+		return;
+	}
+
 
 
 	GLfloat a = (orbit->Ra + orbit->Rp) / 2.0f;
@@ -42,6 +47,19 @@ void OrbitPath::draw_me()
 	textOutFloat(orbit->Rp);
 	textOut(", Ra:");
 	textOutFloat(orbit->Ra);
+	textOut(", nu:");
+	textOutFloat(orbit->nu);
+	textOut(", angle:");
+	glf angle_d = r_to_d(orbit->angle);
+	while (angle_d >= 360.0f)
+	{
+		angle_d -= 360.0f;
+	}
+	while (angle_d < 0.0f)
+	{
+		angle_d += 360.0f;
+	}
+	textOutFloat(angle_d);
 	glPopMatrix();
 
 	//glBegin(GL_POINTS);

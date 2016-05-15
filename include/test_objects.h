@@ -6,6 +6,10 @@
 #include <include/draw_task.h>
 #include <include/input_task.h>
 
+class Orbit;
+class Timer;
+class Keyboard;
+
 class Hex
 {
 public:
@@ -34,8 +38,15 @@ public:
 	bool is_collision;
 };
 
-class Hyperbola : public DrawTask
+class Hyperbola : public DrawTask, public InputTask, public UpdateTask
 {
 public:
+	Hyperbola(Orbit *orbit);
+	glf e;
+	glf a;
 	void draw();
-}
+	void input(Keyboard *keyboard);
+	void update(Timer *timer);
+private:
+	Orbit *orbit;
+};

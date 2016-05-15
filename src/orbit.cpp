@@ -55,3 +55,8 @@ void Orbit::update(Timer *timer)
 {
 	calc();
 }
+
+bool Orbit::is_hyperbolic()
+{
+	return e >= 1.0f;
+}

@@ -74,6 +74,6 @@ void textOutInt(int i)
 void textOutFloat(float f)
 {
 	char buffer[20];
-	snprintf(buffer, 20, "%f", f);
+	snprintf(buffer, 20, "%.2f", f);
 	textOut(buffer);
 }
