@@ -5,6 +5,8 @@
 #include <include/vector2f.h>
 #include <include/textutils.h>
 #include <include/sat_collider.h>
+#include <include/transform_old.h>
+#include "planet.h"
 
 Hex::Hex()
 {
@@ -230,5 +232,39 @@ void Hyperbola::draw()
 	textOut(", angle:");
 	textOutFloat(r_to_d(orbit->angle));
 	glPopMatrix();
+
+}
+
+OrbitPredictor::OrbitPredictor(Orbit *orbit, Planet *planet)
+{
+	this->orbit = orbit;
+	this->planet = planet;
+}
+
+void OrbitPredictor::draw()
+{
+	glf min = 10.0f;
+	glf inc = 10.0f;
+	glf max = 1000.0f;
+
+	for (glf g = min; g <= max; g += inc)
+	{
+		Vector2f v = orbit->position_at_time(g);
+
+		glPushMatrix();
+
+		glTranslatef(planet->transform->translate_x + v.x, planet->transform->translate_y + v.y, 0);
+
+		glf size = 0.1f;
+		glBegin(GL_LINES);
+		glVertex2f(-size, 0);
+		glVertex2f(+size, 0);
+		glVertex2f(0, -size);
+		glVertex2f(0, +size);
+		glEnd();
+
+		glPopMatrix();
+
+	}
 
 }

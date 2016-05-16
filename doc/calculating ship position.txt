@@ -1,0 +1,18 @@
+problem: calculate position (r,theta) from time
+
+so that: we can fast forward time in the simulation, i.e. warp
+
+Using 4.43 we calc r from (v, a, e)
+	since a and e are fixed for an orbit, we therefore just need v (which is "nu" by the way)
+	cos(ν) = [cos(E) - e]/[1 - e cos(E)]
+	Therefore we need E, which is the Eccentric Anomaly
+	
+example:
+	start calc() gives e, Ra, Rp, v, a, n
+	we want (r,theta) for T+60s
+	M = n * t (known)
+	M = E - e sin E
+	-> iterate to get E
+	-> use this to get v
+	-> calc (r, theta)
+	

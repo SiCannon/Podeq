@@ -17,4 +17,5 @@ private:
 	void draw_ellipse();
 	void draw_hyperbola();
 	void draw_stats();
+	void draw_future_ghost();
 };

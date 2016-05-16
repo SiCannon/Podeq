@@ -3,11 +3,13 @@
 #include <include/game_engine.h>
 #include <include/vector2f.h>
 #include <include/screenutil.h>
+#include <include/textutils.h>
 #include "../include/ship_draw.h"
 #include "../include/ship2.h"
 
 Ship_Draw::Ship_Draw(Ship2 *ship) : Entity_Draw(ship)
 {
+	this->ship = ship;
 	create_hud();
 }
 
@@ -39,6 +41,12 @@ void Ship_Draw::draw_hud()
 	hud_ship->transform->trans = { -rasterLeft - 1.0f, rasterBottom + 1.0f };
 	hud_ship->transform->rot = entity->transform->rot;
 	hud_ship_draw->draw();
+
+	glLoadIdentity();
+	glColor3ub(32, 150, 32);
+	textReset(2);
+	textOut("speed:");
+	textOutFloat(ship->speed());
 
 	glPopMatrix();
 }

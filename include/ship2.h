@@ -16,6 +16,7 @@ public:
 	Ship2(PodeqGame *game, Vector2f pos, Vector2f vel);
 	void update(Timer *timer);
 	void input(Keyboard *keyboard);
+	glf speed();
 private:
 	PodeqGame *game;
 	

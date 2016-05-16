@@ -74,3 +74,8 @@ void Ship2::input(Keyboard * keyboard)
 
 	isThrust = keyboard->special[GLUT_KEY_UP];
 }
+
+glf Ship2::speed()
+{
+	return v.length() * 100.0f;
+}

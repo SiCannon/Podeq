@@ -9,6 +9,7 @@
 class Orbit;
 class Timer;
 class Keyboard;
+class Planet;
 
 class Hex
 {
@@ -49,4 +50,13 @@ public:
 	void update(Timer *timer);
 private:
 	Orbit *orbit;
+};
+
+class OrbitPredictor : public DrawTask
+{
+public:
+	OrbitPredictor(Orbit *orbit, Planet *planet);
+	void draw();
+	Orbit *orbit;
+	Planet *planet;
 };

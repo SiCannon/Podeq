@@ -10,6 +10,7 @@ public:
 	Ship_Draw(Ship2 *ship);
 	void draw() override;
 private:
+	Ship2 *ship;
 	Ship2 *hud_ship;
 	Entity_Draw *hud_ship_draw;
 	void create_hud();

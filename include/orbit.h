@@ -1,27 +1,35 @@
 #pragma once
 
-#include <GL/freeglut.h>
+#include <include/gaf.h>
 #include <include/update_task.h>
 #include <include/timer.h>
-#include "planet.h"
 
 class Ship2;
+class Planet;
 
 class Orbit : public UpdateTask
 {
 public:
     Orbit(Planet *planet, Ship2 *ship);
-    GLfloat Rp;
-    GLfloat Ra;
-    GLfloat nu;
-    GLfloat angle;
-	GLfloat e;
-    void calc(GLfloat rx, GLfloat ry, GLfloat vx, GLfloat vy, GLfloat GM);
-    void calc(GLfloat planet_x, GLfloat planet_y, GLfloat ship_x, GLfloat ship_y, GLfloat vx, GLfloat vy, GLfloat GM);
+
+    glf Rp;
+	glf Ra;
+	glf nu;
+	glf angle;
+	glf e;
+	glf a;
+	glf mean_motion;
+
+	glf debug;
+
+    void calc(glf rx, glf ry, glf vx, glf vy, glf GM);
+    void calc(glf planet_x, glf planet_y, glf ship_x, glf ship_y, glf vx, glf vy, glf GM);
 	void calc();
 	void update(Timer *timer);
 	bool is_hyperbolic();
+	Vector2f position_at_time(glf t);
 private:
 	Planet *planet;
 	Ship2 *ship;
+	
 };

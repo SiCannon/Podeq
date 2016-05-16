@@ -25,7 +25,7 @@ struct Vector2f
 	};
 	glf length()
 	{
-		return sqrtf(length());
+		return sqrtf(length_squared());
 	};
 };
 

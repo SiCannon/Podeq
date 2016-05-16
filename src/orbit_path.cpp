@@ -4,6 +4,7 @@
 #include <include/textutils.h>
 #include "orbit_path.h"
 #include "include/shapes.h"
+#include "include/vector2f.h"
 
 OrbitPath::OrbitPath(Orbit *orbit) : BaseActor()
 {
@@ -22,6 +23,8 @@ void OrbitPath::draw_me()
 	{
 		draw_ellipse();
 	}
+
+	//draw_future_ghost();
 
 	draw_stats();
 }
@@ -67,6 +70,28 @@ void OrbitPath::draw_hyperbola()
 	}
 
 	glEnd();
+
+}
+
+void OrbitPath::draw_future_ghost()
+{
+/*	Vector2f v = orbit->position_at_time(1.0f);
+	glColor3ub(0, 255, 0);
+	
+	glf size = 0.1f;
+	glBegin(GL_LINES);
+
+	glVertex2f(-size, 0);
+	glVertex2f(+size, 0);
+	glVertex2f(0, -size);
+	glVertex2f(0, +size);
+
+
+	glVertex2f(v.x - size, v.y);
+	glVertex2f(v.x + size, v.y);
+	glVertex2f(v.x, v.y - size);
+	glVertex2f(v.x, v.y + size);
+	glEnd();*/
 
 }
 

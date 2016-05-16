@@ -74,4 +74,7 @@ PodeqGame::PodeqGame()
 	gameEngine->register_inputTask(hyper);
 	gameEngine->register_updateTask(hyper);*/
 
+	OrbitPredictor *op = new OrbitPredictor(orbit, planet);
+	gameEngine->register_drawTask(op);
+
 }
