@@ -60,7 +60,8 @@ void Ship_Draw::draw_reticule()
 	glLoadIdentity();
 	//glTranslatef(gameEngine->world_transform->translate_x, gameEngine->world_transform->translate_y, 0);
 	gameEngine->world_transform->applyST();
-	ship->transform->applyTR();
+	//ship->transform->applyTR();
+	glTranslatef(ship->transform->trans.x, ship->transform->trans.y, 0);
 	gameEngine->world_transform->unscale();
 
 	glf rd = 0.2f;
