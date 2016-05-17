@@ -138,11 +138,13 @@ GLfloat MeanToEccenAnomalyf_AstronomyAnswers(GLfloat e, GLfloat M)
 
 	return (GLfloat)E;
 }
+
 #include <stdio.h>
+
 // http://www.jgiesen.de/kepler/kepler.html
 double MeanToEccenAnomalyf_JGiesen(double e, double M)
 {
-	printf(">> e = %.16lf, M = %.16lf\n", e, M);
+	//printf(">> e = %.16lf, M = %.16lf\n", e, M);
 
 	short maxIter = 30, i = 0;
 	double dp = 7.0;
@@ -172,7 +174,7 @@ double MeanToEccenAnomalyf_JGiesen(double e, double M)
 		E = E - F / (1.0 - e*cos(E));
 		F = E - e*sin(E) - M;
 
-		printf("i%d: E = %.16lf, F = %.16lf\n", i, E, F);
+		//printf("i%d: E = %.16lf, F = %.16lf\n", i, E, F);
 
 		i = i + 1;
 
@@ -180,8 +182,8 @@ double MeanToEccenAnomalyf_JGiesen(double e, double M)
 
 	if (i >= maxIter)
 	{
-		printf("FAIL");
-		scanf_s("");
+		//printf("FAIL");
+		//scanf_s("");
 	}
 
 	return E;
