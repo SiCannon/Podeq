@@ -2,6 +2,7 @@
 
 #include <include/entity.h>
 #include <include/vector2f.h>
+#include <include/gaf.h>
 #include <include/update_task.h>
 #include <include/input_task.h>
 #include <include/timer.h>
@@ -17,9 +18,11 @@ public:
 	void update(Timer *timer);
 	void input(Keyboard *keyboard);
 	glf speed();
+	glf warp;
 private:
 	PodeqGame *game;
 	
+	bool isWarp();
 	bool isThrust;
 	void create_ship();
 };

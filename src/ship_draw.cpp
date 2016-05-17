@@ -47,6 +47,8 @@ void Ship_Draw::draw_hud()
 	textReset(2);
 	textOut("speed:");
 	textOutFloat(ship->speed());
+	textOut(" warp:");
+	textOutFloat(ship->warp);
 
 	glPopMatrix();
 }

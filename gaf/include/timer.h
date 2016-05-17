@@ -10,6 +10,7 @@ public:
 	long intervalTicks;
 	void tick();
 	GLfloat intervalSeconds();
+	GLfloat totalSeconds();
 private:
 	bool started;
 };

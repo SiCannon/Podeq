@@ -243,6 +243,8 @@ OrbitPredictor::OrbitPredictor(Orbit *orbit, Planet *planet)
 
 void OrbitPredictor::draw()
 {
+	return;
+
 	glf min = 10.0f;
 	glf inc = 10.0f;
 	glf max = 1000.0f;

@@ -25,3 +25,8 @@ GLfloat Timer::intervalSeconds()
 {
 	return intervalTicks / 1000.0f;
 }
+
+GLfloat Timer::totalSeconds()
+{
+	return totalTicks / 1000.0f;
+}
