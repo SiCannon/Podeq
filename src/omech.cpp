@@ -110,13 +110,13 @@ double initial_E_OrbitNerd(GLfloat e, GLfloat M)
 	return E;
 }
 
-double initial_E_AstronomyAnswers_Simple(GLfloat e, GLfloat M)
+double initial_E_AstronomyAnswers_Simple(double e, double M)
 {
-	M = fmodf(M, TWO_PI) - PI;
+	M = fmod(M, TWO_PI_d) - PI_d;
 	return cbrt(6.0 * M);
 }
 
-GLfloat MeanToEccenAnomalyf(GLfloat e, GLfloat M)
+GLfloat MeanToEccenAnomalyf_AstronomyAnswers(GLfloat e, GLfloat M)
 {
 	double E = initial_E_AstronomyAnswers_Simple(e, M);
 
@@ -131,9 +131,67 @@ GLfloat MeanToEccenAnomalyf(GLfloat e, GLfloat M)
 	}
 	E = Enew;
 
+	if (count >= 100)
+	{
+		//throw "failed";
+	}
+
+	return (GLfloat)E;
+}
+#include <stdio.h>
+// http://www.jgiesen.de/kepler/kepler.html
+double MeanToEccenAnomalyf_JGiesen(double e, double M)
+{
+	printf(">> e = %.16lf, M = %.16lf\n", e, M);
+
+	short maxIter = 30, i = 0;
+	double dp = 7.0;
+	double delta = pow(10, -dp);
+
+	M = fmod(M, TWO_PI_d) - PI_d;
+
+	double E, F;
+
+	if (e < 0.8)
+	{
+		E = M;
+	}
+	else
+	{
+		E = PI_d;
+	}
+
+	//E = initial_E_AstronomyAnswers_Simple(e, M);
+
+	F = E - e*sin(M) - M;
+
+	//printf("F = %.16lf\n", F);
+
+	while ((fabs(F)>delta) && (i<maxIter)) {
+
+		E = E - F / (1.0 - e*cos(E));
+		F = E - e*sin(E) - M;
+
+		printf("i%d: E = %.16lf, F = %.16lf\n", i, E, F);
+
+		i = i + 1;
+
+	}
+
+	if (i >= maxIter)
+	{
+		printf("FAIL");
+		scanf_s("");
+	}
+
 	return E;
 }
 
+
+double MeanToEccenAnomalyf(double e, double M)
+{
+	return MeanToEccenAnomalyf_JGiesen(e, M);
+}
 
 GLfloat EccenToTrueAnomalyf(GLfloat e, GLfloat E)
 {

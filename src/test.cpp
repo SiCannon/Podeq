@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <GL/freeglut.h>
-#include "gaf_math.h"
+#include <include/gaf_math.h>
 #include "start_params.h"
 #include "omech.h"
 #include "orbit.h"
 #include "defines.h"
+
+#ifdef console_app
 
 int main()
 {
@@ -19,3 +21,5 @@ int main()
     
     return 0;
 }
+
+#endif

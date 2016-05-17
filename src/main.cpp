@@ -1,53 +1,21 @@
-#include <GL/freeglut.h>
-#include <stdio.h>
-#include <math.h>
-
-#include <include/game_engine.h>
+#include <include/gaf.h>
 #include <include/gaf_glut.h>
-#include <include/screenutil.h>
-#include <include/keyboard.h>
 #include <include/gaf_math.h>
-#include <include/textutils.h>
-#include "include/draw_task.h"
-#include "start_params.h"
-
-#include "defines.h"
-#include <include/base_actor.h>
-
+#include <include/game_engine.h>
 #include "podeq_game.h"
-
-#include <include/Polygon2f.h>
-#include <include/Polygon2f_draw.h>
+#include "start_params.h"
 
 PodeqGame *podeq;
 
-class Test : public BaseActor, public InputTask, public UpdateTask
-{
-public:
-	void draw_me()
-	{
-	};
-	void input(Keyboard *keyboard)
-	{
-	};
-	void update(Timer *timer)
-	{
-	};
-};
+//#define debug_only
+
+#ifndef debug_only
 
 int main(int argc, char **argv)
 {
 	gameEngine = new GameEngine();
 	podeq = new PodeqGame();
-	//new Hex();
 	gameEngine->world_transform->scale = start_scale;
-
-	/*Test *test = new Test();
-	test->transform->translate_x = 2.0f;
-	test->transform->translate_y = 2.0f;
-	gameEngine->register_drawTask(test);
-	gameEngine->register_inputTask(test);
-	gameEngine->register_updateTask(test);//*/
 
 	init_glut(argc, argv, "Podeq");
 
@@ -56,3 +24,38 @@ int main(int argc, char **argv)
 
 	return EXIT_SUCCESS;
 }
+
+#else
+
+#include "omech.h"
+
+int main()
+{
+	/*
+	double ee = 30.007955242571953;
+	double ff = 22.52964313277449;
+	double ec = 0.803313971;
+	double result = ee - ff / (1.0 - ec * cos(ee));
+	printf("%.10lf\n\n", result);
+	*/
+	
+
+
+
+	// 6.2522577281117275
+	double e = 0.8025833964347839;
+	double M = 10.4401988983154297;
+
+	double E = MeanToEccenAnomalyf(e, M);
+	printf("e=%.10lf\n", e);
+	printf("M=%.10lf (radians)\n", M);
+	printf("M=%.10lf (degress)\n", r_to_d(M));
+	printf("result: %.10lf (radians)\n", E);
+	printf("result: %.10lf (degrees)\n\n", r_to_d(E));
+
+	printf("... exit ...\n");
+	scanf_s("");
+	return true;
+}
+
+#endif

@@ -12,5 +12,5 @@ GLfloat TrueToMeanAnomalyf(GLfloat e, GLfloat f);
 GLfloat TrueToEccenAnomalyf(GLfloat e, GLfloat f);
 GLfloat EccenToMeanAnomalyf(GLfloat e, GLfloat E);
 GLfloat MeanToTrueAnomalyf(GLfloat e, GLfloat M);
-GLfloat MeanToEccenAnomalyf(GLfloat e, GLfloat M);
+double MeanToEccenAnomalyf(double e, double M);
 GLfloat EccenToTrueAnomalyf(GLfloat e, GLfloat E);
