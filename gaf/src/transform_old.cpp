@@ -19,3 +19,10 @@ Vector2f Transform_Old::trans()
 {
 	return{ translate_x, translate_y };
 }
+
+void Transform_Old::unscale()
+{
+	//glLoadIdentity();
+	//glTranslatef(translate_x, translate_y, 0);
+	glScalef(1.0f / scale, 1.0f / scale, 1.0f / scale);
+}

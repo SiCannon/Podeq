@@ -37,6 +37,7 @@
     <ClCompile Include="src\ship2.cpp" />
     <ClCompile Include="gaf\src\entity.cpp" />
     <ClCompile Include="src\ship_draw.cpp" />
+    <ClCompile Include="src\camera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GL\freeglut.h" />
@@ -85,5 +86,7 @@
     <ClInclude Include="gaf\include\entity_draw.h" />
     <ClInclude Include="include\ship2.h" />
     <ClInclude Include="include\ship_draw.h" />
+    <ClInclude Include="include\camera.h" />
+    <ClInclude Include="gaf\include\keydown_handler.h" />
   </ItemGroup>
 </Project>

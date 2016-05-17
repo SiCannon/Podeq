@@ -56,7 +56,12 @@ void Ship_Draw::draw_hud()
 void Ship_Draw::draw_reticule()
 {
 	glPushMatrix();
+
 	glLoadIdentity();
+	//glTranslatef(gameEngine->world_transform->translate_x, gameEngine->world_transform->translate_y, 0);
+	gameEngine->world_transform->applyST();
+	ship->transform->applyTR();
+	gameEngine->world_transform->unscale();
 
 	glf rd = 0.2f;
 	glf rs = 0.1f;

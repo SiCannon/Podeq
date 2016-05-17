@@ -14,4 +14,5 @@ public:
 	void applyTRS();
 	void applyST();
 	Vector2f trans();
+	void unscale();
 };

@@ -40,7 +40,7 @@ void Ship2::create_ship()
 
 void Ship2::update(Timer * timer)
 {
-	for (short w = 0; w < (short)roundf(warp); w++)
+	for (double w = 0; w < warp; w++)
 	{
 		glf rs = distanceSquared(game->planet->transform->trans(), transform->trans);
 		GLfloat a = GravConstant * game->planet->mass / rs;
@@ -63,8 +63,8 @@ void Ship2::update(Timer * timer)
 
 	//transform->trans = game->orbit->position_at_time(timer->totalSeconds());
 
-	gameEngine->world_transform->translate_x = -transform->trans.x;
-	gameEngine->world_transform->translate_y = -transform->trans.y;
+	//gameEngine->world_transform->translate_x = -transform->trans.x;
+	//gameEngine->world_transform->translate_y = -transform->trans.y;
 
 }
 

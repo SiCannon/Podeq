@@ -12,7 +12,7 @@
 #include "test_objects.h"
 #include "ship2.h"
 #include "ship_draw.h"
-
+#include "camera.h"
 
 PodeqGame::PodeqGame()
 {
@@ -77,4 +77,8 @@ PodeqGame::PodeqGame()
 	OrbitPredictor *op = new OrbitPredictor(orbit, planet);
 	gameEngine->register_drawTask(op);
 
+
+	Camera *camera = new Camera(ship2, planet);
+	gameEngine->register_updateTask(camera);
+	gameEngine->keyboard->register_keydown_handler(camera);
 }

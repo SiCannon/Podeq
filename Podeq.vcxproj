@@ -41,6 +41,7 @@
     <ClCompile Include="gaf\src\transform.cpp" />
     <ClCompile Include="gaf\src\transform_old.cpp" />
     <ClCompile Include="gaf\src\vector2f.cpp" />
+    <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\ship_draw.cpp" />
     <ClCompile Include="src\noise_test.cpp" />
     <ClCompile Include="src\ellipse.cpp" />
@@ -68,6 +69,7 @@
     <ClInclude Include="gaf\include\draw_task.h" />
     <ClInclude Include="gaf\include\exit_on_escape.h" />
     <ClInclude Include="gaf\include\input_task.h" />
+    <ClInclude Include="gaf\include\keydown_handler.h" />
     <ClInclude Include="gaf\include\page_to_zoom.h" />
     <ClInclude Include="gaf\include\polygon2f.h" />
     <ClInclude Include="gaf\include\polygon2f_draw.h" />
@@ -82,6 +84,7 @@
     <ClInclude Include="gaf\include\timer.h" />
     <ClInclude Include="gaf\include\transform_old.h" />
     <ClInclude Include="gaf\include\vector2f.h" />
+    <ClInclude Include="include\camera.h" />
     <ClInclude Include="include\defines.h" />
     <ClInclude Include="include\ellipse.h" />
     <ClInclude Include="include\monster.h" />
