@@ -27,6 +27,10 @@ struct Vector2f
 	{
 		return sqrtf(length_squared());
 	};
+	static Vector2f from_polar(GLfloat r, GLfloat theta)
+	{
+		return { r * cosf(theta), r * sinf(theta) };
+	}
 };
 
 Vector2f swap_elements(Vector2f v);

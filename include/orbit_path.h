@@ -18,4 +18,5 @@ private:
 	void draw_hyperbola();
 	void draw_stats();
 	void draw_future_ghost();
+	void draw_calculated_position();
 };

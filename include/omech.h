@@ -7,6 +7,8 @@ GLfloat calc_Rp(GLfloat a, GLfloat e);
 GLfloat calc_Ra(GLfloat a, GLfloat e);
 GLfloat calc_n(GLfloat GM, GLfloat a);
 GLfloat calc_r(GLfloat a, GLfloat e, GLfloat nu);
+GLfloat calc_phi(GLfloat e, GLfloat nu);
+GLfloat calc_v(GLfloat GM, GLfloat r, GLfloat a);
 
 GLfloat TrueToMeanAnomalyf(GLfloat e, GLfloat f);
 GLfloat TrueToEccenAnomalyf(GLfloat e, GLfloat f);

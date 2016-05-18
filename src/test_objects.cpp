@@ -7,6 +7,7 @@
 #include <include/sat_collider.h>
 #include <include/transform_old.h>
 #include "planet.h"
+#include "defines.h"
 
 Hex::Hex()
 {
@@ -243,21 +244,20 @@ OrbitPredictor::OrbitPredictor(Orbit *orbit, Planet *planet)
 
 void OrbitPredictor::draw()
 {
+#ifndef show_predicted_orbit
 	return;
+#endif
+	//auto orbit = this->orbit;
+	//auto planet = this->planet;
 
-	glf min = 10.0f;
-	glf inc = 10.0f;
-	glf max = 1000.0f;
-
-	for (glf g = min; g <= max; g += inc)
-	{
+	auto draw = [this](glf g) -> void {
 		Vector2f v = orbit->position_at_time(g);
 
 		glPushMatrix();
 
 		glTranslatef(planet->transform->translate_x + v.x, planet->transform->translate_y + v.y, 0);
 
-		glf size = 0.1f;
+		glf size = 0.05f;
 		glBegin(GL_LINES);
 		glVertex2f(-size, 0);
 		glVertex2f(+size, 0);
@@ -266,7 +266,18 @@ void OrbitPredictor::draw()
 		glEnd();
 
 		glPopMatrix();
+	};
 
+	
+	glf min = 10.0f;
+	glf inc = 10.0f;
+	glf max = 100.0f;
+
+	for (glf g = min; g <= max; g += inc)
+	{
+		//draw(g);
 	}
+
+	draw(0);
 
 }

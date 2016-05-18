@@ -13,6 +13,7 @@
 #include "ship2.h"
 #include "ship_draw.h"
 #include "camera.h"
+#include "defines.h"
 
 PodeqGame::PodeqGame()
 {
@@ -46,7 +47,10 @@ PodeqGame::PodeqGame()
 	//gameEngine->register_drawTask(ship);
 	gameEngine->register_drawTask(new Ship_Draw(ship2));
 	 
+#ifndef calculated_orbit
 	gameEngine->register_updateTask(orbit);
+#endif
+
 	//gameEngine->register_updateTask(ship);
 
 	//gameEngine->register_inputTask(ship);

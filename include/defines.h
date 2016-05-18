@@ -6,3 +6,7 @@
 #define GravConstant 1.0f
 
 #define Seed 3349653
+
+#define calculated_orbit
+//#define show_predicted_orbit
+#define draw_calculated_orbit

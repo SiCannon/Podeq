@@ -21,6 +21,8 @@ Ship2::Ship2(PodeqGame *game, Vector2f pos, Vector2f vel) : Entity(GL_TRIANGLES,
 	v = vel;
 	create_ship();
 	warp = 1.0f;
+	wasThrust = false;
+	epochStartTime = -1;
 }
 
 void Ship2::create_ship()
@@ -36,7 +38,52 @@ void Ship2::create_ship()
 	polygon->color = colorv(0, 128, 192);
 }
 
-//#define round(x) ((x)>=0?(long)((x)+0.5):(long)((x)-0.5))
+#ifdef calculated_orbit
+
+void Ship2::update(Timer * timer)
+{
+	if (isThrust)
+	{
+		glf rs = distanceSquared(game->planet->transform->trans(), transform->trans);
+		GLfloat a = GravConstant * game->planet->mass / rs;
+		GLfloat t = angleTo(transform->trans, game->planet->transform->trans());
+		GLfloat ax = a * cosf(t);
+		GLfloat ay = a * sinf(t);
+
+		GLfloat force = ship_thrust;
+		ax -= force * sinf(d_to_r(transform->rot));
+		ay += force * cosf(d_to_r(transform->rot));
+
+		v.x += ax * timer->intervalSeconds();
+		v.y += ay * timer->intervalSeconds();
+
+		transform->trans = transform->trans + v * timer->intervalSeconds();
+
+		wasThrust = true;
+	}
+	else
+	{
+		if (wasThrust)
+		{
+			wasThrust = false;
+			game->orbit->calc();
+			epochStartTime = timer->totalTicks;
+		}
+		else
+		{
+			if (epochStartTime == -1)
+			{
+				epochStartTime = timer->totalTicks;
+			}
+		}
+		long t = timer->totalTicks - epochStartTime;
+		game->orbit->calc_position(warp * t / 1000.0f);
+		transform->trans = game->planet->transform->trans() + game->orbit->position_p;
+		this->v = game->orbit->position_v;
+	}
+}
+
+#else
 
 void Ship2::update(Timer * timer)
 {
@@ -61,12 +108,14 @@ void Ship2::update(Timer * timer)
 		transform->trans = transform->trans + v * timer->intervalSeconds();
 	}
 
-	//transform->trans = game->orbit->position_at_time(timer->totalSeconds());
+	
 
 	//gameEngine->world_transform->translate_x = -transform->trans.x;
 	//gameEngine->world_transform->translate_y = -transform->trans.y;
 
 }
+
+#endif
 
 void Ship2::input(Keyboard * keyboard)
 {

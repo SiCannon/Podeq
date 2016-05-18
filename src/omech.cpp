@@ -55,6 +55,20 @@ GLfloat calc_r(GLfloat a, GLfloat e, GLfloat nu)
 	return a * (1.0f - SQR(e)) / (1.0f + e * cosf(nu));
 }
 
+GLfloat calc_phi(GLfloat e, GLfloat nu)
+{
+	// http://www.braeunig.us/space/orbmech.htm equation 4.44
+	GLfloat n = e * sinf(nu);
+	GLfloat d = 1.0f + e * cosf(nu);
+	return atan2f(n, d);
+}
+
+GLfloat calc_v(GLfloat GM, GLfloat r, GLfloat a)
+{
+	// http://www.braeunig.us/space/orbmech.htm equation 4.45
+	return sqrtf(GM * (2.0f / r - 1.0 / a));
+}
+
 GLfloat TrueToMeanAnomalyf(GLfloat e, GLfloat f)
 {
 	GLfloat E = TrueToEccenAnomalyf(e, f);
@@ -192,7 +206,7 @@ double MeanToEccenAnomalyf_JGiesen(double e, double M)
 
 double MeanToEccenAnomalyf(double e, double M)
 {
-	return MeanToEccenAnomalyf_JGiesen(e, M);
+	return MeanToEccenAnomalyf_AstronomyAnswers(e, M);
 }
 
 GLfloat EccenToTrueAnomalyf(GLfloat e, GLfloat E)

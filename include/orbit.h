@@ -3,6 +3,7 @@
 #include <include/gaf.h>
 #include <include/update_task.h>
 #include <include/timer.h>
+#include <include/vector2f.h>
 
 class Ship2;
 class Planet;
@@ -28,6 +29,13 @@ public:
 	void update(Timer *timer);
 	bool is_hyperbolic();
 	Vector2f position_at_time(glf t);
+
+	Vector2f position_p;
+	GLfloat position_phi;
+	GLfloat position_speed;
+	GLfloat position_theta;
+	Vector2f position_v;
+	void calc_position(GLfloat t);
 private:
 	Planet *planet;
 	Ship2 *ship;

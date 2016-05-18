@@ -5,6 +5,7 @@
 #include "orbit_path.h"
 #include "include/shapes.h"
 #include "include/vector2f.h"
+#include "defines.h"
 
 OrbitPath::OrbitPath(Orbit *orbit) : BaseActor()
 {
@@ -26,11 +27,17 @@ void OrbitPath::draw_me()
 
 	//draw_future_ghost();
 
+#ifdef draw_calculated_orbit
+	draw_calculated_position();
+#endif
+
 	draw_stats();
 }
 
 void OrbitPath::draw_ellipse()
 {
+	glPushMatrix();
+
 	glf a = (orbit->Ra + orbit->Rp) / 2.0f;
 	glf f = a - orbit->Rp;
 	glf b = sqrtf(powf(a, 2) - powf(f, 2));
@@ -44,6 +51,8 @@ void OrbitPath::draw_ellipse()
 	glColor3ub(64, 32, 0);
 
 	glOpenEllipse(xradius, yradius, SLICES);
+
+	glPopMatrix();
 }
 
 void OrbitPath::draw_hyperbola()
@@ -71,6 +80,23 @@ void OrbitPath::draw_hyperbola()
 
 	glEnd();
 
+}
+
+void OrbitPath::draw_calculated_position()
+{
+	auto p1 = orbit->position_p;
+	auto p2 = p1 + orbit->position_v;
+
+	glPushMatrix();
+
+	glColor3ub(192, 192, 0);
+	glBegin(GL_LINES);
+	glVertex2f(p1.x, p1.y);
+	glVertex2f(p2.x, p2.y);
+	
+	glEnd();
+
+	glPopMatrix();
 }
 
 void OrbitPath::draw_future_ghost()
@@ -111,6 +137,10 @@ void OrbitPath::draw_stats()
 	textOutFloat(r_to_d(orbit->nu));
 	textOut(", angle:");
 	textOutFloat(r_to_d(orbit->angle));
+	textOut(", position_speed:");
+	textOutFloat(orbit->position_speed * 100.0f);
+	textOut(", position_phi:");
+	textOutFloat(r_to_d(orbit->position_phi));
 	glPopMatrix();
 }
 

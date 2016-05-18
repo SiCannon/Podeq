@@ -81,11 +81,23 @@ Vector2f Orbit::position_at_time(glf t)
 	*/
 
 	// version 2
+	calc_position(t);
+	return position_p;
+}
+
+void Orbit::calc_position(GLfloat t)
+{
 	glf M0 = TrueToMeanAnomalyf(e, nu);
 	glf M1 = mean_motion * t + M0;
 	glf true_anomaly = MeanToTrueAnomalyf(e, M1);
 
 	glf r = calc_r(a, e, true_anomaly);
 	glf theta = true_anomaly - (PI - angle);
-	return{ r * cosf(theta), r * sinf(theta) };
+
+	position_p = { r * cosf(theta), r * sinf(theta) };
+	position_phi = calc_phi(e, true_anomaly);
+	position_speed = calc_v(planet->GM(), r, a);
+	//position_theta = PI_BY_2 - (true_anomaly + angle + position_phi - TWO_PI);
+	position_theta = (PI_BY_2 - position_phi) + true_anomaly - (PI - angle);
+	position_v = Vector2f::from_polar(position_speed * 100.0f, position_theta);
 }
