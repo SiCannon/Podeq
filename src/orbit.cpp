@@ -99,5 +99,5 @@ void Orbit::calc_position(GLfloat t)
 	position_speed = calc_v(planet->GM(), r, a);
 	//position_theta = PI_BY_2 - (true_anomaly + angle + position_phi - TWO_PI);
 	position_theta = (PI_BY_2 - position_phi) + true_anomaly - (PI - angle);
-	position_v = Vector2f::from_polar(position_speed * 100.0f, position_theta);
+	position_v = Vector2f::from_polar(position_speed, position_theta);
 }

@@ -58,7 +58,7 @@ void Ship2::update(Timer * timer)
 		v.y += ay * timer->intervalSeconds();
 
 		transform->trans = transform->trans + v * timer->intervalSeconds();
-
+		game->orbit->calc();
 		wasThrust = true;
 	}
 	else

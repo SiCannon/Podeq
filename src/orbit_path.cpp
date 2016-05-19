@@ -85,7 +85,7 @@ void OrbitPath::draw_hyperbola()
 void OrbitPath::draw_calculated_position()
 {
 	auto p1 = orbit->position_p;
-	auto p2 = p1 + orbit->position_v;
+	auto p2 = p1 + orbit->position_v * 10.0f;
 
 	glPushMatrix();
 
