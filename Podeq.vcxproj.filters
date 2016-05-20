@@ -3,7 +3,6 @@
   <ItemGroup>
     <ClCompile Include="src\ellipse.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\monster.cpp" />
     <ClCompile Include="src\omech.cpp" />
     <ClCompile Include="src\orbit.cpp" />
     <ClCompile Include="src\orbit_path.cpp" />
@@ -38,6 +37,7 @@
     <ClCompile Include="gaf\src\entity.cpp" />
     <ClCompile Include="src\ship_draw.cpp" />
     <ClCompile Include="src\camera.cpp" />
+    <ClCompile Include="src\satellite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GL\freeglut.h" />
@@ -49,7 +49,6 @@
     <ClInclude Include="lib\GL\wglew.h" />
     <ClInclude Include="include\defines.h" />
     <ClInclude Include="include\ellipse.h" />
-    <ClInclude Include="include\monster.h" />
     <ClInclude Include="include\omech.h" />
     <ClInclude Include="include\orbit.h" />
     <ClInclude Include="include\orbit_path.h" />
@@ -88,5 +87,8 @@
     <ClInclude Include="include\ship_draw.h" />
     <ClInclude Include="include\camera.h" />
     <ClInclude Include="gaf\include\keydown_handler.h" />
+    <ClInclude Include="include\satellite.h" />
+    <ClInclude Include="include\has_position.h" />
+    <ClInclude Include="include\has_position_and_velocity.h" />
   </ItemGroup>
 </Project>

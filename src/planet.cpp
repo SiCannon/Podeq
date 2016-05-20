@@ -6,9 +6,9 @@
 #include <include/shapes.h>
 #include "start_params.h"
 
-Planet::Planet(GLfloat mass) : BaseActor()
+Planet::Planet(GLfloat mass) : Satellite(NULL, mass)
 {
-	this->mass = mass;
+	//this->mass = mass;
 	this->radius = planet_radius;
 }
 
@@ -16,6 +16,14 @@ Planet::Planet(GLfloat mass) : BaseActor()
 Planet::~Planet()
 {
 }*/
+
+void Planet::draw()
+{
+	glPushMatrix();
+	glTranslatef(position.x, position.y, 0);
+	draw_me();
+	glPopMatrix();
+}
 
 #define SLICES 360
 
@@ -77,7 +85,7 @@ void Planet::draw_me()
 
 }
 
-GLfloat Planet::GM()
+/*GLfloat Planet::GM()
 {
 	return mass * GravConstant;
-}
+}*/

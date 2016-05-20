@@ -32,8 +32,8 @@ void Camera::update(Timer *timer)
 			p.y = -ship->transform->trans.y;
 			break;
 		case 1:
-			p.x = -planet->transform->translate_x;
-			p.y = -planet->transform->translate_y;
+			p.x = -planet->position.x;
+			p.y = -planet->position.y;
 			break;
 	}
 

@@ -5,7 +5,7 @@
 #include <include/vector2f.h>
 #include <include/textutils.h>
 #include <include/sat_collider.h>
-#include <include/transform_old.h>
+#include <include/transform.h>
 #include "planet.h"
 #include "defines.h"
 
@@ -255,7 +255,7 @@ void OrbitPredictor::draw()
 
 		glPushMatrix();
 
-		glTranslatef(planet->transform->translate_x + v.x, planet->transform->translate_y + v.y, 0);
+		glTranslatef(planet->position.x + v.x, planet->position.y + v.y, 0);
 
 		glf size = 0.05f;
 		glBegin(GL_LINES);

@@ -1,13 +1,14 @@
 #include <GL/freeglut.h>
-#include "ship.h"
-#include <include/shapes.h>
-#include <include/timer.h>
-#include "planet.h"
 #include <include/gaf_math.h>
-#include "defines.h"
-#include "start_params.h"
-#include <include/textutils.h>
 #include <include/game_engine.h>
+#include <include/shapes.h>
+#include <include/textutils.h>
+#include <include/timer.h>
+#include <include/transform.h>
+#include "defines.h"
+#include "planet.h"
+#include "ship.h"
+#include "start_params.h"
 
 Ship::Ship(GLfloat ivx, GLfloat ivy, Planet *planet) : BaseActor()
 {
@@ -16,7 +17,7 @@ Ship::Ship(GLfloat ivx, GLfloat ivy, Planet *planet) : BaseActor()
     vy = ivy;
     hidx = -1;
     maxh = -1;
-	transform->rotation = 45.0f;
+	transform->rot = 45.0f;
 }
 
 void Ship::draw_me()
@@ -63,17 +64,17 @@ void Ship::update(Timer *timer)
 {
 	save_history(timer);
 
-	GLfloat rs = distanceSquared(planet->transform, transform);
+	GLfloat rs = distanceSquared(planet->position, transform->trans);
 	GLfloat a = GravConstant * planet->mass / rs;
-	GLfloat t = angleTo(transform, planet->transform);
+	GLfloat t = angleTo(transform->trans, planet->position);
 	GLfloat ax = a * cosf(t);
 	GLfloat ay = a * sinf(t);
 
 	if (isThrust)
 	{
 		GLfloat force = ship_thrust;
-		ax -= force * sinf(d_to_r(transform->rotation));
-		ay += force * cosf(d_to_r(transform->rotation));
+		ax -= force * sinf(d_to_r(transform->rot));
+		ay += force * cosf(d_to_r(transform->rot));
 	}
 
 	vx += ax * timer->intervalSeconds();
@@ -81,21 +82,21 @@ void Ship::update(Timer *timer)
 
     GLfloat dx = vx * timer->intervalSeconds();
     GLfloat dy = vy * timer->intervalSeconds();
-    transform->translate_x += dx;
-    transform->translate_y += dy;
+    transform->trans.x += dx;
+    transform->trans.y += dy;
 
-	gameEngine->world_transform->translate_x = -transform->translate_x;
-	gameEngine->world_transform->translate_y = -transform->translate_y;
+	gameEngine->world_transform->translate_x = -transform->trans.x;
+	gameEngine->world_transform->translate_y = -transform->trans.y;
 
 	calc_readings();
 }
 
 void Ship::calc_readings()
 {
-	planetSurfacePosition = angleTo(planet->transform, transform);
-	planetCoreDistance = sqrtf(distanceSquared(planet->transform, transform));
+	planetSurfacePosition = angleTo(planet->position, transform->trans);
+	planetCoreDistance = sqrtf(distanceSquared(planet->position, transform->trans));
 	speed = sqrtf(SQR(vx) + SQR(vy));
-	heading = transform->rotation;
+	heading = transform->rot;
 }
 
 void Ship::input(Keyboard * keyboard)
@@ -104,11 +105,11 @@ void Ship::input(Keyboard * keyboard)
 
 	if (keyboard->special[GLUT_KEY_LEFT])
 	{
-		transform->rotation += rotateInc;
+		transform->rot += rotateInc;
 	}
 	if (keyboard->special[GLUT_KEY_RIGHT])
 	{
-		transform->rotation -= rotateInc;
+		transform->rot -= rotateInc;
 	}
 
  	isThrust = keyboard->special[GLUT_KEY_UP];
@@ -132,6 +133,6 @@ void Ship::save_history(Timer *timer)
         maxh = hidx;
     }
     
-    hx[hidx] = transform->translate_x;
-    hy[hidx] = transform->translate_y;
+    hx[hidx] = transform->trans.x;
+    hy[hidx] = transform->trans.y;
 }

@@ -1,15 +1,26 @@
 #include <math.h>
 #include <include/gaf_math.h>
+#include <include/transform_old.h>
 #include "orbit.h"
 #include "omech.h"
 #include "ship2.h"
 #include "planet.h"
+#include "satellite.h"
+#include "defines.h"
 
+#ifdef use_satellites
+Orbit::Orbit(Satellite *parent, Satellite *child)
+{
+	this->parent = parent;
+	this->child = child;
+}
+#else
 Orbit::Orbit(Planet *planet, Ship2 *ship)
 {
 	this->planet = planet;
 	this->ship = ship;
 }
+#endif
 
 void Orbit::calc(glf rx, glf ry, glf vx, glf vy, glf GM)
 {
@@ -44,15 +55,27 @@ void Orbit::calc(glf planet_x, glf planet_y, glf ship_x, glf ship_y, glf vx, glf
 
 void Orbit::calc()
 {
+#ifdef use_satellites
 	calc(
-		planet->transform->translate_x,
-		planet->transform->translate_y,
+		parent->position.x,
+		parent->position.y,
+		child->position.x,
+		child->position.y,
+		child->velocity.x,
+		child->velocity.y,
+		parent->GM()
+	);
+#else
+	calc(
+		planet->position.x,
+		planet->position.y,
 		ship->transform->trans.x,
 		ship->transform->trans.y,
-		ship->v.x,
-		ship->v.y,
+		ship->velocity.x,
+		ship->velocity.y,
 		planet->GM()
 	);
+#endif
 }
 
 void Orbit::update(Timer *timer)
@@ -96,7 +119,11 @@ void Orbit::calc_position(GLfloat t)
 
 	position_p = { r * cosf(theta), r * sinf(theta) };
 	position_phi = calc_phi(e, true_anomaly);
+#ifdef use_satellites
+	position_speed = calc_v(parent->GM(), r, a);
+#else
 	position_speed = calc_v(planet->GM(), r, a);
+#endif
 	//position_theta = PI_BY_2 - (true_anomaly + angle + position_phi - TWO_PI);
 	position_theta = (PI_BY_2 - position_phi) + true_anomaly - (PI - angle);
 	position_v = Vector2f::from_polar(position_speed, position_theta);

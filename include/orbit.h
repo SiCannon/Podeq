@@ -5,13 +5,20 @@
 #include <include/timer.h>
 #include <include/vector2f.h>
 
+#include "defines.h"
+#include "satellite.h"
+
 class Ship2;
 class Planet;
 
 class Orbit : public UpdateTask
 {
 public:
-    Orbit(Planet *planet, Ship2 *ship);
+#ifdef use_satellites
+	Orbit(Satellite *parent, Satellite *child);
+#else
+	Orbit(Planet *planet, Ship2 *ship);
+#endif
 
     glf Rp;
 	glf Ra;
@@ -37,7 +44,11 @@ public:
 	Vector2f position_v;
 	void calc_position(GLfloat t);
 private:
+#ifdef use_satellites
+	Satellite *parent;
+	Satellite *child;
+#else
 	Planet *planet;
 	Ship2 *ship;
-	
+#endif
 };

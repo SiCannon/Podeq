@@ -10,3 +10,6 @@
 #define calculated_orbit
 //#define show_predicted_orbit
 //#define draw_calculated_orbit
+
+// Treat planets and ships as satellites in orbital calculations
+#define use_satellites

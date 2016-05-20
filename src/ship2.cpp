@@ -14,13 +14,17 @@
 #include "../include/podeq_game.h"
 #include "../include/defines.h"
 
-Ship2::Ship2(PodeqGame *game, Vector2f pos, Vector2f vel) : Entity(GL_TRIANGLES, 3, 3)
+Ship2::Ship2(PodeqGame *game, Vector2f pos, Vector2f vel) : Entity(GL_TRIANGLES, 3, 3), Satellite(NULL, 0)
 {
 	this->game = game;
+#ifdef use_satellites
+	position = pos;
+#else
 	transform->trans = pos;
-	v = vel;
+#endif
+	velocity = vel;
 	create_ship();
-	warp = 1.0f;
+	warp = start_warp;
 	wasThrust = false;
 	lastUpdateTime = 0;
 }
@@ -42,13 +46,19 @@ void Ship2::create_ship()
 
 void Ship2::update(Timer * timer)
 {
+#ifdef use_satellites
+	#define ship_position position
+#else
+	#define ship_position transform->trans
+#endif
+
 	glf time = timer->intervalSeconds() * warp;
 
 	if (isThrust)
 	{
-		glf rs = distanceSquared(game->planet->transform->trans(), transform->trans);
+		glf rs = distanceSquared(game->planet->position, ship_position);
 		GLfloat a = GravConstant * game->planet->mass / rs;
-		GLfloat t = angleTo(transform->trans, game->planet->transform->trans());
+		GLfloat t = angleTo(ship_position, game->planet->position);
 		GLfloat ax = a * cosf(t);
 		GLfloat ay = a * sinf(t);
 
@@ -56,10 +66,10 @@ void Ship2::update(Timer * timer)
 		ax -= force * sinf(d_to_r(transform->rot));
 		ay += force * cosf(d_to_r(transform->rot));
 
-		v.x += ax * timer->intervalSeconds();
-		v.y += ay * timer->intervalSeconds();
+		velocity.x += ax * timer->intervalSeconds();
+		velocity.y += ay * timer->intervalSeconds();
 
-		transform->trans = transform->trans + v * time;
+		ship_position = ship_position + velocity * time;
 		game->orbit->calc();
 		wasThrust = true;
 	}
@@ -78,8 +88,9 @@ void Ship2::update(Timer * timer)
 			lastUpdateTime = newWarpedTime;
 
 			game->orbit->calc_position(newWarpedTime);
-			transform->trans = game->planet->transform->trans() + game->orbit->position_p;
-			this->v = game->orbit->position_v;
+			ship_position = game->planet->position + game->orbit->position_p;
+			transform->trans = game->planet->position + game->orbit->position_p;
+			this->velocity = game->orbit->position_v;
 		}
 	}
 }
@@ -90,9 +101,9 @@ void Ship2::update(Timer * timer)
 {
 	for (double w = 0; w < warp; w++)
 	{
-		glf rs = distanceSquared(game->planet->transform->trans(), transform->trans);
+		glf rs = distanceSquared(game->planet->position(), transform->trans);
 		GLfloat a = GravConstant * game->planet->mass / rs;
-		GLfloat t = angleTo(transform->trans, game->planet->transform->trans());
+		GLfloat t = angleTo(transform->trans, game->planet->position());
 		GLfloat ax = a * cosf(t);
 		GLfloat ay = a * sinf(t);
 
@@ -155,7 +166,7 @@ void Ship2::input(Keyboard * keyboard)
 
 glf Ship2::speed()
 {
-	return v.length() * 100.0f;
+	return velocity.length() * 100.0f;
 }
 
 bool Ship2::isWarp()

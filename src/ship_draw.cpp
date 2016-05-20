@@ -6,6 +6,7 @@
 #include <include/textutils.h>
 #include "../include/ship_draw.h"
 #include "../include/ship2.h"
+#include "defines.h"
 
 Ship_Draw::Ship_Draw(Ship2 *ship) : Entity_Draw(ship)
 {
@@ -23,6 +24,10 @@ void Ship_Draw::create_hud()
 
 void Ship_Draw::draw()
 {
+#ifdef use_satellites
+	entity->transform->trans = ship->position;
+#endif
+
 	Entity_Draw::draw();
 
 	draw_hud();

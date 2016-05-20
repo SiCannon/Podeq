@@ -1,5 +1,5 @@
 #include <GL/freeglut.h>
-#include <include/transform_old.h>
+#include <include/transform.h>
 #include <include/base_actor.h>
 #include <include/timer.h>
 
@@ -7,7 +7,7 @@ BaseActor::BaseActor()
 {
 	//this->timer = timer;
 	
-	transform = new Transform_Old();
+	transform = new Transform();
 	transform->scale = 1.0f;
 }
 

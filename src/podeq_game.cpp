@@ -21,8 +21,8 @@ PodeqGame::PodeqGame()
 	gameEngine->register_inputTask(new PageToZoom(scale_mult));
 
 	planet = new Planet(planet_mass);
-	planet->transform->translate_x = planet_x;
-	planet->transform->translate_y = planet_y;
+	planet->position.x = planet_x;
+	planet->position.y = planet_y;
 
 	//ship = new Ship(start_ship_vx, start_ship_vy, planet);
 	//ship->transform->translate_x = start_ship_x;
@@ -35,11 +35,11 @@ PodeqGame::PodeqGame()
 	gameEngine->register_inputTask(ship2);
 
 	orbit = new Orbit(planet, ship2);
-	orbit->calc(planet_x, planet_y, start_ship_x, start_ship_y, start_ship_vx, start_ship_vy, planet->GM());
+	orbit->calc();
 
 	orbit_path = new OrbitPath(orbit);
-	orbit_path->transform->translate_x = planet_x;
-	orbit_path->transform->translate_y = planet_y;
+	orbit_path->transform->trans.x = planet_x;
+	orbit_path->transform->trans.y = planet_y;
 
 	//*
 	gameEngine->register_drawTask(planet);

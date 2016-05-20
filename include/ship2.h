@@ -7,10 +7,11 @@
 #include <include/input_task.h>
 #include <include/timer.h>
 #include <include/keyboard.h>
+#include "satellite.h"
 
 class PodeqGame;
 
-class Ship2 : public Entity, public UpdateTask, public InputTask
+class Ship2 : public Entity, public UpdateTask, public InputTask, public Satellite
 {
 public:
 	Ship2(PodeqGame *game, Vector2f pos, Vector2f vel);
@@ -19,7 +20,7 @@ public:
 	void input(Keyboard *keyboard);
 	glf speed();
 
-	Vector2f v;
+	//Vector2f velocity;
 	glf warp;
 private:
 	
