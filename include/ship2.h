@@ -29,5 +29,5 @@ private:
 	PodeqGame *game;
 	bool isThrust;
 	bool wasThrust;
-	long epochStartTime;
+	glf lastUpdateTime;
 };

@@ -22,7 +22,7 @@ Ship2::Ship2(PodeqGame *game, Vector2f pos, Vector2f vel) : Entity(GL_TRIANGLES,
 	create_ship();
 	warp = 1.0f;
 	wasThrust = false;
-	epochStartTime = -1;
+	lastUpdateTime = 0;
 }
 
 void Ship2::create_ship()
@@ -67,19 +67,18 @@ void Ship2::update(Timer * timer)
 		{
 			wasThrust = false;
 			game->orbit->calc();
-			epochStartTime = timer->totalTicks;
+			lastUpdateTime = 0;
 		}
 		else
 		{
-			if (epochStartTime == -1)
-			{
-				epochStartTime = timer->totalTicks;
-			}
+			glf timeSinceLastUpdate = timer->intervalSeconds() * warp;
+			glf newWarpedTime = lastUpdateTime + timeSinceLastUpdate;
+			lastUpdateTime = newWarpedTime;
+
+			game->orbit->calc_position(newWarpedTime);
+			transform->trans = game->planet->transform->trans() + game->orbit->position_p;
+			this->v = game->orbit->position_v;
 		}
-		long t = timer->totalTicks - epochStartTime;
-		game->orbit->calc_position(warp * t / 1000.0f);
-		transform->trans = game->planet->transform->trans() + game->orbit->position_p;
-		this->v = game->orbit->position_v;
 	}
 }
 

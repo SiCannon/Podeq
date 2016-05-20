@@ -9,4 +9,4 @@
 
 #define calculated_orbit
 //#define show_predicted_orbit
-#define draw_calculated_orbit
+//#define draw_calculated_orbit
