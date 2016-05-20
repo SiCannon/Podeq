@@ -42,6 +42,8 @@ void Ship2::create_ship()
 
 void Ship2::update(Timer * timer)
 {
+	glf time = timer->intervalSeconds() * warp;
+
 	if (isThrust)
 	{
 		glf rs = distanceSquared(game->planet->transform->trans(), transform->trans);
@@ -57,7 +59,7 @@ void Ship2::update(Timer * timer)
 		v.x += ax * timer->intervalSeconds();
 		v.y += ay * timer->intervalSeconds();
 
-		transform->trans = transform->trans + v * timer->intervalSeconds();
+		transform->trans = transform->trans + v * time;
 		game->orbit->calc();
 		wasThrust = true;
 	}
@@ -71,7 +73,7 @@ void Ship2::update(Timer * timer)
 		}
 		else
 		{
-			glf timeSinceLastUpdate = timer->intervalSeconds() * warp;
+			glf timeSinceLastUpdate = time;
 			glf newWarpedTime = lastUpdateTime + timeSinceLastUpdate;
 			lastUpdateTime = newWarpedTime;
 
@@ -139,12 +141,16 @@ void Ship2::input(Keyboard * keyboard)
 	{
 		warp *= warp_inc;
 	}
-	if (warp < 1.0f)
+	if (keyboard->keyState['/'])
 	{
 		warp = 1.0f;
 	}
+	if (warp < 0.0f)
+	{
+		warp = 0.0f;
+	}
 
-	isThrust = !isWarp() && keyboard->special[GLUT_KEY_UP];
+	isThrust = keyboard->special[GLUT_KEY_UP];
 }
 
 glf Ship2::speed()
