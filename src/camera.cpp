@@ -28,8 +28,8 @@ void Camera::update(Timer *timer)
 	switch (focus)
 	{
 		case 0:
-			p.x = -ship->transform->trans.x;
-			p.y = -ship->transform->trans.y;
+			p.x = -ship->position.x;
+			p.y = -ship->position.y;
 			break;
 		case 1:
 			p.x = -planet->position.x;

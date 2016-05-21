@@ -89,7 +89,7 @@ void Ship2::update(Timer * timer)
 
 			game->orbit->calc_position(newWarpedTime);
 			ship_position = game->planet->position + game->orbit->position_p;
-			transform->trans = game->planet->position + game->orbit->position_p;
+			//transform->trans = game->planet->position + game->orbit->position_p;
 			this->velocity = game->orbit->position_v;
 		}
 	}
