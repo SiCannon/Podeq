@@ -13,3 +13,6 @@
 
 // Treat planets and ships as satellites in orbital calculations
 #define use_satellites
+
+// Use formulas from braeunig and/or http://www.bogan.ca/orbits/kepler/orbteqtn.html for calculating Eccentric Anomaly
+#define calc_braeunig_eccentric
