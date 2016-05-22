@@ -99,13 +99,29 @@ GLfloat TrueToEccenAnomalyf(GLfloat e, GLfloat f)
 			E = -E;
 		}
 	}
+	return E;
+#else
+#ifdef calc_tan_eccentric
+	if (e < 1.0)
+	{
+		return 2.0 * atan(tan(f / 2.0) / sqrt((1.0 + e) / (1.0 - e)));
+	}
+	else if (e == 1.0)
+	{
+		throw "fail";
+	}
+	else
+	{
+		return 2.0 * atanh(tan(f / 2.0) / sqrt((e + 1.0) / (e - 1.0)));
+	}
 #else
 	// This can be simplified by removing the final (1.0f + e * cosf(f)) from each term I think...?
 	GLfloat sinE = sinf(f) * sqrtf(1.0f - SQR(e)) / (1.0f + e * cosf(f));
 	GLfloat cosE = (e + cosf(f)) / (1.0f + e * cosf(f));
 	GLfloat E = atan2f(sinE, cosE);
-#endif
 	return E;
+#endif
+#endif
 }
 
 GLfloat EccenToMeanAnomalyf(GLfloat e, GLfloat E)
@@ -373,8 +389,36 @@ double MeanToEccenAnomalyf(double e, double M)
 
 GLfloat EccenToTrueAnomalyf(GLfloat e, GLfloat E)
 {
+#ifdef calc_braeunig_eccentric
 	glf s = sinf(E)*sqrtf(1.0f - SQR(e)) / (1.0f - e * cosf(E));
 	glf c = (cosf(E) - e) / (1.0f - e * cosf(E));
 	glf f = atan2f(s, c);
 	return f;
+#else
+#ifdef calc_tan_eccentric
+	if (e < 1.0f)
+	{
+		return 2.0f * atanf(sqrtf((1.0f + e) / (1.0f - e)) * tanf(E / 2.0f));
+	}
+	else if (e == 1.0f)
+	{
+		throw "fail";
+	}
+	else
+	{
+		return 2.0f * atanf(sqrtf((e + 1.0f) / (e - 1.0f)) * tanhf(E / 2.0f));
+	}
+#else
+	glf cosE = cosf(E);
+	glf nu = fabsf(acosf((e - cosE) / (e * cosE - 1)));
+	if (E < 0 || E > TWO_PI)
+	{
+		return -nu;
+	}
+	else
+	{
+		return nu;
+	}
+#endif
+#endif
 }

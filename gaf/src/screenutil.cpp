@@ -3,11 +3,11 @@
 #include <include/screenutil.h>
 #include <include/mouse.h>
 
-#define orthoSize 10.0f
-
 GLfloat rasterLeft = 0;
 GLfloat rasterBottom = 0;
 GLfloat rasterTop = 0;
+GLfloat aspect_ratio = 0;
+
 int windowWidth;
 int windowHeight;
 
@@ -21,7 +21,7 @@ void reshape(int w, int h)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	GLfloat aspect_ratio = (GLfloat)w / (GLfloat)h;
+	aspect_ratio = (GLfloat)w / (GLfloat)h;
 	glOrtho(-orthoSize * aspect_ratio, orthoSize * aspect_ratio, -orthoSize, orthoSize, -1, 1);
 
 	rasterBottom = -orthoSize;

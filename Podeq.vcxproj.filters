@@ -38,6 +38,7 @@
     <ClCompile Include="src\ship_draw.cpp" />
     <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\satellite.cpp" />
+    <ClCompile Include="src\debug_graph.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GL\freeglut.h" />
@@ -90,5 +91,6 @@
     <ClInclude Include="include\satellite.h" />
     <ClInclude Include="include\has_position.h" />
     <ClInclude Include="include\has_position_and_velocity.h" />
+    <ClInclude Include="include\debug_graph.h" />
   </ItemGroup>
 </Project>

@@ -33,7 +33,14 @@ void Orbit::calc(glf rx, glf ry, glf vx, glf vy, glf GM)
 	Rp = calc_Rp(a, e);
 	Ra = calc_Ra(a, e);
 	nu = calc_nu(r, vsq, GM, phi);
-	mean_motion = calc_n(GM, a);
+	if (e <= 1.0f)
+	{
+		mean_motion = calc_n(GM, a);
+	}
+	else
+	{
+		mean_motion = calc_n(GM, fabsf(a));
+	}
 
 	if (nu < 0)
 	{

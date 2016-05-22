@@ -14,6 +14,7 @@
 #include "ship_draw.h"
 #include "camera.h"
 #include "defines.h"
+#include "debug_graph.h"
 
 PodeqGame::PodeqGame()
 {
@@ -41,12 +42,12 @@ PodeqGame::PodeqGame()
 	orbit_path->transform->trans.x = planet_x;
 	orbit_path->transform->trans.y = planet_y;
 
-	//*
+#ifndef hide_game_elements
 	gameEngine->register_drawTask(planet);
 	gameEngine->register_drawTask(orbit_path);
-	//gameEngine->register_drawTask(ship);
 	gameEngine->register_drawTask(new Ship_Draw(ship2));
-	 
+#endif
+
 #ifndef calculated_orbit
 	gameEngine->register_updateTask(orbit);
 #endif
@@ -85,4 +86,8 @@ PodeqGame::PodeqGame()
 	Camera *camera = new Camera(ship2, planet);
 	gameEngine->register_updateTask(camera);
 	gameEngine->keyboard->register_keydown_handler(camera);
+
+#ifdef show_debug_graph
+	gameEngine->register_drawTask(new DebugGraph());
+#endif
 }

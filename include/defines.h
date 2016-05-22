@@ -15,4 +15,8 @@
 #define use_satellites
 
 // Use formulas from braeunig and/or http://www.bogan.ca/orbits/kepler/orbteqtn.html for calculating Eccentric Anomaly
-#define calc_braeunig_eccentric
+//#define calc_braeunig_eccentric
+#define calc_tan_eccentric
+
+//#define hide_game_elements
+//#define show_debug_graph

@@ -1,0 +1,8 @@
+- why the negative prefix
+- create a real-time ship to compare trajectories with calculated position
+- jump when thrust in positive half
+- breunig for EccenToTrueAnomalyf not working
+- hyperbolic position calulation
+- sun and moons
+- planet chunks for more efficient better rendering
+- collisions?
