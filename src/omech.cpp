@@ -1,4 +1,5 @@
 #include <math.h>
+#include <stdio.h>
 #include <GL/freeglut.h>
 #include <include/gaf_math.h>
 #include "omech.h"
@@ -108,6 +109,7 @@ GLfloat TrueToEccenAnomalyf(GLfloat e, GLfloat f)
 	}
 	else if (e == 1.0)
 	{
+		printf("TrueToEccenAnomalyf: e == 1\n");
 		throw "fail";
 	}
 	else

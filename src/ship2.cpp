@@ -13,8 +13,9 @@
 #include "../include/ship2.h"
 #include "../include/podeq_game.h"
 #include "../include/defines.h"
+#include "../include/warp.h"
 
-Ship2::Ship2(PodeqGame *game, Vector2f pos, Vector2f vel) : Entity(GL_TRIANGLES, 3, 3), Satellite(NULL, 0)
+Ship2::Ship2(PodeqGame *game, Vector2f pos, Vector2f vel, Warp *warp) : Entity(GL_TRIANGLES, 3, 3), Satellite(NULL, 0, warp)
 {
 	this->game = game;
 #ifdef use_satellites
@@ -24,7 +25,7 @@ Ship2::Ship2(PodeqGame *game, Vector2f pos, Vector2f vel) : Entity(GL_TRIANGLES,
 #endif
 	velocity = vel;
 	create_ship();
-	warp = start_warp;
+	//warp = start_warp;
 	wasThrust = false;
 	lastUpdateTime = 0;
 }
@@ -52,7 +53,7 @@ void Ship2::update(Timer * timer)
 	#define ship_position transform->trans
 #endif
 
-	glf time = timer->intervalSeconds() * warp;
+	glf time = timer->intervalSeconds() * warp->warp;
 
 	if (isThrust)
 	{
@@ -83,6 +84,8 @@ void Ship2::update(Timer * timer)
 		}
 		else
 		{
+			//Satellite::update(timer);
+			
 			glf timeSinceLastUpdate = time;
 			glf newWarpedTime = lastUpdateTime + timeSinceLastUpdate;
 			lastUpdateTime = newWarpedTime;
@@ -142,7 +145,7 @@ void Ship2::input(Keyboard * keyboard)
 		transform->rot -= rotateInc;
 	}
 
-	glf warp_inc = 1.1f;
+	/*glf warp_inc = 1.1f;
 
 	if (keyboard->keyState[','])
 	{
@@ -159,7 +162,7 @@ void Ship2::input(Keyboard * keyboard)
 	if (warp < 0.0f)
 	{
 		warp = 0.0f;
-	}
+	}*/
 
 	isThrust = keyboard->special[GLUT_KEY_UP];
 }
@@ -171,5 +174,5 @@ glf Ship2::speed()
 
 bool Ship2::isWarp()
 {
-	return warp >= 1.5f;
+	return warp->warp >= 1.5f;
 }

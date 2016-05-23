@@ -7,6 +7,7 @@
 #include "../include/ship_draw.h"
 #include "../include/ship2.h"
 #include "defines.h"
+#include "warp.h"
 
 Ship_Draw::Ship_Draw(Ship2 *ship) : Entity_Draw(ship)
 {
@@ -16,7 +17,7 @@ Ship_Draw::Ship_Draw(Ship2 *ship) : Entity_Draw(ship)
 
 void Ship_Draw::create_hud()
 {
-	hud_ship = new Ship2(NULL, { 0, 0 }, { 0, 0 });
+	hud_ship = new Ship2(NULL, { 0, 0 }, { 0, 0 }, ship->warp);
 	hud_ship->transform->scale = 40.0f;
 	hud_ship->polygon->color = colorv(0, 192, 255);
 	hud_ship_draw = new Entity_Draw(hud_ship);
@@ -53,7 +54,7 @@ void Ship_Draw::draw_hud()
 	textOut("speed:");
 	textOutFloat(ship->speed());
 	textOut(" warp:");
-	textOutFloat(ship->warp);
+	textOutFloat(ship->warp->warp);
 
 	glPopMatrix();
 }

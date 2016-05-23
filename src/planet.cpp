@@ -5,8 +5,9 @@
 #include "defines.h"
 #include <include/shapes.h>
 #include "start_params.h"
+#include "warp.h"
 
-Planet::Planet(GLfloat mass) : Satellite(NULL, mass)
+Planet::Planet(GLfloat mass, Warp *warp) : Satellite(NULL, mass, warp)
 {
 	//this->mass = mass;
 	this->radius = planet_radius;

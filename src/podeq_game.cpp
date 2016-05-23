@@ -15,13 +15,21 @@
 #include "camera.h"
 #include "defines.h"
 #include "debug_graph.h"
+#include "moon.h"
+#include "moon_draw.h"
+#include "warp.h"
 
 PodeqGame::PodeqGame()
 {
 	gameEngine->register_inputTask(new ExitOnEscape());
 	gameEngine->register_inputTask(new PageToZoom(scale_mult));
 
-	planet = new Planet(planet_mass);
+	warp = new Warp();
+	warp->warp = start_warp;
+	gameEngine->register_inputTask(warp);
+	gameEngine->register_updateTask(warp);
+
+	planet = new Planet(planet_mass, warp);
 	planet->position.x = planet_x;
 	planet->position.y = planet_y;
 
@@ -29,7 +37,7 @@ PodeqGame::PodeqGame()
 	//ship->transform->translate_x = start_ship_x;
 	//ship->transform->translate_y = start_ship_y;
 
-	ship2 = new Ship2(this, { start_ship_x, start_ship_y }, { start_ship_vx, start_ship_vy });
+	ship2 = new Ship2(this, { start_ship_x, start_ship_y }, { start_ship_vx, start_ship_vy }, warp);
 	//ship2->transform->rot = 45.0f;
 	
 	gameEngine->register_updateTask(ship2);
@@ -90,4 +98,11 @@ PodeqGame::PodeqGame()
 #ifdef show_debug_graph
 	gameEngine->register_drawTask(new DebugGraph());
 #endif
+
+	moon = new Moon(planet, 1.0f, warp);
+	moon->velocity.x = 0.03f;
+	moon->velocity.y = -0.03f;
+	moon->recalc_orbit();
+	gameEngine->register_updateTask(moon);
+	gameEngine->register_drawTask(new MoonDraw(moon));
 }

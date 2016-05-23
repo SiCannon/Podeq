@@ -14,14 +14,14 @@ class PodeqGame;
 class Ship2 : public Entity, public UpdateTask, public InputTask, public Satellite
 {
 public:
-	Ship2(PodeqGame *game, Vector2f pos, Vector2f vel);
+	Ship2(PodeqGame *game, Vector2f pos, Vector2f vel, Warp *warp);
 
 	void update(Timer *timer);
 	void input(Keyboard *keyboard);
 	glf speed();
 
 	//Vector2f velocity;
-	glf warp;
+	//glf warp;
 private:
 	
 	void create_ship();

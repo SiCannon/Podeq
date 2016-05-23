@@ -8,6 +8,8 @@
 #include "test_objects.h"
 
 class Ship2;
+class Moon;
+class Warp;
 
 class PodeqGame
 {
@@ -19,6 +21,8 @@ public:
 	Orbit *orbit;
 	NoiseTest *noise_test;
 	Ship2 *ship2;
+	Moon *moon;
+	Warp *warp;
 
 	Hex *hex;
 	Tri *tri;

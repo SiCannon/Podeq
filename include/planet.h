@@ -4,10 +4,12 @@
 #include <include/draw_task.h>
 #include "satellite.h"
 
+class Warp;
+
 class Planet : public DrawTask, public Satellite
 {
 public:
-	Planet(GLfloat mass);
+	Planet(GLfloat mass, Warp *warp);
 	//GLfloat mass;
 	//GLfloat GM();
 	GLfloat radius;
