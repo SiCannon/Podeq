@@ -33,6 +33,7 @@ public:
 	void update(Timer *timer);
 	void recalc_orbit();
 	Warp *warp;
+	Orbit *get_orbit();
 private:
 	Satellite *parent;
 	Orbit *orbit;

@@ -104,5 +104,10 @@ PodeqGame::PodeqGame()
 	moon->velocity.y = -0.03f;
 	moon->recalc_orbit();
 	gameEngine->register_updateTask(moon);
+
+	OrbitPath *moon_path = new OrbitPath(moon->get_orbit());
+	moon_path->transform->trans = planet->position;
+	gameEngine->register_drawTask(moon_path);
 	gameEngine->register_drawTask(new MoonDraw(moon));
+
 }

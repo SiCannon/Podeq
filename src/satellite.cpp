@@ -45,3 +45,8 @@ void Satellite::recalc_orbit()
 	orbit->calc();
 	lastUpdateTime = 0;
 }
+
+Orbit * Satellite::get_orbit()
+{
+	return orbit;
+}
