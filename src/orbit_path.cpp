@@ -141,6 +141,10 @@ void OrbitPath::draw_stats()
 	textOutFloat(orbit->position_speed * 100.0f);
 	textOut(", position_phi:");
 	textOutFloat(r_to_d(orbit->position_phi));
+	textOut(", position_theta:");
+	textOutFloat(r_to_d(orbit->position_theta));
+	textOut(", is_clockwise:");
+	textOutInt(orbit->is_clockwise ? 1 : 0);
 	glPopMatrix();
 }
 

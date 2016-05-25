@@ -1,5 +1,25 @@
 #include <GL/freeglut.h>
 
+//* close to planet 2: even smaller and closer
+GLfloat planet_x = 1.0f;
+GLfloat planet_y = 1.0f;
+GLfloat planet_mass = 0.0026f;
+GLfloat planet_radius = 0.9f;
+
+GLfloat start_ship_x = -1.0f;
+GLfloat start_ship_y = +3.05f;
+GLfloat start_ship_vx = 0.02f;
+GLfloat start_ship_vy = 0.01f;
+
+GLfloat start_scale = 6.f;
+GLfloat ship_thrust = 0.01f;
+
+GLfloat scale_mult = 1.02f;
+GLfloat ship_size = 0.002f;
+GLfloat start_warp = .01f;
+//*/
+
+
 /* Original simple orbit:
 GLfloat planet_x = 0.0f;
 GLfloat planet_y = 0.0f;
@@ -80,21 +100,3 @@ GLfloat ship_thrust = 0.1f;
 GLfloat scale_mult = 1.02f;
 GLfloat ship_size = 0.01f;//*/
 
-//* close to planet 2: even smaller and closer
-GLfloat planet_x = 1.0f;
-GLfloat planet_y = 1.0f;
-GLfloat planet_mass = 0.0026f;
-GLfloat planet_radius = 0.9f;
-
-GLfloat start_ship_x = 0.2f;
-GLfloat start_ship_y = -1.05f;
-GLfloat start_ship_vx = 0.04f;
-GLfloat start_ship_vy = 0.01f;
-
-GLfloat start_scale = 7.9f;
-GLfloat ship_thrust = 0.01f;
-
-GLfloat scale_mult = 1.02f;
-GLfloat ship_size = 0.002f;
-GLfloat start_warp = 10.0f;
-//*/

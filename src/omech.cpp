@@ -107,13 +107,17 @@ GLfloat TrueToEccenAnomalyf(GLfloat e, GLfloat f)
 	{
 		return 2.0 * atan(tan(f / 2.0) / sqrt((1.0 + e) / (1.0 - e)));
 	}
-	else if (e == 1.0)
-	{
-		printf("TrueToEccenAnomalyf: e == 1\n");
-		throw "fail";
-	}
+	//else if (e == 1.0)
+	//{
+	//	printf("TrueToEccenAnomalyf: e == 1\n");
+	//	throw "fail";
+	//}
 	else
 	{
+		if (e == 1.0f)
+		{
+			e = 1.0001f;
+		}
 		return 2.0 * atanh(tan(f / 2.0) / sqrt((e + 1.0) / (e - 1.0)));
 	}
 #else
@@ -402,12 +406,16 @@ GLfloat EccenToTrueAnomalyf(GLfloat e, GLfloat E)
 	{
 		return 2.0f * atanf(sqrtf((1.0f + e) / (1.0f - e)) * tanf(E / 2.0f));
 	}
-	else if (e == 1.0f)
-	{
-		throw "fail";
-	}
+	//else if (e == 1.0f)
+	//{
+	//	throw "fail";
+	//}
 	else
 	{
+		if (e == 1.0f)
+		{
+			e = 1.0001f;
+		}
 		return 2.0f * atanf(sqrtf((e + 1.0f) / (e - 1.0f)) * tanhf(E / 2.0f));
 	}
 #else

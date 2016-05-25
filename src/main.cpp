@@ -27,6 +27,7 @@ int main(int argc, char **argv)
 
 #else
 
+#pragma region function pointers
 
 #include <vector>
 int my_function(int x)
@@ -61,6 +62,10 @@ void Test_FunctionPointers()
 	call_them(20);
 }
 
+#pragma endregion
+
+#pragma region mean to ecc
+
 #include "omech.h"
 void Test_MeanToEccenAnomalyf()
 {
@@ -75,9 +80,52 @@ void Test_MeanToEccenAnomalyf()
 	printf("result: %.10lf (degrees)\n\n", r_to_d(E));
 }
 
+#pragma endregion
+
+#pragma region test angleBetween
+
+void tabo(GLfloat ux, GLfloat uy, GLfloat vx, GLfloat vy)
+{
+	glf a = r_to_d(angleBetween(ux, uy, vx, vy));
+	printf("(%.1f, %.1f) -> (%.1f, %.1f) = %.1f\n", ux, uy, vx, vy, a);
+}
+
+void Test_angleBetween()
+{
+	printf("anti-clockwise:\n");
+	tabo(1, 0, 0, 1);
+	tabo(4, 4, -3, 2);
+
+	tabo(0, 1, -2, 1);
+	tabo(-5, 3, -2, -1);
+
+	tabo(-1, 0, 0, -1);
+	tabo(-10, -5, 3, -2);
+
+	tabo(0, -1, 3, 2);
+	tabo(3, -2, 2, 2);
+
+	printf("clockwise:\n");
+	tabo(1, 0, 0, -1);
+	tabo(4, 4, 3, -2);
+
+	tabo(0, 1, 2, -1);
+	tabo(-5, 3, 2, 1);
+
+	tabo(-1, 0, 0, 1);
+	tabo(-10, -5, -3, 2);
+
+	tabo(0, -1, -3, -2);
+	tabo(3, -2, -2, -2);
+
+	//tabo(-1.0f, 9.0f, 1.0f, 0);
+}
+
+#pragma endregion
+
 int main()
 {
-	Test_FunctionPointers();
+	Test_angleBetween();
 
 	printf("\n\n... exit ...\n");
 	scanf_s("");

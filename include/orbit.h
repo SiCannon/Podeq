@@ -27,6 +27,7 @@ public:
 	glf e;
 	glf a;
 	glf mean_motion;
+	bool is_clockwise;
 
 	glf debug;
 

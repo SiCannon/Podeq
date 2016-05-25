@@ -26,7 +26,8 @@ void Orbit::calc(glf rx, glf ry, glf vx, glf vy, glf GM)
 {
 	glf r = sqrtf(SQR(rx) + SQR(ry));
 	glf vsq = SQR(vx) + SQR(vy);
-	glf phi = PI_BY_2 - angleBetween(rx, ry, vx, vy);
+	glf zenith_angle = angleBetween(rx, ry, vx, vy);
+	glf phi = PI_BY_2 - zenith_angle;
 	
 	e = calc_e(r, vsq, GM, phi);
 	a = calc_a(r, vsq, GM);
@@ -40,6 +41,13 @@ void Orbit::calc(glf rx, glf ry, glf vx, glf vy, glf GM)
 	else
 	{
 		mean_motion = calc_n(GM, fabsf(a));
+	}
+
+	is_clockwise = zenith_angle > PI;
+
+	if (zenith_angle > PI)
+	{
+		//mean_motion *= -1.0f;
 	}
 
 	if (nu < 0)
@@ -63,15 +71,18 @@ void Orbit::calc(glf planet_x, glf planet_y, glf ship_x, glf ship_y, glf vx, glf
 void Orbit::calc()
 {
 #ifdef use_satellites
-	calc(
-		parent->position.x,
-		parent->position.y,
-		child->position.x,
-		child->position.y,
-		child->velocity.x,
-		child->velocity.y,
-		parent->GM()
-	);
+	if (parent != NULL && child != NULL)
+	{
+		calc(
+			parent->position.x,
+			parent->position.y,
+			child->position.x,
+			child->position.y,
+			child->velocity.x,
+			child->velocity.y,
+			parent->GM()
+		);
+	}
 #else
 	calc(
 		planet->position.x,
@@ -118,20 +129,20 @@ Vector2f Orbit::position_at_time(glf t)
 void Orbit::calc_position(GLfloat t)
 {
 	glf M0 = TrueToMeanAnomalyf(e, nu);
-	glf M1 = mean_motion * t + M0;
+	glf M1 = mean_motion * t * (is_clockwise ? -1.0f : 1.0f) + M0;
 	glf true_anomaly = MeanToTrueAnomalyf(e, M1);
 
 	glf r = calc_r(a, e, true_anomaly);
 	glf theta = true_anomaly - (PI - angle);
 
 	position_p = { r * cosf(theta), r * sinf(theta) };
-	position_phi = calc_phi(e, true_anomaly);
+	position_phi = calc_phi(e, true_anomaly) + (is_clockwise ? PI : 0);
 #ifdef use_satellites
 	position_speed = calc_v(parent->GM(), r, a);
 #else
 	position_speed = calc_v(planet->GM(), r, a);
 #endif
 	//position_theta = PI_BY_2 - (true_anomaly + angle + position_phi - TWO_PI);
-	position_theta = (PI_BY_2 - position_phi) + true_anomaly - (PI - angle);
+	position_theta = (PI_BY_2 - position_phi) + theta;
 	position_v = Vector2f::from_polar(position_speed, position_theta);
 }

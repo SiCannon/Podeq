@@ -34,8 +34,9 @@ public:
 	void recalc_orbit();
 	Warp *warp;
 	Orbit *get_orbit();
-private:
+protected:
 	Satellite *parent;
+private:
 	Orbit *orbit;
 	glf lastUpdateTime;
 };

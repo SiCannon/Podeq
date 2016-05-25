@@ -37,18 +37,18 @@ PodeqGame::PodeqGame()
 	//ship->transform->translate_x = start_ship_x;
 	//ship->transform->translate_y = start_ship_y;
 
-	ship2 = new Ship2(this, { start_ship_x, start_ship_y }, { start_ship_vx, start_ship_vy }, warp);
+	ship2 = new Ship2(this, planet, { start_ship_x, start_ship_y }, { start_ship_vx, start_ship_vy }, warp);
 	//ship2->transform->rot = 45.0f;
 	
 	gameEngine->register_updateTask(ship2);
 	gameEngine->register_inputTask(ship2);
 
-	orbit = new Orbit(planet, ship2);
-	orbit->calc();
+	//orbit = new Orbit(planet, ship2);
+	//orbit->calc();
 
-	orbit_path = new OrbitPath(orbit);
-	orbit_path->transform->trans.x = planet_x;
-	orbit_path->transform->trans.y = planet_y;
+	orbit_path = new OrbitPath(ship2->get_orbit());
+	orbit_path->transform->trans = planet->position;
+	//orbit_path->transform->trans.y = planet_y;
 
 #ifndef hide_game_elements
 	gameEngine->register_drawTask(planet);
@@ -100,14 +100,15 @@ PodeqGame::PodeqGame()
 #endif
 
 	moon = new Moon(planet, 1.0f, warp);
-	moon->velocity.x = 0.03f;
-	moon->velocity.y = -0.03f;
+	moon->position = { 0, 10.0f };
+	moon->velocity.x = 0.1f;
+	moon->velocity.y = 0;
 	moon->recalc_orbit();
 	gameEngine->register_updateTask(moon);
 
-	OrbitPath *moon_path = new OrbitPath(moon->get_orbit());
+	/*OrbitPath *moon_path = new OrbitPath(moon->get_orbit());
 	moon_path->transform->trans = planet->position;
 	gameEngine->register_drawTask(moon_path);
-	gameEngine->register_drawTask(new MoonDraw(moon));
+	gameEngine->register_drawTask(new MoonDraw(moon));*/
 
 }

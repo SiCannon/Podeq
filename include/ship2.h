@@ -10,11 +10,12 @@
 #include "satellite.h"
 
 class PodeqGame;
+class Planet;
 
 class Ship2 : public Entity, public UpdateTask, public InputTask, public Satellite
 {
 public:
-	Ship2(PodeqGame *game, Vector2f pos, Vector2f vel, Warp *warp);
+	Ship2(PodeqGame *game, Satellite *orbiting, Vector2f pos, Vector2f vel, Warp *warp);
 
 	void update(Timer *timer);
 	void input(Keyboard *keyboard);
