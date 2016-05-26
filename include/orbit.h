@@ -44,6 +44,8 @@ public:
 	GLfloat position_theta;
 	Vector2f position_v;
 	void calc_position(GLfloat t);
+
+	Satellite *get_parent();
 private:
 #ifdef use_satellites
 	Satellite *parent;

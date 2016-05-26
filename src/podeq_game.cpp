@@ -99,7 +99,7 @@ PodeqGame::PodeqGame()
 	gameEngine->register_drawTask(new DebugGraph());
 #endif
 
-	moon = new Moon(planet, 1.0f, warp);
+	moon = new Moon(planet, 0.001f, warp);
 	moon->position = { 0, 3.0f };
 	moon->velocity.x = 0.03f;
 	moon->velocity.y = 0;
@@ -109,6 +109,18 @@ PodeqGame::PodeqGame()
 	OrbitPath *moon_path = new OrbitPath(moon->get_orbit());
 	moon_path->transform->trans = planet->position;
 	gameEngine->register_drawTask(moon_path);
-	gameEngine->register_drawTask(new MoonDraw(moon));
+	gameEngine->register_drawTask(new MoonDraw(moon, 0.05f, 64, 64, 192));
+
+	moon = new Moon(moon, 1.0f, warp);
+	moon->position = { 0, 3.1f };
+	moon->velocity.x = 0.09f;
+	moon->velocity.y = 0;
+	moon->recalc_orbit();
+	gameEngine->register_updateTask(moon);
+
+	moon_path = new OrbitPath(moon->get_orbit());
+	moon_path->transform->trans = moon->position;
+	gameEngine->register_drawTask(moon_path);
+	gameEngine->register_drawTask(new MoonDraw(moon, 0.01f, 0, 128, 32));
 
 }

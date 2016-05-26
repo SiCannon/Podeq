@@ -5,6 +5,7 @@
 #include "orbit_path.h"
 #include "include/shapes.h"
 #include "include/vector2f.h"
+#include "include/transform.h"
 #include "defines.h"
 
 OrbitPath::OrbitPath(Orbit *orbit) : BaseActor()
@@ -16,6 +17,8 @@ OrbitPath::OrbitPath(Orbit *orbit) : BaseActor()
 
 void OrbitPath::draw_me()
 {
+	transform->trans = orbit->get_parent()->position;
+
 	if (orbit->is_hyperbolic())
 	{
 		draw_hyperbola();

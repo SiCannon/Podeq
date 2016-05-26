@@ -31,6 +31,13 @@ Ship2::Ship2(PodeqGame *game, Satellite *orbiting, Vector2f pos, Vector2f vel, W
 	lastUpdateTime = 0;
 }
 
+void print_vector(const char *title, Vector2f v)
+{
+	printf(title);
+	//printf(": (%.8f, %.8f)\n", v.x, v.y);
+	printf(": %.8f\n", v.length());
+}
+
 void Ship2::create_ship()
 {
 	polygon->set_vertex(0, 0, ship_size * 2.0f);
@@ -48,32 +55,15 @@ void Ship2::create_ship()
 
 void Ship2::update(Timer * timer)
 {
-#ifdef use_satellites
-	#define ship_position position
-#else
-	#define ship_position transform->trans
-#endif
-
 	glf time = timer->intervalSeconds() * warp->warp;
+
+	if (isThrust || wasThrust)
+	{
+		perform_thrust(timer, time);
+	}
 
 	if (isThrust)
 	{
-		glf rs = distanceSquared(parent->position, ship_position);
-		GLfloat a = GravConstant * parent->mass / rs;
-		GLfloat t = angleTo(ship_position, parent->position);
-		GLfloat ax = a * cosf(t);
-		GLfloat ay = a * sinf(t);
-
-		GLfloat force = ship_thrust;
-		ax -= force * sinf(d_to_r(transform->rot));
-		ay += force * cosf(d_to_r(transform->rot));
-
-		velocity.x += ax * timer->intervalSeconds();
-		velocity.y += ay * timer->intervalSeconds();
-
-		ship_position = ship_position + (velocity * time);
-		get_orbit()->calc();
-		//get_orbit()->calc_position(0);
 		wasThrust = true;
 	}
 	else
@@ -82,6 +72,9 @@ void Ship2::update(Timer * timer)
 		{
 			wasThrust = false;
 			get_orbit()->calc();
+			get_orbit()->calc_position(0);
+			position = parent->position + get_orbit()->position_p;
+			velocity = get_orbit()->position_v;
 			lastUpdateTime = 0;
 		}
 		else
@@ -168,4 +161,24 @@ glf Ship2::speed()
 bool Ship2::isWarp()
 {
 	return warp->warp >= 1.5f;
+}
+
+void Ship2::perform_thrust(Timer *timer, glf time)
+{
+	glf rs = distanceSquared(parent->position, position);
+	GLfloat a = GravConstant * parent->mass / rs;
+	GLfloat t = angleTo(position, parent->position);
+	GLfloat ax = a * cosf(t);
+	GLfloat ay = a * sinf(t);
+
+	GLfloat force = ship_thrust;
+	ax -= force * sinf(d_to_r(transform->rot));
+	ay += force * cosf(d_to_r(transform->rot));
+
+	velocity.x += ax * timer->intervalSeconds();
+	velocity.y += ay * timer->intervalSeconds();
+
+	position = position + (velocity * time);
+	get_orbit()->calc();
+	//get_orbit()->calc_position(0);
 }

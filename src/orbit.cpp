@@ -146,3 +146,8 @@ void Orbit::calc_position(GLfloat t)
 	position_theta = (PI_BY_2 - position_phi) + theta;
 	position_v = Vector2f::from_polar(position_speed, position_theta);
 }
+
+Satellite *Orbit::get_parent()
+{
+	return parent;
+}

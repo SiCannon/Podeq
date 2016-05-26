@@ -31,4 +31,6 @@ private:
 	PodeqGame *game;
 	bool isThrust;
 	bool wasThrust;
+
+	void perform_thrust(Timer *timer, glf time);
 };
