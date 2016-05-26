@@ -5,7 +5,7 @@
 
 #define GravConstant 1.0f
 #define Seed 3349653
-#define warp_control_sensitivity 2.0f
+#define warp_control_sensitivity 4.0f
 
 #define calculated_orbit
 //#define show_predicted_orbit

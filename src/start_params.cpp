@@ -11,12 +11,12 @@ GLfloat start_ship_y = +3.05f;
 GLfloat start_ship_vx = 0.02f;
 GLfloat start_ship_vy = 0.01f;
 
-GLfloat start_scale = 6.f;
+GLfloat start_scale = 10.f;
 GLfloat ship_thrust = 0.01f;
 
 GLfloat scale_mult = 1.02f;
 GLfloat ship_size = 0.002f;
-GLfloat start_warp = .01f;
+GLfloat start_warp = 1.0f;
 //*/
 
 

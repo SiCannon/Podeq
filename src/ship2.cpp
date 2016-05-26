@@ -86,16 +86,7 @@ void Ship2::update(Timer * timer)
 		}
 		else
 		{
-			//Satellite::update(timer);
-			
-			glf timeSinceLastUpdate = time;
-			glf newWarpedTime = lastUpdateTime + timeSinceLastUpdate;
-			lastUpdateTime = newWarpedTime;
-
-			get_orbit()->calc_position(newWarpedTime);
-			ship_position = parent->position + get_orbit()->position_p;
-			//transform->trans = parent->position + get_orbit()->position_p;
-			this->velocity = get_orbit()->position_v;
+			Satellite::update(timer);
 		}
 	}
 }

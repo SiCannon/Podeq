@@ -100,15 +100,15 @@ PodeqGame::PodeqGame()
 #endif
 
 	moon = new Moon(planet, 1.0f, warp);
-	moon->position = { 0, 10.0f };
-	moon->velocity.x = 0.1f;
+	moon->position = { 0, 3.0f };
+	moon->velocity.x = 0.03f;
 	moon->velocity.y = 0;
 	moon->recalc_orbit();
 	gameEngine->register_updateTask(moon);
 
-	/*OrbitPath *moon_path = new OrbitPath(moon->get_orbit());
+	OrbitPath *moon_path = new OrbitPath(moon->get_orbit());
 	moon_path->transform->trans = planet->position;
 	gameEngine->register_drawTask(moon_path);
-	gameEngine->register_drawTask(new MoonDraw(moon));*/
+	gameEngine->register_drawTask(new MoonDraw(moon));
 
 }

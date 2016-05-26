@@ -36,7 +36,7 @@ public:
 	Orbit *get_orbit();
 protected:
 	Satellite *parent;
+	glf lastUpdateTime;
 private:
 	Orbit *orbit;
-	glf lastUpdateTime;
 };

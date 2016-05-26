@@ -31,5 +31,4 @@ private:
 	PodeqGame *game;
 	bool isThrust;
 	bool wasThrust;
-	glf lastUpdateTime;
 };
