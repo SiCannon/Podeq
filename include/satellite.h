@@ -1,26 +1,13 @@
 #pragma once
 
+#include <vector>
 #include <include/gaf.h>
 #include <include/vector2f.h>
 #include <include/update_task.h>
 #include <include/timer.h>
 
-//#include "has_position.h"
-//#include "has_position_and_velocity.h"
-
 class Orbit;
 class Warp;
-
-/*class Satellite : public HasPositionAndVelocity
-{
-public:
-	Satellite(HasPosition *parent);
-private:
-	glf mass;
-	HasPosition *parent;
-	Orbit *orbit;
-};*/
-
 
 class Satellite : public UpdateTask
 {
@@ -34,9 +21,13 @@ public:
 	void recalc_orbit();
 	Warp *warp;
 	Orbit *get_orbit();
-protected:
+	void add_child(Satellite *child);
+	Vector2f absolute_velocity();
+	glf sphere_of_influence();
 	Satellite *parent;
+	std::vector<Satellite*> children;
+protected:
 	glf lastUpdateTime;
-private:
 	Orbit *orbit;
+private:
 };

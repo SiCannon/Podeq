@@ -151,3 +151,9 @@ Satellite *Orbit::get_parent()
 {
 	return parent;
 }
+
+void Orbit::set_parent(Satellite * parent)
+{
+	this->parent = parent;
+	calc();
+}

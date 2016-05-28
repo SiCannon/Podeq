@@ -33,4 +33,6 @@ private:
 	bool wasThrust;
 
 	void perform_thrust(Timer *timer, glf time);
+
+	void change_parent_body();
 };

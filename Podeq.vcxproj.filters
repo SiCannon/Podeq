@@ -39,9 +39,9 @@
     <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\satellite.cpp" />
     <ClCompile Include="src\debug_graph.cpp" />
-    <ClCompile Include="src\moon_draw.cpp" />
     <ClCompile Include="src\moon.cpp" />
     <ClCompile Include="src\warp.cpp" />
+    <ClCompile Include="src\satellite_draw.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lib\GL\freeglut.h" />
@@ -96,7 +96,7 @@
     <ClInclude Include="include\has_position_and_velocity.h" />
     <ClInclude Include="include\debug_graph.h" />
     <ClInclude Include="include\moon.h" />
-    <ClInclude Include="include\moon_draw.h" />
     <ClInclude Include="include\warp.h" />
+    <ClInclude Include="include\satellite_draw.h" />
   </ItemGroup>
 </Project>

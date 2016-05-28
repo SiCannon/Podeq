@@ -46,6 +46,8 @@ public:
 	void calc_position(GLfloat t);
 
 	Satellite *get_parent();
+
+	void set_parent(Satellite *parent);
 private:
 #ifdef use_satellites
 	Satellite *parent;

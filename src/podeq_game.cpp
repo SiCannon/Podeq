@@ -16,7 +16,7 @@
 #include "defines.h"
 #include "debug_graph.h"
 #include "moon.h"
-#include "moon_draw.h"
+#include "satellite_draw.h"
 #include "warp.h"
 
 PodeqGame::PodeqGame()
@@ -29,26 +29,14 @@ PodeqGame::PodeqGame()
 	gameEngine->register_inputTask(warp);
 	gameEngine->register_updateTask(warp);
 
-	planet = new Planet(planet_mass, warp);
-	planet->position.x = planet_x;
-	planet->position.y = planet_y;
+	create_satellites();
 
-	//ship = new Ship(start_ship_vx, start_ship_vy, planet);
-	//ship->transform->translate_x = start_ship_x;
-	//ship->transform->translate_y = start_ship_y;
-
-	ship2 = new Ship2(this, planet, { start_ship_x, start_ship_y }, { start_ship_vx, start_ship_vy }, warp);
-	//ship2->transform->rot = 45.0f;
-	
+	ship2 = new Ship2(this, moon, { start_ship_x, start_ship_y }, { start_ship_vx, start_ship_vy }, warp);
 	gameEngine->register_updateTask(ship2);
 	gameEngine->register_inputTask(ship2);
 
-	//orbit = new Orbit(planet, ship2);
-	//orbit->calc();
-
 	orbit_path = new OrbitPath(ship2->get_orbit());
 	orbit_path->transform->trans = planet->position;
-	//orbit_path->transform->trans.y = planet_y;
 
 #ifndef hide_game_elements
 	gameEngine->register_drawTask(planet);
@@ -60,38 +48,26 @@ PodeqGame::PodeqGame()
 	gameEngine->register_updateTask(orbit);
 #endif
 
-	//gameEngine->register_updateTask(ship);
+	auto sun = create_satellite(NULL, 1.0f, warp, { 10.0f, 10.0f }, { 0, 0 }, 0.1f, 255, 255, 0);
+	auto mercury = create_satellite(sun, .1f, warp, { 10.0f, 10.4f }, { 1.5f, 0 }, 0.01f, 128, 0, 64);
+	auto venus = create_satellite(sun, .1f, warp, { 10.0f, 10.8f }, { 1.0f, 0 }, 0.01f, 32, 128, 192);
+	auto earth = create_satellite(sun, .1f, warp, { 10.0f, 11.8f }, { 0.8f, 0 }, 0.02f, 0, 128, 255);
+	auto luna = create_satellite(earth, .1f, warp, { 10.0f, 11.9f }, { 0.8f, 0 }, 0.004f, 32, 192, 0);
 
-	//gameEngine->register_inputTask(ship);
-	//*/
-
-	/*noise_test = new NoiseTest();
-	gameEngine->register_drawTask(noise_test);
-	gameEngine->register_inputTask(noise_test);*/
-
-	/*
-	hex = new Hex();
-	tri = new Tri();
-	cd = new CollisionDetector(hex, tri);
-
-	gameEngine->register_drawTask(hex->polydraw);
-	gameEngine->register_drawTask(tri->polydraw);
-	gameEngine->register_updateTask(cd);
-	gameEngine->register_drawTask(cd);
-	gameEngine->register_inputTask(cd);
-	//*/
-
-
-	/*Hyperbola *hyper = new Hyperbola(orbit);
-	gameEngine->register_drawTask(hyper);
-	gameEngine->register_inputTask(hyper);
-	gameEngine->register_updateTask(hyper);*/
 
 	OrbitPredictor *op = new OrbitPredictor(orbit, planet);
 	gameEngine->register_drawTask(op);
 
 
-	Camera *camera = new Camera(ship2, planet);
+	Camera *camera = new Camera();
+
+	camera->add_satellite(sun);
+
+	camera->add_satellite(ship2);
+	camera->add_satellite(planet);
+	camera->add_satellite(moon);
+	camera->add_satellite(moonlet);
+
 	gameEngine->register_updateTask(camera);
 	gameEngine->keyboard->register_keydown_handler(camera);
 
@@ -99,9 +75,45 @@ PodeqGame::PodeqGame()
 	gameEngine->register_drawTask(new DebugGraph());
 #endif
 
-	moon = new Moon(planet, 0.001f, warp);
+}
+
+Satellite * PodeqGame::create_satellite(Satellite * parent, glf mass, Warp * warp, Vector2f position, Vector2f velocity, glf radius, GLubyte red, GLubyte green, GLubyte blue)
+{
+	Satellite *satellite = new Satellite(parent, mass, warp);
+	if (parent != NULL)
+	{
+		parent->add_child(satellite);
+	}
+	satellite->position = position;
+	satellite->velocity = velocity;
+	satellite->recalc_orbit();
+
+	if (parent != NULL)
+	{
+		gameEngine->register_updateTask(satellite);
+
+		OrbitPath *orbit_path = new OrbitPath(satellite->get_orbit());
+		orbit_path->transform->trans = satellite->position;
+		gameEngine->register_drawTask(orbit_path);
+	}
+
+	gameEngine->register_drawTask(new SatelliteDraw(satellite, radius, red, green, blue));
+
+	return satellite;
+}
+
+void PodeqGame::create_satellites()
+{
+	planet = new Planet(planet_mass, warp);
+	planet->position.x = planet_x;
+	planet->position.y = planet_y;
+
+	moon = create_satellite(planet, 0.001f, warp, { 0, 3.0f }, { 0.035f, 0 }, 0.05f, 64, 64, 192);
+	moonlet = create_satellite(moon, 0.00001f, warp, { 0, 3.1f }, { -0.1f, 0 }, 0.01f, 0, 128, 32);
+
+	/*moon = new Satellite(planet, 0.001f, warp);
 	moon->position = { 0, 3.0f };
-	moon->velocity.x = 0.03f;
+	moon->velocity.x = 0.035f;
 	moon->velocity.y = 0;
 	moon->recalc_orbit();
 	gameEngine->register_updateTask(moon);
@@ -109,18 +121,18 @@ PodeqGame::PodeqGame()
 	OrbitPath *moon_path = new OrbitPath(moon->get_orbit());
 	moon_path->transform->trans = planet->position;
 	gameEngine->register_drawTask(moon_path);
-	gameEngine->register_drawTask(new MoonDraw(moon, 0.05f, 64, 64, 192));
+	gameEngine->register_drawTask(new SatelliteDraw(moon, 0.05f, 64, 64, 192));*/
+	/*
+	moonlet = new Moon(moon, 1.0f, warp);
+	moonlet->position = { 0, 3.1f };
+	moonlet->velocity.x = -.1f;
+	moonlet->velocity.y = 0;
+	moonlet->recalc_orbit();
+	gameEngine->register_updateTask(moonlet);
 
-	moon = new Moon(moon, 1.0f, warp);
-	moon->position = { 0, 3.1f };
-	moon->velocity.x = 0.09f;
-	moon->velocity.y = 0;
-	moon->recalc_orbit();
-	gameEngine->register_updateTask(moon);
-
-	moon_path = new OrbitPath(moon->get_orbit());
-	moon_path->transform->trans = moon->position;
-	gameEngine->register_drawTask(moon_path);
-	gameEngine->register_drawTask(new MoonDraw(moon, 0.01f, 0, 128, 32));
-
+	OrbitPath *moonlet_path = new OrbitPath(moonlet->get_orbit());
+	moonlet_path->transform->trans = moonlet->position;
+	gameEngine->register_drawTask(moonlet_path);
+	gameEngine->register_drawTask(new SatelliteDraw(moonlet, 0.01f, 0, 128, 32));
+	*/
 }

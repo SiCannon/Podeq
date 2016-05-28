@@ -50,3 +50,33 @@ Orbit * Satellite::get_orbit()
 {
 	return orbit;
 }
+
+void Satellite::add_child(Satellite * child)
+{
+	children.push_back(child);
+}
+
+Vector2f Satellite::absolute_velocity()
+{
+	if (parent != NULL)
+	{
+		return velocity + parent->velocity;
+	}
+	else
+	{
+		return velocity;
+	}
+}
+
+glf Satellite::sphere_of_influence()
+{
+	if (parent == NULL)
+	{
+		return INFINITY;
+	}
+	else
+	{
+		// http://www.braeunig.us/space/orbmech.htm equation 4.89
+		return (position - parent->position).length() * powf(mass / parent->mass, 0.4f);
+	}
+}

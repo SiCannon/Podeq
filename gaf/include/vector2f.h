@@ -19,6 +19,13 @@ struct Vector2f
 	{
 		return{ x * k, y * k };
 	};
+	Vector2f operator-() const
+	{
+		Vector2f v;
+		v.x = -x;
+		v.y = -y;
+		return v;
+	};
 	glf length_squared()
 	{
 		return SQR(x) + SQR(y);

@@ -82,6 +82,8 @@ void Ship2::update(Timer * timer)
 			Satellite::update(timer);
 		}
 	}
+
+	change_parent_body();
 }
 
 #else
@@ -178,7 +180,62 @@ void Ship2::perform_thrust(Timer *timer, glf time)
 	velocity.x += ax * timer->intervalSeconds();
 	velocity.y += ay * timer->intervalSeconds();
 
-	position = position + (velocity * time);
+	position = position + (absolute_velocity() * time);
 	get_orbit()->calc();
 	//get_orbit()->calc_position(0);
+}
+
+bool is_in_soi(Ship2 *ship, Satellite *satellite)
+{
+	glf r_ship = (ship->position - satellite->position).length();
+	glf r_soi = satellite->sphere_of_influence();
+	return r_ship <= r_soi;
+}
+
+Satellite *find_root(Satellite *s)
+{
+	while (s->parent != NULL)
+	{
+		s = s->parent;
+	}
+	return s;
+}
+
+void Ship2::change_parent_body()
+{
+	// assume siblings never have overlapping SOIs
+	// therefore overlapping SOIs are striclty hierarchical
+	// which means we need to find the deepest SOI working from the current one down
+
+	// find the sun
+	Satellite *soi = find_root(this);
+
+	// find which child we are in, if any
+	bool found_one;
+	do
+	{
+		found_one = false;
+		for (int i = 0; i < soi->children.size(); i++)
+		{
+			if (is_in_soi(this, soi->children[i]))
+			{
+				soi = soi->children[i];
+				found_one = true;
+			}
+		}
+	} while (found_one);
+
+	if (soi != parent)
+	{
+		Vector2f v = absolute_velocity();
+		parent = soi;
+		velocity = v - parent->absolute_velocity();
+		orbit->set_parent(parent);
+
+		get_orbit()->calc();
+		get_orbit()->calc_position(0);
+		position = parent->position + get_orbit()->position_p;
+		velocity = get_orbit()->position_v;
+		lastUpdateTime = 0;
+	}
 }
